@@ -1,7 +1,6 @@
 import {
   useCallback,
   useEffect,
-  useId,
   useRef,
   useState,
   type KeyboardEvent,
@@ -27,12 +26,15 @@ export function ScreenshotCarousel({
   label = 'Playblast product screenshots',
 }: ScreenshotCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0)
-  const [isPaused, setIsPaused] = useState(false)
+  const [autoplayPausedByUser, setAutoplayPausedByUser] = useState(false)
+  const [interactionPaused, setInteractionPaused] = useState(false)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
   const regionRef = useRef<HTMLDivElement>(null)
   const pointerStartX = useRef<number | null>(null)
-  const captionId = useId()
   const slideCount = slides.length
+  const autoplayAllowed = !prefersReducedMotion && slideCount > 1
+  const autoplayActive =
+    autoplayAllowed && !autoplayPausedByUser && !interactionPaused
 
   const goTo = useCallback(
     (index: number) => {
@@ -55,14 +57,14 @@ export function ScreenshotCarousel({
   }, [])
 
   useEffect(() => {
-    if (prefersReducedMotion || isPaused || slideCount <= 1) return
+    if (!autoplayActive) return
 
     const timer = window.setInterval(() => {
       setActiveIndex((current) => (current + 1) % slideCount)
     }, AUTOPLAY_MS)
 
     return () => window.clearInterval(timer)
-  }, [isPaused, prefersReducedMotion, slideCount])
+  }, [autoplayActive, slideCount])
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key === 'ArrowLeft') {
@@ -111,12 +113,12 @@ export function ScreenshotCarousel({
       aria-label={label}
       tabIndex={0}
       onKeyDown={handleKeyDown}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      onFocusCapture={() => setIsPaused(true)}
+      onMouseEnter={() => setInteractionPaused(true)}
+      onMouseLeave={() => setInteractionPaused(false)}
+      onFocusCapture={() => setInteractionPaused(true)}
       onBlurCapture={(event) => {
         if (!regionRef.current?.contains(event.relatedTarget as Node | null)) {
-          setIsPaused(false)
+          setInteractionPaused(false)
         }
       }}
     >
@@ -128,8 +130,6 @@ export function ScreenshotCarousel({
       >
         <ul
           className="pb-carousel__track"
-          aria-live="polite"
-          aria-atomic="true"
           style={{
             transform: `translate3d(-${activeIndex * 100}%, 0, 0)`,
             transition: prefersReducedMotion
@@ -173,31 +173,51 @@ export function ScreenshotCarousel({
         </button>
 
         <div className="pb-carousel__meta">
-          <p id={captionId} className="pb-carousel__caption">
+          <p
+            className="pb-carousel__caption"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            <span className="visually-hidden">
+              Slide {activeIndex + 1} of {slideCount}:{' '}
+            </span>
             {activeSlide.caption}
           </p>
-          <div
-            className="pb-carousel__dots"
-            role="tablist"
-            aria-label="Choose screenshot"
-          >
-            {slides.map((slide, index) => {
-              const isActive = index === activeIndex
-              return (
-                <button
-                  key={slide.caption}
-                  type="button"
-                  role="tab"
-                  className="pb-carousel__dot"
-                  aria-selected={isActive}
-                  aria-controls={captionId}
-                  aria-label={`${slide.caption} (${index + 1} of ${slideCount})`}
-                  onClick={() => goTo(index)}
-                >
-                  <span className="pb-carousel__dot-label">{slide.caption}</span>
-                </button>
-              )
-            })}
+
+          <div className="pb-carousel__meta-actions">
+            <div
+              className="pb-carousel__dots"
+              role="group"
+              aria-label="Choose screenshot"
+            >
+              {slides.map((slide, index) => {
+                const isActive = index === activeIndex
+                return (
+                  <button
+                    key={slide.caption}
+                    type="button"
+                    className="pb-carousel__dot"
+                    aria-label={`Go to slide ${index + 1}: ${slide.caption}`}
+                    aria-current={isActive ? 'true' : undefined}
+                    onClick={() => goTo(index)}
+                  />
+                )
+              })}
+            </div>
+
+            {autoplayAllowed && (
+              <button
+                type="button"
+                className="pb-carousel__autoplay"
+                aria-pressed={autoplayPausedByUser}
+                aria-label={
+                  autoplayPausedByUser ? 'Resume autoplay' : 'Pause autoplay'
+                }
+                onClick={() => setAutoplayPausedByUser((paused) => !paused)}
+              >
+                {autoplayPausedByUser ? 'Play' : 'Pause'}
+              </button>
+            )}
           </div>
         </div>
 
