@@ -214,11 +214,7 @@ export function Playblast() {
                   </div>
                   <p className="pb-tier-card__recognition">{tier.recognition}</p>
                   <p className="pb-tier-card__boundary">
-                    Recognition only —{' '}
-                    <a href="#sponsorship-disclaimer" className="pb-tier-card__disclaimer-link">
-                      see disclaimer below
-                    </a>
-                    .
+                    {SPONSORSHIP_DISCLAIMER}
                   </p>
                 </li>
               ))}
