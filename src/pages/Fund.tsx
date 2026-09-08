@@ -41,8 +41,8 @@ export function Fund() {
           <p className="fund-hero__pitch">
             Optional sponsorship helps fund open-source maintenance and
             development of Playblast — brzrk&apos;s flagship self-hosted proofing
-            tool. Every contribution supports the project; recognition tiers
-            are listed below.
+            tool. Every contribution funds maintenance and development;
+            recognition tiers are listed below.
           </p>
           <div className="cta-group">
             <ExternalLink href={LINKS.sponsorsDoc} className="btn btn--primary">
@@ -129,7 +129,6 @@ export function Fund() {
                 <div className="fund-credits__supporters fund-credits__supporters--empty">
                   <p>No supporters yet.</p>
                 </div>
-                <p className="fund-credits__disclaimer">{SPONSORSHIP_DISCLAIMER}</p>
               </section>
             ))}
           </div>
