@@ -47,7 +47,13 @@ Aesthetic direction: dark, sharp, product-company — black base with grey, whit
 
 ## Portfolio scope
 
-**Playblast-only for now.** Nightshift, Banshee Voice, and Owner Operator are not shown on the public site. Nav: Home · Playblast · About · Contact. `/products` redirects to `/playblast`.
+**Playblast-only for now.** Nightshift, Banshee Voice, and Owner Operator are not shown on the public site. Nav: Home · Playblast · Fund · About · Contact. `/products` redirects to `/playblast`.
+
+## Development fund page (`/fund`)
+
+Blender Development Fund–inspired layout (not Blender branding): donate hero, honest empty activity/numbers/credits, sponsorship tier ladder from `src/playblast/constants.ts`. Copy uses **sponsorship / development fund** language — never support packages or SLA tiers.
+
+**Disclaimer density:** tier cards show “Recognition only — see disclaimer below” (anchor to section footer). One full `SPONSORSHIP_DISCLAIMER` per funding section (Credits footer, Sponsorship tiers footer). Same pattern on `/playblast` optional sponsorship. GitHub Sponsors CTA is “coming online” until live; links to SPONSORS.md and Discussions — no fake checkout.
 
 ## Deployment base path
 

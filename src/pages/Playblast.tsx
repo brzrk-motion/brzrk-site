@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import {
   LINKS,
   LOOP_STEPS,
@@ -7,6 +8,7 @@ import {
   YOU_DONT_GET,
   YOU_GET,
 } from '../playblast/constants'
+import { SponsorshipTierBoundary } from '../playblast/SponsorshipTierBoundary'
 
 function ExternalLink({
   href,
@@ -202,6 +204,10 @@ export function Playblast() {
             <h2 id="funding-heading" className="section__title">
               Optional sponsorship
             </h2>
+            <p className="pb-section-intro">
+              Full tier ladder, credits, and fund numbers on the{' '}
+              <Link to="/fund">Playblast Development Fund</Link> page.
+            </p>
             <ul className="pb-tier-grid">
               {SPONSORSHIP_TIERS.map((tier) => (
                 <li key={tier.name} className="pb-tier-card">
@@ -213,9 +219,7 @@ export function Playblast() {
                     </p>
                   </div>
                   <p className="pb-tier-card__recognition">{tier.recognition}</p>
-                  <p className="pb-tier-card__boundary">
-                    {SPONSORSHIP_DISCLAIMER}
-                  </p>
+                  <SponsorshipTierBoundary disclaimerId="sponsorship-disclaimer" />
                 </li>
               ))}
             </ul>

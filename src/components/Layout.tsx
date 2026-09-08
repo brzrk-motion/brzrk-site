@@ -4,6 +4,7 @@ import { HeroShader } from './HeroShader'
 const navItems = [
   { to: '/', label: 'Home', end: true },
   { to: '/playblast', label: 'Playblast' },
+  { to: '/fund', label: 'Fund' },
   { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },
 ]
