@@ -1,5 +1,3 @@
-import { HeroShader } from '../components/HeroShader'
-
 const GITHUB_REPO = 'https://github.com/brzrk-motion/Playblast'
 const INSTALL_DOCS =
   'https://brzrk-motion.github.io/Playblast/deployment/install-linux-nas'
@@ -18,22 +16,17 @@ const painPoints = [
 
 export function Playblast() {
   return (
-    <div className="page page--with-banner">
-      <header className="page-banner">
-        <div className="page-banner__shader">
-          <HeroShader variant="banner" />
-        </div>
-        <div className="container page-banner__content">
+    <div className="page">
+      <div className="container">
+        <header className="page__header">
           <h1>Playblast</h1>
           <p className="page__intro">
             Private review for the work your studio is already making.
             Self-hosted, open-source release candidate — you run it on your
             infrastructure; brzrk does not host it.
           </p>
-        </div>
-      </header>
+        </header>
 
-      <div className="container" style={{ paddingTop: 'var(--space-2xl)' }}>
         <section className="section">
           <h2 className="section__title">The workflow problem</h2>
           <div className="section__body">

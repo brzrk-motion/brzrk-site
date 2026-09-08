@@ -1,4 +1,5 @@
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet, useLocation } from 'react-router-dom'
+import { HeroShader } from './HeroShader'
 
 const navItems = [
   { to: '/', label: 'Home', end: true },
@@ -8,8 +9,16 @@ const navItems = [
 ]
 
 export function Layout() {
+  const { pathname } = useLocation()
+  const isHome = pathname === '/'
+
   return (
-    <div className="layout">
+    <div className={`layout${isHome ? ' layout--home' : ' layout--page'}`}>
+      <div className="layout__shader-bg" aria-hidden="true">
+        <HeroShader />
+        <div className="layout__scrim" />
+      </div>
+
       <header className="nav">
         <div className="container nav__inner">
           <NavLink to="/" className="nav__brand" end>

@@ -39,7 +39,8 @@ Aesthetic direction: dark, sharp, product-company — black base with grey, whit
 
 - Package: [`vgpu`](https://github.com/vercel-labs/vgpu) with `hero-abstract.wgsl`
 - Distinct from sibling `playblast-lp` shader: abstract ribbon fields, noise, soft volumetric orange/grey on black — not monitor/timeline motifs
-- Home: full hero background; Playblast: subtle banner variant
+- **Single layout-level instance** in `Layout.tsx` — fixed full-viewport background shared across all pages (one GPU context, persists across routing)
+- Home: asymmetric left scrim (`layout--home`); inner pages: stronger vertical scrim (`layout--page`) for long-form readability while motion remains visible
 - No WebGPU: CSS gradient fallback (`hero-shader-fallback`) matching palette
 - Vite: `@vgpu/wgsl/loader-vite` plugin for `.wgsl` imports
 - Respects `prefers-reduced-motion`: static frame when set

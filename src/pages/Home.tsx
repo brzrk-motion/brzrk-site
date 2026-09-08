@@ -1,12 +1,8 @@
 import { Link } from 'react-router-dom'
-import { HeroShader } from '../components/HeroShader'
 
 export function Home() {
   return (
     <section className="hero reveal-hero">
-      <div className="hero__shader-wrap">
-        <HeroShader variant="hero" />
-      </div>
       <div className="container">
         <div className="hero__content">
           <span className="hero__eyebrow">Product company</span>
