@@ -1,6 +1,6 @@
 const GITHUB_REPO = 'https://github.com/brzrk-motion/Playblast'
 const INSTALL_DOCS =
-  'https://github.com/brzrk-motion/Playblast/blob/development-mvp/README.md'
+  'https://brzrk-motion.github.io/Playblast/deployment/install-linux-nas'
 const SPONSORS =
   'https://github.com/brzrk-motion/Playblast/blob/development-mvp/SPONSORS.md'
 const MARKETING_LP = 'https://brzrk-motion.github.io/playblast-lp/'
@@ -21,8 +21,9 @@ export function Playblast() {
         <header className="page__header">
           <h1>Playblast</h1>
           <p className="page__intro">
-            Self-hosted video proofing for studios that review work in-house —
-            not in someone else&apos;s cloud.
+            Private review for the work your studio is already making.
+            Self-hosted, open-source release candidate — you run it on your
+            infrastructure; brzrk does not host it.
           </p>
         </header>
 
@@ -87,8 +88,11 @@ export function Playblast() {
             </a>
           </div>
           <p className="external-note">
-            Install documentation lives in the{' '}
-            <code>development-mvp</code> branch README. Marketing overview:{' '}
+            Install docs are published on the{' '}
+            <a href={INSTALL_DOCS} target="_blank" rel="noopener noreferrer">
+              Playblast docs site
+            </a>
+            . Marketing overview:{' '}
             <a href={MARKETING_LP} target="_blank" rel="noopener noreferrer">
               playblast-lp
             </a>
