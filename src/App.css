@@ -2,10 +2,41 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  position: relative;
+}
+
+.layout__shader-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.layout__scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      oklch(0.08 0.006 260 / 0.72) 0%,
+      oklch(0.08 0.006 260 / 0.86) 35%,
+      oklch(0.08 0.006 260 / 0.9) 100%
+    );
+}
+
+.layout--home .layout__scrim {
+  background: linear-gradient(
+    90deg,
+    oklch(0.08 0.006 260 / 0.92) 0%,
+    oklch(0.08 0.006 260 / 0.55) 45%,
+    oklch(0.08 0.006 260 / 0.15) 100%
+  );
 }
 
 .layout__main {
   flex: 1;
+  position: relative;
+  z-index: 1;
 }
 
 .container {
@@ -24,7 +55,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: oklch(0.08 0.006 260 / 0.85);
+  background: oklch(0.08 0.006 260 / 0.72);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border);
 }
@@ -77,10 +108,13 @@
 
 /* Footer */
 .footer {
+  position: relative;
+  z-index: 1;
   border-top: 1px solid var(--color-border);
   padding-block: var(--space-xl);
   margin-top: var(--space-3xl);
-  background: var(--color-bg-muted);
+  background: oklch(0.10 0.007 260 / 0.82);
+  backdrop-filter: blur(10px);
 }
 
 .footer__inner {
@@ -110,37 +144,15 @@
   color: var(--color-text);
 }
 
-/* Hero with shader background */
+/* Hero */
 .hero {
   position: relative;
   min-height: clamp(28rem, 72vh, 40rem);
   display: flex;
   align-items: center;
-  overflow: hidden;
-}
-
-.hero__shader-wrap {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.hero__shader-wrap::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    oklch(0.08 0.006 260 / 0.92) 0%,
-    oklch(0.08 0.006 260 / 0.55) 45%,
-    oklch(0.08 0.006 260 / 0.15) 100%
-  );
-  pointer-events: none;
 }
 
 .hero__content {
-  position: relative;
-  z-index: 1;
   padding-block: var(--space-3xl) var(--space-2xl);
   max-width: 52rem;
 }
@@ -213,21 +225,15 @@
   color: var(--color-status-rc);
 }
 
-/* vgpu shader */
+/* vgpu shader — single layout-level background */
 .hero-shader-canvas,
 .hero-shader-fallback {
   display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-}
-
-.hero-shader--hero {
-  min-height: clamp(28rem, 72vh, 40rem);
-}
-
-.hero-shader--banner {
-  min-height: 12rem;
-  opacity: 0.55;
+  min-height: 100vh;
 }
 
 .hero-shader-fallback {
@@ -235,42 +241,6 @@
     radial-gradient(ellipse 80% 70% at 75% 35%, oklch(0.68 0.18 45 / 0.18), transparent 55%),
     radial-gradient(ellipse 60% 50% at 30% 65%, oklch(0.45 0.02 260 / 0.12), transparent 50%),
     linear-gradient(180deg, oklch(0.06 0.005 260), oklch(0.10 0.008 260));
-}
-
-.hero-shader--banner.hero-shader-fallback {
-  background:
-    radial-gradient(ellipse 70% 80% at 60% 50%, oklch(0.68 0.18 45 / 0.1), transparent 60%),
-    oklch(0.08 0.006 260);
-}
-
-/* Page banner shader */
-.page-banner {
-  position: relative;
-  overflow: hidden;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.page-banner__shader {
-  position: absolute;
-  inset: 0;
-}
-
-.page-banner__shader::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    oklch(0.08 0.006 260 / 0.3) 0%,
-    oklch(0.08 0.006 260 / 0.95) 100%
-  );
-  pointer-events: none;
-}
-
-.page-banner__content {
-  position: relative;
-  z-index: 1;
-  padding-block: var(--space-2xl) var(--space-xl);
 }
 
 /* Buttons */
@@ -331,10 +301,6 @@
 /* Page sections */
 .page {
   padding-block: var(--space-2xl) var(--space-3xl);
-}
-
-.page--with-banner {
-  padding-block: 0 var(--space-3xl);
 }
 
 .page__header {
@@ -415,7 +381,8 @@
 
 /* Status / honesty blocks */
 .honesty-block {
-  background: var(--color-bg-muted);
+  background: oklch(0.10 0.007 260 / 0.88);
+  backdrop-filter: blur(8px);
   border: 1px solid var(--color-border);
   border-left: 3px solid var(--color-accent);
   border-radius: var(--radius-md);

@@ -5,14 +5,13 @@ import heroShader from '../shaders/hero-abstract.wgsl'
 
 type HeroShaderProps = {
   className?: string
-  variant?: 'hero' | 'banner'
 }
 
 function prefersReducedMotion(): boolean {
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches
 }
 
-export function HeroShader({ className = '', variant = 'hero' }: HeroShaderProps) {
+export function HeroShader({ className = '' }: HeroShaderProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [useFallback, setUseFallback] = useState(false)
 
@@ -80,13 +79,10 @@ export function HeroShader({ className = '', variant = 'hero' }: HeroShaderProps
     }
   }, [])
 
-  const variantClass =
-    variant === 'banner' ? 'hero-shader--banner' : 'hero-shader--hero'
-
   if (useFallback) {
     return (
       <div
-        className={`hero-shader-fallback ${variantClass} ${className}`}
+        className={`hero-shader-fallback ${className}`}
         aria-hidden="true"
       />
     )
@@ -95,7 +91,7 @@ export function HeroShader({ className = '', variant = 'hero' }: HeroShaderProps
   return (
     <canvas
       ref={canvasRef}
-      className={`hero-shader-canvas ${variantClass} ${className}`}
+      className={`hero-shader-canvas ${className}`}
       aria-hidden="true"
     />
   )
