@@ -8,6 +8,7 @@ import {
   YOU_DONT_GET,
   YOU_GET,
 } from '../playblast/constants'
+import { SponsorshipTierBoundary } from '../playblast/SponsorshipTierBoundary'
 
 function ExternalLink({
   href,
@@ -218,9 +219,7 @@ export function Playblast() {
                     </p>
                   </div>
                   <p className="pb-tier-card__recognition">{tier.recognition}</p>
-                  <p className="pb-tier-card__boundary">
-                    {SPONSORSHIP_DISCLAIMER}
-                  </p>
+                  <SponsorshipTierBoundary disclaimerId="sponsorship-disclaimer" />
                 </li>
               ))}
             </ul>

@@ -3,6 +3,7 @@ import {
   SPONSORSHIP_DISCLAIMER,
   SPONSORSHIP_TIERS,
 } from '../playblast/constants'
+import { SponsorshipTierBoundary } from '../playblast/SponsorshipTierBoundary'
 
 function ExternalLink({
   href,
@@ -132,6 +133,9 @@ export function Fund() {
               </section>
             ))}
           </div>
+          <p id="credits-disclaimer" className="pb-funding-disclaimer">
+            {SPONSORSHIP_DISCLAIMER}
+          </p>
         </section>
 
         <section
@@ -157,13 +161,13 @@ export function Fund() {
                     </p>
                   </div>
                   <p className="pb-tier-card__recognition">{tier.recognition}</p>
-                  <p className="pb-tier-card__boundary">
-                    {SPONSORSHIP_DISCLAIMER}
-                  </p>
+                  <SponsorshipTierBoundary disclaimerId="sponsorship-disclaimer" />
                 </li>
               ))}
             </ul>
-            <p className="pb-funding-disclaimer">{SPONSORSHIP_DISCLAIMER}</p>
+            <p id="sponsorship-disclaimer" className="pb-funding-disclaimer">
+              {SPONSORSHIP_DISCLAIMER}
+            </p>
             <div className="pb-funding-cta">
               <p className="pb-funding-cta__note">
                 GitHub Sponsors coming online.

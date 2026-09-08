@@ -51,7 +51,9 @@ Aesthetic direction: dark, sharp, product-company — black base with grey, whit
 
 ## Development fund page (`/fund`)
 
-Blender Development Fund–inspired layout (not Blender branding): donate hero, honest empty activity/numbers/credits, sponsorship tier ladder from `src/playblast/constants.ts`. Copy uses **sponsorship / development fund** language — never support packages or SLA tiers. Full `SPONSORSHIP_DISCLAIMER` on every tier card and credits section. GitHub Sponsors CTA is “coming online” until live; links to SPONSORS.md and Discussions — no fake checkout.
+Blender Development Fund–inspired layout (not Blender branding): donate hero, honest empty activity/numbers/credits, sponsorship tier ladder from `src/playblast/constants.ts`. Copy uses **sponsorship / development fund** language — never support packages or SLA tiers.
+
+**Disclaimer density:** tier cards show “Recognition only — see disclaimer below” (anchor to section footer). One full `SPONSORSHIP_DISCLAIMER` per funding section (Credits footer, Sponsorship tiers footer). Same pattern on `/playblast` optional sponsorship. GitHub Sponsors CTA is “coming online” until live; links to SPONSORS.md and Discussions — no fake checkout.
 
 ## Deployment base path
 
