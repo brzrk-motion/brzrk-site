@@ -145,6 +145,34 @@
   gap: var(--space-md);
 }
 
+.hero__status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm) var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.hero__status-note {
+  font-size: 0.875rem;
+  color: var(--color-text-subtle);
+}
+
+.status-chip {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+}
+
+.status-chip--rc {
+  background: oklch(0.92 0.04 145);
+  color: var(--color-status-rc);
+}
+
 /* Buttons */
 .btn {
   display: inline-flex;
@@ -344,6 +372,11 @@
 
 .contact-list a {
   font-weight: 600;
+}
+
+.contact-list__pending {
+  color: var(--color-text-subtle);
+  font-size: 0.9375rem;
 }
 
 .contact-list__label {

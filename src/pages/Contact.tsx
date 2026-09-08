@@ -1,5 +1,3 @@
-const CONTACT_EMAIL = 'hello@brzrk.dev'
-
 export function Contact() {
   return (
     <div className="page">
@@ -13,26 +11,28 @@ export function Contact() {
           </p>
         </header>
 
+        <div className="honesty-block">
+          <div className="honesty-block__label">Public inbox</div>
+          <p>
+            Public inbox TBD — check back after domain setup. James is confirming
+            the real public address.
+          </p>
+        </div>
+
         <ul className="contact-list">
           <li>
             <span className="contact-list__label">
               Playblast studio interest
             </span>
-            <a href={`mailto:${CONTACT_EMAIL}?subject=Playblast%20studio%20interest`}>
-              {CONTACT_EMAIL}
-            </a>
+            <span className="contact-list__pending">Mailbox not yet live</span>
           </li>
           <li>
             <span className="contact-list__label">Product feedback</span>
-            <a href={`mailto:${CONTACT_EMAIL}?subject=Product%20feedback`}>
-              {CONTACT_EMAIL}
-            </a>
+            <span className="contact-list__pending">Mailbox not yet live</span>
           </li>
           <li>
             <span className="contact-list__label">General</span>
-            <a href={`mailto:${CONTACT_EMAIL}?subject=General%20inquiry`}>
-              {CONTACT_EMAIL}
-            </a>
+            <span className="contact-list__pending">Mailbox not yet live</span>
           </li>
         </ul>
 

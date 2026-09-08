@@ -24,6 +24,14 @@ export function Home() {
             See what brzrk is making
           </Link>
         </div>
+        <p className="hero__status">
+          <span className="status-chip status-chip--rc">
+            Release candidate · self-hosted OSS
+          </span>
+          <span className="hero__status-note">
+            Independent clean-install checks still in progress.
+          </span>
+        </p>
       </div>
     </section>
   )
