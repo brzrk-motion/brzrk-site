@@ -21,8 +21,9 @@ export function Playblast() {
         <header className="page__header">
           <h1>Playblast</h1>
           <p className="page__intro">
-            Self-hosted video proofing for studios that review work in-house —
-            not in someone else&apos;s cloud.
+            Private review for the work your studio is already making.
+            Self-hosted, open-source release candidate — you run it on your
+            infrastructure; brzrk does not host it.
           </p>
         </header>
 
