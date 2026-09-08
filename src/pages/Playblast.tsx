@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import {
   LINKS,
   LOOP_STEPS,
@@ -202,6 +203,10 @@ export function Playblast() {
             <h2 id="funding-heading" className="section__title">
               Optional sponsorship
             </h2>
+            <p className="pb-section-intro">
+              Full tier ladder, credits, and fund numbers on the{' '}
+              <Link to="/fund">Playblast Development Fund</Link> page.
+            </p>
             <ul className="pb-tier-grid">
               {SPONSORSHIP_TIERS.map((tier) => (
                 <li key={tier.name} className="pb-tier-card">
