@@ -1,4 +1,4 @@
-const CONTACT_EMAIL = 'brzrk@brzrk-motion.com'
+const CONTACT_FORM_ACTION = 'mailto:brzrk@brzrk-motion.com'
 
 export function Contact() {
   return (
@@ -13,35 +13,70 @@ export function Contact() {
           </p>
         </header>
 
-        <div className="honesty-block">
-          <div className="honesty-block__label">Public inbox</div>
-          <p>
-            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
-          </p>
-        </div>
+        <form
+          className="contact-form"
+          action={CONTACT_FORM_ACTION}
+          method="POST"
+          encType="text/plain"
+        >
+          <div className="contact-form__field">
+            <label className="contact-form__label" htmlFor="contact-name">
+              Name <span className="contact-form__required">(required)</span>
+            </label>
+            <input
+              id="contact-name"
+              name="name"
+              type="text"
+              required
+              autoComplete="name"
+            />
+          </div>
 
-        <ul className="contact-list">
-          <li>
-            <span className="contact-list__label">
-              Playblast studio interest
-            </span>
-            <a href={`mailto:${CONTACT_EMAIL}?subject=Playblast%20studio%20interest`}>
-              {CONTACT_EMAIL}
-            </a>
-          </li>
-          <li>
-            <span className="contact-list__label">Product feedback</span>
-            <a href={`mailto:${CONTACT_EMAIL}?subject=Product%20feedback`}>
-              {CONTACT_EMAIL}
-            </a>
-          </li>
-          <li>
-            <span className="contact-list__label">General</span>
-            <a href={`mailto:${CONTACT_EMAIL}?subject=General%20inquiry`}>
-              {CONTACT_EMAIL}
-            </a>
-          </li>
-        </ul>
+          <div className="contact-form__field">
+            <label className="contact-form__label" htmlFor="contact-email">
+              Email <span className="contact-form__required">(required)</span>
+            </label>
+            <input
+              id="contact-email"
+              name="email"
+              type="email"
+              required
+              autoComplete="email"
+            />
+          </div>
+
+          <div className="contact-form__field">
+            <label className="contact-form__label" htmlFor="contact-topic">
+              Topic
+            </label>
+            <select id="contact-topic" name="topic" required defaultValue="">
+              <option value="" disabled>
+                Select a reason
+              </option>
+              <option value="Playblast studio interest">
+                Playblast studio interest
+              </option>
+              <option value="Product feedback">Product feedback</option>
+              <option value="General">General</option>
+            </select>
+          </div>
+
+          <div className="contact-form__field">
+            <label className="contact-form__label" htmlFor="contact-message">
+              Message <span className="contact-form__required">(required)</span>
+            </label>
+            <textarea
+              id="contact-message"
+              name="message"
+              rows={6}
+              required
+            />
+          </div>
+
+          <button type="submit" className="btn btn--primary">
+            Send message
+          </button>
+        </form>
 
         <p className="external-note" style={{ marginTop: 'var(--space-xl)' }}>
           For Playblast technical issues, use the{' '}

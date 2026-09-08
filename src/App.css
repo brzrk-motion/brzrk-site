@@ -422,33 +422,86 @@
   margin-top: var(--space-lg);
 }
 
-/* Contact */
-.contact-list {
-  list-style: none;
-  padding: 0;
-  margin: var(--space-lg) 0 0;
+/* Contact form */
+.contact-form {
+  display: grid;
+  gap: var(--space-lg);
+  max-width: var(--content-width);
+  padding: var(--space-xl);
+  background: oklch(0.10 0.007 260 / 0.88);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius-md);
 }
 
-.contact-list li {
-  padding-block: var(--space-md);
-  border-bottom: 1px solid var(--color-border);
+.contact-form__field {
+  display: grid;
+  gap: var(--space-sm);
 }
 
-.contact-list li:last-child {
-  border-bottom: none;
-}
-
-.contact-list a {
+.contact-form__label {
+  font-size: 0.875rem;
   font-weight: 600;
+  color: var(--color-text);
 }
 
-.contact-list__label {
-  display: block;
-  font-size: 0.8125rem;
-  font-family: var(--font-mono);
+.contact-form__required {
+  font-weight: 500;
   color: var(--color-text-subtle);
-  margin-bottom: var(--space-xs);
-  letter-spacing: 0.02em;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75rem 0.875rem;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  background: oklch(0.08 0.006 260 / 0.9);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--color-text-subtle);
+}
+
+.contact-form select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23888888' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.875rem center;
+  padding-right: 2.25rem;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+.contact-form input:hover,
+.contact-form select:hover,
+.contact-form textarea:hover {
+  border-color: var(--color-text-subtle);
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px oklch(0.68 0.18 45 / 0.25);
+}
+
+.contact-form .btn {
+  justify-self: start;
+  margin-top: var(--space-sm);
 }
 
 /* Problem list */
