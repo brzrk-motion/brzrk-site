@@ -8,6 +8,7 @@ import {
   YOU_DONT_GET,
   YOU_GET,
 } from '../playblast/constants'
+import { ScreenshotCarousel } from '../playblast/ScreenshotCarousel'
 import { SponsorshipTierBoundary } from '../playblast/SponsorshipTierBoundary'
 
 function ExternalLink({
@@ -116,23 +117,7 @@ export function Playblast() {
               loop in one self-hosted interface. Studio Demo seed data shown.
             </p>
           </div>
-          <ul className="pb-screenshot-gallery">
-            {SCREENSHOTS.map((shot) => (
-              <li key={shot.caption} className="pb-screenshot-card">
-                <figure>
-                  <div className="pb-screenshot-card__frame">
-                    <img
-                      src={shot.src}
-                      alt={shot.alt}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                  <figcaption>{shot.caption}</figcaption>
-                </figure>
-              </li>
-            ))}
-          </ul>
+          <ScreenshotCarousel slides={SCREENSHOTS} />
         </section>
 
         <section
