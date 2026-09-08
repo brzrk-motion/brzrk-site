@@ -14,8 +14,7 @@ export function Contact() {
         <div className="honesty-block">
           <div className="honesty-block__label">Public inbox</div>
           <p>
-            Public inbox TBD — check back after domain setup. James is confirming
-            the real public address.
+            Public inbox TBD — check back after domain setup.
           </p>
         </div>
 
