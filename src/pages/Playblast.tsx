@@ -1,34 +1,8 @@
 import { Link } from 'react-router-dom'
-import {
-  LINKS,
-  LOOP_STEPS,
-  SCREENSHOTS,
-  SPONSORSHIP_DISCLAIMER,
-  SPONSORSHIP_TIERS,
-  YOU_DONT_GET,
-  YOU_GET,
-} from '../playblast/constants'
-import { SponsorshipTierBoundary } from '../playblast/SponsorshipTierBoundary'
+import { LINKS, LOOP_STEPS, SCREENSHOTS, YOU_DONT_GET, YOU_GET } from '../playblast/constants'
 
-function ExternalLink({
-  href,
-  children,
-  className = '',
-}: {
-  href: string
-  children: React.ReactNode
-  className?: string
-}) {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={className}
-    >
-      {children}
-    </a>
-  )
+function ExternalLink({ href, children, className = '' }: { href: string; children: React.ReactNode; className?: string }) {
+  return <a href={href} target="_blank" rel="noopener noreferrer" className={className}>{children}</a>
 }
 
 export function Playblast() {
@@ -36,212 +10,109 @@ export function Playblast() {
     <div className="page pb-page">
       <div className="container">
         <header className="pb-hero reveal-hero">
-          <p className="pb-hero__kicker">Playblast</p>
-          <h1 className="pb-hero__headline">
-            Private review for the work your studio is already making.
-          </h1>
+          <p className="pb-hero__kicker">01 / Playblast</p>
+          <h1 className="pb-hero__headline">Private review.<br />Your infrastructure.</h1>
           <p className="pb-hero__subhead">
-            Free, open-source video proofing for small motion, CGI, animation,
-            and video studios. Versions, comments, frame annotations, compare,
-            and approvals — media on infrastructure you control.
+            A self-hosted video-proofing tool for small studios: versions, timestamped comments, frame annotations, compare, approvals, and review history.
           </p>
           <div className="cta-group">
-            <ExternalLink href={LINKS.github} className="btn btn--primary">
-              Explore on GitHub
-            </ExternalLink>
-            <ExternalLink href={LINKS.installGuide} className="btn btn--secondary">
-              Read install docs
-            </ExternalLink>
+            <ExternalLink href={LINKS.github} className="btn btn--primary">View the repository <span aria-hidden="true">↗</span></ExternalLink>
+            <ExternalLink href={LINKS.installGuide} className="btn btn--secondary">Read the install guide <span aria-hidden="true">↗</span></ExternalLink>
           </div>
           <aside className="honesty-block pb-hero__status">
-            <div className="honesty-block__label">Status</div>
-            <p>
-              Self-hosted MVP release candidate. Core proofing loop exists;
-              independent clean-install / adoption checks still in progress. Not
-              commercially validated. Not hosted. No support package.
-            </p>
-            <p className="pb-hero__status-helper">
-              You run it; we don&apos;t host or support.
-            </p>
+            <div className="honesty-block__label">MVP release candidate</div>
+            <p>Core proofing exists. Independent clean-install and adoption checks remain in progress. You run your own instance; brzrk does not provide hosting, installation, or a support SLA.</p>
           </aside>
         </header>
 
         <section className="section pb-section" aria-labelledby="problem-heading">
-          <h2 id="problem-heading" className="section__title">
-            Feedback shouldn&apos;t live in five places
-          </h2>
+          <p className="index-label"><span>01</span> Problem</p>
+          <h2 id="problem-heading" className="section__title">Feedback belongs with the cut.</h2>
           <div className="section__body">
-            <p>
-              Version notes in email. Frame feedback in chat. Drive links for
-              cuts that don&apos;t match the thread. Approvals buried where
-              nobody will find them next week — with no single source of truth
-              tied to the media.
-            </p>
+            <p>Review breaks down when versions, notes, drawings, and approvals are split across email, chat, file shares, and improvised comparison reels.</p>
+            <ul className="problem-list">
+              <li>Notes lose their exact frame and version context.</li>
+              <li>Old links and exports compete with the current cut.</li>
+              <li>Studios trade workflow clarity for another external service.</li>
+            </ul>
           </div>
         </section>
 
         <section className="section pb-section" aria-labelledby="loop-heading">
           <div className="pb-loop-header">
-            <h2 id="loop-heading" className="section__title">The loop</h2>
-            <p className="pb-section-intro">
-              Versions → frame-aware feedback → compare → approve — on
-              infrastructure you control.
-            </p>
+            <div><p className="index-label"><span>02</span> Review loop</p><h2 id="loop-heading" className="section__title">One traceable sequence.</h2></div>
+            <p className="pb-section-intro">From a version landing on studio hardware to a recorded approval, the working context stays together.</p>
           </div>
           <ol className="pb-timeline">
-            {LOOP_STEPS.map((step, i) => (
+            {LOOP_STEPS.map((step, index) => (
               <li key={step.title} className="pb-timeline__item">
-                <span className="pb-timeline__marker" aria-hidden="true">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <div className="pb-timeline__body">
-                  <h3>{step.title}</h3>
-                  <p>{step.body}</p>
-                </div>
+                <span className="pb-timeline__marker" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+                <div className="pb-timeline__body"><h3>{step.title}</h3><p>{step.body}</p></div>
               </li>
             ))}
           </ol>
         </section>
 
-        <section
-          className="section pb-section"
-          aria-labelledby="screenshots-heading"
-        >
+        <section className="section pb-section" aria-labelledby="screenshots-heading">
           <div className="pb-screenshots-header">
-            <h2 id="screenshots-heading" className="section__title">
-              Inside the proofing room
-            </h2>
-            <p className="pb-section-intro">
-              Playback, compare, frame markup, and project tracking — the core
-              loop in one self-hosted interface. Studio Demo seed data shown.
-            </p>
+            <div><p className="index-label"><span>03</span> Product evidence</p><h2 id="screenshots-heading" className="section__title">The interface, not a mockup.</h2></div>
+            <p className="pb-section-intro">Current screens from the working Playblast review experience. No invented customer footage or feature theatre.</p>
           </div>
           <ul className="pb-screenshot-gallery">
             {SCREENSHOTS.map((shot) => (
-              <li key={shot.caption} className="pb-screenshot-card">
+              <li key={shot.src} className="pb-screenshot-card">
                 <figure>
+                  <div className="evidence-frame__chrome"><span>{shot.code}</span><span>1440 × 900 / CURRENT UI</span></div>
                   <div className="pb-screenshot-card__frame">
-                    <img
-                      src={shot.src}
-                      alt={shot.alt}
-                      loading="lazy"
-                      decoding="async"
-                    />
+                    <img src={shot.src} alt={shot.alt} width="1440" height="900" loading="lazy" decoding="async" />
                   </div>
-                  <figcaption>{shot.caption}</figcaption>
+                  <figcaption><span>{shot.code}</span><span>{shot.caption}</span></figcaption>
                 </figure>
               </li>
             ))}
           </ul>
         </section>
 
-        <section
-          className="section pb-section pb-section--split"
-          aria-labelledby="get-heading"
-        >
+        <section className="section pb-section pb-section--split" aria-labelledby="boundary-heading">
+          <p className="index-label"><span>04</span> Product boundary</p>
           <div className="pb-split-grid">
             <div className="pb-split-panel pb-split-panel--get">
-              <h2 id="get-heading" className="section__title">What you get</h2>
-              <ul className="pb-check-list">
-                {YOU_GET.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
+              <h2 id="boundary-heading" className="section__title">What you get.</h2>
+              <ul className="pb-check-list">{YOU_GET.map((item) => <li key={item}>{item}</li>)}</ul>
             </div>
             <div className="pb-split-panel pb-split-panel--dont">
-              <h2 className="section__title">What you don&apos;t get</h2>
-              <ul className="pb-cross-list">
-                {YOU_DONT_GET.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
+              <h2 className="section__title">What you don&apos;t.</h2>
+              <ul className="pb-cross-list">{YOU_DONT_GET.map((item) => <li key={item}>{item}</li>)}</ul>
             </div>
           </div>
         </section>
 
-        <section
-          className="section pb-section"
-          aria-labelledby="selfhost-heading"
-        >
+        <section className="section pb-section" aria-labelledby="selfhost-heading">
           <div className="pb-selfhost-band">
-            <h2 id="selfhost-heading" className="section__title">
-              You operate the instance
-            </h2>
+            <div><p className="index-label"><span>05</span> Deployment</p><h2 id="selfhost-heading" className="section__title">Self-hosted means self-operated.</h2></div>
             <div className="section__body">
-              <p>
-                Playblast runs where you put it. That means your team owns
-                Docker, networking, HTTPS or VPN access, backups, SMTP for
-                notifications, and who can reach the server. We publish the
-                software and docs; you run the environment.
-              </p>
-              <p>
-                Independent clean-install and NAS verification is still in
-                progress—treat this as a release candidate and plan time to
-                validate your setup.
-              </p>
+              <p>Playblast is intended for Docker deployment on a studio NAS or Linux host. Media stays on the filesystem you control. Each studio operates and backs up its own instance.</p>
+              <div className="cta-group">
+                <ExternalLink href={LINKS.installGuide} className="btn btn--secondary">Inspect deployment docs <span aria-hidden="true">↗</span></ExternalLink>
+                <ExternalLink href={LINKS.issues} className="btn btn--text">Public issues <span aria-hidden="true">↗</span></ExternalLink>
+              </div>
             </div>
-            <ExternalLink href={LINKS.installGuide} className="btn btn--ghost">
-              Read the installation guide →
-            </ExternalLink>
           </div>
         </section>
 
-        <section className="section pb-section" aria-label="Explore and contribute">
-          <nav className="pb-cta-strip">
-            <ExternalLink href={LINKS.github}>Explore GitHub</ExternalLink>
-            <span className="pb-cta-sep" aria-hidden="true">·</span>
-            <ExternalLink href={LINKS.installGuide}>Read install docs</ExternalLink>
-            <span className="pb-cta-sep" aria-hidden="true">·</span>
-            <ExternalLink href={LINKS.issues}>Report an issue</ExternalLink>
-          </nav>
-        </section>
-
-        <section
-          className="section pb-section"
-          aria-labelledby="funding-heading"
-        >
+        <section className="section pb-section" aria-labelledby="funding-heading">
           <div className="pb-funding-block">
-            <h2 id="funding-heading" className="section__title">
-              Optional sponsorship
-            </h2>
-            <p className="pb-section-intro">
-              Full tier ladder, credits, and fund numbers on the{' '}
-              <Link to="/fund">Playblast Development Fund</Link> page.
-            </p>
-            <ul className="pb-tier-grid">
-              {SPONSORSHIP_TIERS.map((tier) => (
-                <li key={tier.name} className="pb-tier-card">
-                  <div className="pb-tier-card__head">
-                    <h3>{tier.name}</h3>
-                    <p className="pb-tier-card__price">
-                      <span className="pb-tier-card__amount">{tier.amount}</span>
-                      <span className="pb-tier-card__period">{tier.period}</span>
-                    </p>
-                  </div>
-                  <p className="pb-tier-card__recognition">{tier.recognition}</p>
-                  <SponsorshipTierBoundary disclaimerId="sponsorship-disclaimer" />
-                </li>
-              ))}
-            </ul>
-            <p id="sponsorship-disclaimer" className="pb-funding-disclaimer">
-              {SPONSORSHIP_DISCLAIMER}
-            </p>
+            <p className="index-label"><span>06</span> Optional sponsorship</p>
+            <h2 id="funding-heading" className="section__title">The fund is not open yet.</h2>
+            <p className="pb-section-intro">The planned fund will support general maintenance and development. It will not buy private support, hosting, installation, response times, or roadmap control.</p>
             <div className="pb-funding-cta">
-              <p className="pb-funding-cta__note">GitHub Sponsors coming online.</p>
-              <ExternalLink href={LINKS.sponsorsDoc} className="btn btn--ghost">
-                Read SPONSORS.md →
-              </ExternalLink>
-              <ExternalLink href={LINKS.issues} className="btn btn--ghost">
-                Open Playblast issues →
-              </ExternalLink>
+              <Link to="/fund" className="btn btn--primary">Read the funding boundary <span aria-hidden="true">→</span></Link>
+              <ExternalLink href={LINKS.sponsorsDoc} className="btn btn--text">SPONSORS.md <span aria-hidden="true">↗</span></ExternalLink>
             </div>
           </div>
         </section>
 
-        <p className="external-note">
-          Full marketing overview also at{' '}
-          <ExternalLink href={LINKS.marketingLp}>playblast-lp</ExternalLink>.
-        </p>
+        <p className="external-note">External links open in a new tab. Repository and documentation state may change independently of this site.</p>
       </div>
     </div>
   )
