@@ -33,8 +33,13 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Add SPA fallback
-        run: cp dist/index.html dist/404.html
+      - name: Add static route and SPA fallbacks
+        run: |
+          mkdir -p dist/playblast dist/products dist/fund dist/about dist/contact
+          for route in playblast products fund about contact; do
+            cp dist/index.html "dist/${route}/index.html"
+          done
+          cp dist/index.html dist/404.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
