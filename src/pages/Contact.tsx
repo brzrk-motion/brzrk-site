@@ -1,4 +1,4 @@
-const CONTACT_FORM_ACTION = 'mailto:brzrk@brzrk-motion.com'
+const CONTACT_EMAIL = 'brzrk@brzrk-motion.com'
 
 export function Contact() {
   return (
@@ -15,9 +15,19 @@ export function Contact() {
 
         <form
           className="contact-form"
-          action={CONTACT_FORM_ACTION}
-          method="POST"
-          encType="text/plain"
+          onSubmit={(event) => {
+            event.preventDefault()
+            const form = event.currentTarget
+            const data = new FormData(form)
+            const subject = `${data.get('topic') || 'General'} — brzrk site`
+            const body = [
+              `Name: ${data.get('name') || ''}`,
+              `Email: ${data.get('email') || ''}`,
+              '',
+              String(data.get('message') || ''),
+            ].join('\n')
+            window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+          }}
         >
           <div className="contact-form__field">
             <label className="contact-form__label" htmlFor="contact-name">
@@ -74,9 +84,14 @@ export function Contact() {
           </div>
 
           <button type="submit" className="btn btn--primary">
-            Send message
+            Open email draft
           </button>
         </form>
+
+        <p className="external-note">
+          Submitting opens a draft in your default email app; no form data is
+          sent to a brzrk server.
+        </p>
 
         <p className="external-note" style={{ marginTop: 'var(--space-xl)' }}>
           For Playblast technical issues, use the{' '}

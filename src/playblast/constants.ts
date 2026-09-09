@@ -5,7 +5,7 @@ export const LINKS = {
   issues: 'https://github.com/brzrk-motion/Playblast/issues',
   sponsorsDoc:
     'https://github.com/brzrk-motion/Playblast/blob/development-mvp/SPONSORS.md',
-  discussions: 'https://github.com/brzrk-motion/Playblast/discussions',
+
   marketingLp: 'https://brzrk-motion.github.io/playblast-lp/',
 } as const
 
