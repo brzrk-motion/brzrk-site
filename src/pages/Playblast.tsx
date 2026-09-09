@@ -16,8 +16,12 @@ export function Playblast() {
             A self-hosted video-proofing tool for small studios: versions, timestamped comments, frame annotations, compare, approvals, and review history.
           </p>
           <div className="cta-group">
-            <ExternalLink href={LINKS.github} className="btn btn--primary">View the repository <span aria-hidden="true">↗</span></ExternalLink>
-            <ExternalLink href={LINKS.installGuide} className="btn btn--secondary">Read the install guide <span aria-hidden="true">↗</span></ExternalLink>
+            <ExternalLink href={LINKS.github} className="btn btn--primary">
+              Explore on GitHub <span aria-hidden="true">↗</span>
+            </ExternalLink>
+            <ExternalLink href={LINKS.installGuide} className="btn btn--secondary">
+              Read install docs <span aria-hidden="true">↗</span>
+            </ExternalLink>
           </div>
           <aside className="honesty-block pb-hero__status">
             <div className="honesty-block__label">MVP release candidate</div>
@@ -112,7 +116,11 @@ export function Playblast() {
           </div>
         </section>
 
-        <p className="external-note">External links open in a new tab. Repository and documentation state may change independently of this site.</p>
+        <p className="external-note">
+          Full marketing overview also at{' '}
+          <ExternalLink href={LINKS.marketingLp}>playblast-lp</ExternalLink>.
+          External links open in a new tab.
+        </p>
       </div>
     </div>
   )
