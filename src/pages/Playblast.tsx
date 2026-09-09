@@ -231,8 +231,8 @@ export function Playblast() {
               <ExternalLink href={LINKS.sponsorsDoc} className="btn btn--ghost">
                 Read SPONSORS.md →
               </ExternalLink>
-              <ExternalLink href={LINKS.discussions} className="btn btn--ghost">
-                Join Discussions →
+              <ExternalLink href={LINKS.issues} className="btn btn--ghost">
+                Open Playblast issues →
               </ExternalLink>
             </div>
           </div>

@@ -49,8 +49,8 @@ export function Fund() {
             <ExternalLink href={LINKS.sponsorsDoc} className="btn btn--primary">
               Sponsor (coming online)
             </ExternalLink>
-            <ExternalLink href={LINKS.discussions} className="btn btn--secondary">
-              Join Discussions
+            <ExternalLink href={LINKS.issues} className="btn btn--secondary">
+              Open Playblast issues
             </ExternalLink>
           </div>
           <p className="fund-hero__note">
@@ -175,8 +175,8 @@ export function Fund() {
               <ExternalLink href={LINKS.sponsorsDoc} className="btn btn--ghost">
                 Read SPONSORS.md →
               </ExternalLink>
-              <ExternalLink href={LINKS.discussions} className="btn btn--ghost">
-                Join Discussions →
+              <ExternalLink href={LINKS.issues} className="btn btn--ghost">
+                Open Playblast issues →
               </ExternalLink>
               <ExternalLink href={LINKS.github} className="btn btn--ghost">
                 Explore Playblast on GitHub →
