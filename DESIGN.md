@@ -1,95 +1,65 @@
-# brzrk site — design tokens & claims boundary
+# brzrk site — editorial-industrial design system
 
-Design reference for the public company site. Tokens are implemented in `src/index.css`; this document is the source of intent.
+This document defines the visual system and public claims boundary for the brzrk company site. Tokens are implemented in `src/index.css`; page composition is in `src/App.css`.
 
-## Typography
+## Direction
 
-| Token | Value | Use |
-|-------|-------|-----|
-| `--font-sans` | IBM Plex Sans, system-ui | Body, headings, UI |
-| `--font-mono` | IBM Plex Mono, ui-monospace | Status labels, eyebrows, code |
+A near-black editorial canvas with graphite and steel surfaces, warm-white type, and orange used only as signal: active navigation, actions, indices, and status markers. The site should feel authored, technical, and direct—not like a glassy SaaS template.
 
-Loaded via Google Fonts in `index.html`. Hierarchy: H1 hero (clamp 2.5–3.75rem), H2 section (clamp 1.5–2rem), body 1.0625rem / 1.6 line-height.
+- Hard rules, square geometry, minimal radius, no decorative glow or gradient.
+- Asymmetric grids and indexed elements organize the page.
+- Large hierarchy stops short of swallowing the viewport.
+- Screenshots of the real Playblast review workflow are primary product evidence.
+- `projects.png` is deliberately excluded: its project-management view conflicts with the focused review positioning.
 
-## Color (OKLCH) — dark palette
+## Tokens
 
-| Token | Value | Use |
-|-------|-------|-----|
-| `--color-bg` | `oklch(0.08 0.006 260)` | Page background — near black |
-| `--color-bg-elevated` | `oklch(0.12 0.008 260)` | Cards, elevated surfaces |
-| `--color-bg-muted` | `oklch(0.10 0.007 260)` | Footer, honesty blocks |
-| `--color-surface` | `oklch(0.14 0.01 260)` | Hover states, subtle elevation |
-| `--color-text` | `oklch(0.96 0.005 85)` | Primary text — white |
-| `--color-text-muted` | `oklch(0.68 0.012 260)` | Body secondary — grey |
-| `--color-text-subtle` | `oklch(0.52 0.01 260)` | Tertiary, notes |
-| `--color-accent` | `oklch(0.68 0.18 45)` | Links, CTAs, chips — orange (accent only) |
-| `--color-accent-hover` | `oklch(0.74 0.20 45)` | Hover state for accent |
-| `--color-status-rc` | `oklch(0.68 0.14 145)` | Release candidate badges |
+- Canvas: `--ink-deep`; primary field: `--ink`; surface: `--graphite`; raised steel: `--steel`.
+- Type: `--paper`; muted text: `--paper-muted`; subtle text: `--paper-subtle`. All intended body text meets WCAG AA contrast on its surface.
+- Signal: `--signal` orange. It is not a decorative fill system.
+- Rules: `--rule` and `--rule-strong`; structural borders must remain visible.
+- Type: IBM Plex Sans for editorial display/body; IBM Plex Mono for indices, labels, and status.
+- Width: `--max-width: 78rem`; prose: `--content-width: 44rem`.
 
-Aesthetic direction: dark, sharp, product-company — black base with grey, white, and restrained orange accents. Not motion-reel glamour or generic purple-gradient SaaS.
+## Interaction and accessibility
 
-## Spacing & layout
+- Interactive targets are at least 44px where space allows.
+- `:focus-visible` uses a 3px orange outline with offset.
+- Semantic headings, lists, nav landmarks, figures, and form labels are required.
+- Screenshots declare their intrinsic 1440×900 dimensions; below-fold images lazy-load and decode asynchronously.
+- Layouts must not horizontally overflow at 320, 375, 768, or 1440px.
+- Motion is brief and structural; `prefers-reduced-motion` disables it.
 
-- Max content width: `--max-width` 72rem; prose `--content-width` 42rem.
-- Section rhythm: `--space-2xl` / `--space-3xl` vertical padding.
-- Sticky nav with dark backdrop blur.
-- Asymmetric hero: copy left, vgpu abstract shader full-bleed behind with left gradient scrim for legibility.
+## Shader
 
-## Hero shader (vgpu)
-
-- Package: [`vgpu`](https://github.com/vercel-labs/vgpu) with `hero-abstract.wgsl`
-- Distinct from sibling `playblast-lp` shader: abstract ribbon fields, noise, soft volumetric orange/grey on black — not monitor/timeline motifs
-- **Single layout-level instance** in `Layout.tsx` — fixed full-viewport background shared across all pages (one GPU context, persists across routing)
-- Home: asymmetric left scrim (`layout--home`); inner pages: stronger vertical scrim (`layout--page`) for long-form readability while motion remains visible
-- No WebGPU: CSS gradient fallback (`hero-shader-fallback`) matching palette
-- Vite: `@vgpu/wgsl/loader-vite` plugin for `.wgsl` imports
-- Respects `prefers-reduced-motion`: static frame when set
+The existing vgpu shader may appear as a restrained atmospheric layer on the home hero only. Content and structural rules remain dominant. The fallback is a flat graphite field rather than a decorative CSS gradient.
 
 ## Portfolio scope
 
-**Playblast-only for now.** Nightshift, Banshee Voice, and Owner Operator are not shown on the public site. Nav: Home · Playblast · Fund · About · Contact. `/products` redirects to `/playblast`.
+Playblast only. Nightshift, Banshee Voice, Owner Operator, and internal infrastructure are not public products. Navigation: Index · Playblast · Fund · About · Contact. `/products` redirects to `/playblast`.
 
-## Development fund page (`/fund`)
+## Development fund
 
-Blender Development Fund–inspired layout (not Blender branding): donate hero, honest empty activity/numbers/credits, sponsorship tier ladder from `src/playblast/constants.ts`. Copy uses **sponsorship / development fund** language — never support packages or SLA tiers.
+The fund is explicitly pre-launch and not yet open. Do not show $0 metrics, empty activity dashboards, or supporter theater. Keep the planned recognition tiers and full disclaimer visible. GitHub Sponsors links lead to `SPONSORS.md`; there is no fake checkout.
 
-**Disclaimer density:** tier cards show “Recognition only — see disclaimer below” (anchor to section footer). One full `SPONSORSHIP_DISCLAIMER` per funding section (Credits footer, Sponsorship tiers footer). Same pattern on `/playblast` optional sponsorship. GitHub Sponsors CTA is “coming online” until live; links to SPONSORS.md and Discussions — no fake checkout.
+## Deployment
 
-## Deployment base path
-
-GitHub Pages project site: **`/brzrk-site/`**
-
-Configured in:
-- `vite.config.ts` → `base: '/brzrk-site/'`
-- `src/main.tsx` → `BrowserRouter basename="/brzrk-site"`
-
-Live URL (after deploy): `https://brzrk-motion.github.io/brzrk-site/`
+GitHub Pages base path is `/brzrk-site/`, configured by Vite and consumed by the router. Live URL: `https://brzrk-motion.github.io/brzrk-site/`.
 
 ## Claims boundary
 
-What this site **may** say:
+May say:
+- brzrk is an independent product company building focused tools.
+- Playblast is a self-hosted MVP release candidate; the core workflow exists and adoption checks continue.
+- Products are free/open source/self-hosted only where stated.
+- Sponsorship funds maintenance and development; it does not buy support, SLA, hosting, installation, roadmap control, or priority treatment.
+- Founder craft experience informs product judgment; brzrk is not positioned as a motion studio.
+- Contact is `brzrk@brzrk-motion.com`.
 
-- brzrk is an **independent product company** building focused tools.
-- Playblast is a **self-hosted MVP release candidate** — core workflow exists; adoption checks in progress.
-- Products are **free / open source / self-hosted** where stated; status labels must match reality.
-- Donations/sponsorships fund maintenance; they do **not** buy support, SLA, or roadmap control.
-- Founder craft background informs product judgment; company is **not** positioned as a motion studio.
-- Contact email: **brzrk@brzrk-motion.com** (never hello@brzrk.dev).
+Must not say:
+- Ready for studios everywhere, commercially validated, or production-proven.
+- “Install today” as if broad clean-install validation is complete.
+- brzrk hosts Playblast or provides paid support, SLA, managed operations, or founder installation.
+- Internal infrastructure is an external product.
 
-What this site **must not** say:
-
-- "Ready for studios everywhere" or mass-adoption readiness.
-- Commercially validated / production-proven (until true).
-- "Install today" as if broad clean-install is done.
-- brzrk hosts Playblast or offers paid support / SLA.
-- Founder installs for you.
-- Internal infra (riot, Bloodmachine, Battle Box) as external products.
-
-## Imagery
-
-No invented app screenshots. Playblast page links to the public marketing LP and GitHub. Hero uses procedural vgpu shader — no stock 3D assets.
-
-## Non-goals (design)
-
-- Custom CMS, domain-specific brand guidelines tome, motion-reel hero, SaaS conversion funnel.
-- Showing products beyond Playblast until they are ready for public positioning.
+No invented screenshots, testimonials, customer counts, adoption numbers, or performance claims.
