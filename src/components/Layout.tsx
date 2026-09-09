@@ -1,5 +1,57 @@
+import { useEffect } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { HeroShader } from './HeroShader'
+
+const SITE_URL = 'https://brzrk-motion.github.io/brzrk-site'
+const PAGE_META: Record<string, { title: string; description: string }> = {
+  '/': {
+    title: 'brzrk — Tools for the work behind the work',
+    description:
+      'brzrk is an independent product company building focused software for creative and technical workflows.',
+  },
+  '/playblast': {
+    title: 'Playblast — Private review for self-hosted teams | brzrk',
+    description:
+      'Playblast is a self-hosted MVP release candidate for video proofing, versions, comments, annotations, compare, and approvals.',
+  },
+  '/fund': {
+    title: 'Playblast Development Fund | brzrk',
+    description:
+      'Optional sponsorship funds general maintenance and development of the open-source Playblast project.',
+  },
+  '/about': {
+    title: 'About brzrk — Independent product company',
+    description:
+      'brzrk is an independent, design-literate product company building focused tools with honest status labels.',
+  },
+  '/contact': {
+    title: 'Contact brzrk',
+    description:
+      'Contact brzrk about Playblast, product feedback, or other things the independent product company is building.',
+  },
+}
+
+function PageMeta({ pathname }: { pathname: string }) {
+  const meta = PAGE_META[pathname] ?? PAGE_META['/']
+
+  useEffect(() => {
+    document.title = meta.title
+    for (const [name, content] of [
+      ['description', meta.description],
+      ['og:title', meta.title],
+      ['og:description', meta.description],
+    ] as const) {
+      document.querySelector(`meta[name="${name}"], meta[property="${name}"]`)
+        ?.setAttribute('content', content)
+    }
+
+    const url = `${SITE_URL}${pathname === '/' ? '/' : pathname}`
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', url)
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', url)
+  }, [meta, pathname])
+
+  return null
+}
 
 const navItems = [
   { to: '/', label: 'Home', end: true },
@@ -15,6 +67,7 @@ export function Layout() {
 
   return (
     <div className={`layout${isHome ? ' layout--home' : ' layout--page'}`}>
+      <PageMeta pathname={pathname} />
       <div className="layout__shader-bg" aria-hidden="true">
         <HeroShader />
         <div className="layout__scrim" />

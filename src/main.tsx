@@ -6,7 +6,13 @@ import './index.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter basename="/brzrk-site">
+    <BrowserRouter
+      basename={
+        import.meta.env.BASE_URL === '/'
+          ? undefined
+          : import.meta.env.BASE_URL.replace(/\/$/, '')
+      }
+    >
       <App />
     </BrowserRouter>
   </StrictMode>,
