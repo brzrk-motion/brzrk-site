@@ -100,6 +100,36 @@ export const playblastStyles = stylex.create({
     marginInline: 0,
     padding: 0,
     listStyle: 'none',
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    columnGap: tokens.space6,
+    [mq720]: {
+      gridTemplateColumns: '1fr',
+    },
+  },
+  financesHeader: {
+    display: 'grid',
+    gridTemplateColumns: '0.7fr 1.3fr',
+    gap: tokens.space6,
+    marginBottom: tokens.space5,
+    [mq720]: {
+      gridTemplateColumns: '1fr',
+    },
+  },
+  financesMedia: {
+    display: 'grid',
+    gridTemplateColumns: 'minmax(0, 1.15fr) minmax(0, 0.85fr)',
+    gap: tokens.space5,
+    alignItems: 'start',
+    [mq720]: {
+      gridTemplateColumns: '1fr',
+    },
+  },
+  financesMediaSecondary: {
+    marginTop: tokens.space7,
+    [mq720]: {
+      marginTop: 0,
+    },
   },
   checkListItem: {
     paddingBlock: tokens.space3,

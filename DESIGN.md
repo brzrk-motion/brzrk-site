@@ -9,8 +9,10 @@ A near-black editorial canvas with graphite and steel surfaces, warm-white type,
 - Hard rules, square geometry, minimal radius, no decorative glow or gradient.
 - Asymmetric grids and indexed elements organize the page.
 - Large hierarchy stops short of swallowing the viewport.
-- Screenshots of the real Playblast review workflow are primary product evidence.
-- `projects.png` is deliberately excluded: its project-management view conflicts with the focused review positioning.
+- Screenshots of the real Playblast review workflow remain the primary carousel on `/playblast`.
+- Marketing may also show real Clients and Invoices UI that ships in the product.
+- Ban invented UI, fake metrics, and fake logos in screenshots.
+- Prefer `clients.png` and `invoices.png` over generic `projects.png` when showing studio ops; keep review screenshots (`review.png`, `compare.png`, `annotate.png`) in the review carousel.
 
 ## Tokens
 
@@ -62,4 +64,4 @@ Must not say:
 - brzrk hosts Playblast or provides paid support, SLA, managed operations, or founder installation.
 - Internal infrastructure is an external product.
 
-No invented screenshots, testimonials, customer counts, adoption numbers, or performance claims.
+No invented screenshots, testimonials, customer counts, adoption numbers, or performance claims. Use shipped UI captures only (`review.png`, `compare.png`, `annotate.png`, `clients.png`, `invoices.png`).

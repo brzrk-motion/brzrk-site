@@ -28,4 +28,28 @@ export const LOOP_STEPS = [
   { title: 'Compare side by side', body: 'Line up versions to see what changed, without exporting comparison reels by hand.' },
   { title: 'Approve and track history', body: 'Move deliverables through approval states. Review history shows what was signed off and when.' },
 ] as const
-export const YOU_GET = ['Projects, deliverables, and versions', 'Timestamped comments and frame annotations', 'Side-by-side version comparison', 'Approval states and review history', 'Admin, Creative, and Proofing roles', 'Documentation and public issue tracker'] as const
+export const YOU_GET = [
+  'Projects, deliverables, and versions',
+  'Timestamped comments and frame annotations',
+  'Side-by-side version comparison',
+  'Approval states and review history',
+  'Clients, leads, retainers, and lifetime value',
+  'Project invoices, estimates, and services',
+  'Admin, Creative, and Proofing roles',
+  'Documentation and public issue tracker',
+] as const
+
+export const CLIENT_FINANCE_SHOTS = [
+  {
+    src: `${BASE}screenshots/clients.png`,
+    alt: 'Playblast client management with client list, retainer cycle utilization, and lifetime value on the selected record',
+    caption: 'Clients, retainers, and lifetime value in one record',
+    code: 'CLIENTS / 01',
+  },
+  {
+    src: `${BASE}screenshots/invoices.png`,
+    alt: 'Playblast project invoices list with outstanding balance and payment status per invoice',
+    caption: 'Invoices stay with the project',
+    code: 'INVOICES / 02',
+  },
+] as const

@@ -5,8 +5,8 @@ import { layoutStyles, sharedStyles } from './Layout.stylex'
 
 const SITE_URL = 'https://brzrk-motion.github.io/brzrk-site'
 const PAGE_META: Record<string, { title: string; description: string }> = {
-  '/': { title: 'brzrk. Tools for the work behind the work', description: 'brzrk builds software for creative and technical teams. Flagship product: Playblast, private video review for studios.' },
-  '/playblast': { title: 'Playblast. Private video review for studios | brzrk', description: 'Playblast brings versions, comments, annotations, compare, and approvals together for studio review.' },
+  '/': { title: 'brzrk. Tools for the work behind the work', description: 'brzrk builds software for creative and technical teams. Flagship product: Playblast, private video review with clients and invoices for studios.' },
+  '/playblast': { title: 'Playblast. Review, clients, and invoices for studios | brzrk', description: 'Playblast brings review, clients, invoices, and project estimates together for studios.' },
   '/fund': { title: 'Playblast Development Fund | brzrk', description: 'Optional sponsorship that funds Playblast maintenance and development.' },
   '/about': { title: 'About brzrk. Independent product company', description: 'brzrk builds focused software. Public focus: Playblast.' },
   '/contact': { title: 'Contact brzrk', description: 'Email brzrk@brzrk-motion.com about Playblast, feedback, or other brzrk work.' },

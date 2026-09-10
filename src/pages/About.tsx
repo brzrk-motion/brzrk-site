@@ -27,7 +27,7 @@ export function About() {
           <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>02</span> Direction</p>
           <h2 id="building-heading" {...stylex.props(sharedStyles.sectionTitle)}>What we are building</h2>
           <div {...stylex.props(sharedStyles.sectionBody)}>
-            <p>Public focus is Playblast: private video review for studios. More products will follow when they earn a place.</p>
+            <p>Public focus is Playblast: private video review with clients and invoices for studios. More products will follow when they earn a place.</p>
           </div>
         </section>
       </div>
