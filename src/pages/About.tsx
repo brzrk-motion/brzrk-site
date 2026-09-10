@@ -1,16 +1,18 @@
 import * as stylex from '@stylexjs/stylex'
+import { OceanHero } from '../components/OceanHero'
 import { sharedStyles } from '../styles/shared.stylex'
 
 export function About() {
   return (
     <div {...stylex.props(sharedStyles.page)}>
       <div {...stylex.props(sharedStyles.container)}>
-        <header {...stylex.props(sharedStyles.pageHeader, sharedStyles.revealHero)}>
-          <div>
+        <header {...stylex.props(sharedStyles.fullBleedHero, sharedStyles.revealHero)}>
+          <OceanHero />
+          <div {...stylex.props(sharedStyles.heroBandChild)}>
             <p {...stylex.props(sharedStyles.pageKicker)}>03 / Company notes</p>
             <h1>Independent by design.</h1>
           </div>
-          <p {...stylex.props(sharedStyles.pageIntro)}>brzrk is a product company informed by creative practice—not a motion-graphics studio with a software side project.</p>
+          <p {...stylex.props(sharedStyles.heroBandChild, sharedStyles.pageIntro)}>brzrk is a product company informed by creative practice—not a motion-graphics studio with a software side project.</p>
         </header>
 
         <section {...stylex.props(sharedStyles.section)} aria-labelledby="judgment-heading">

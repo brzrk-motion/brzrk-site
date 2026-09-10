@@ -1,4 +1,5 @@
 import * as stylex from '@stylexjs/stylex'
+import { OceanHero } from '../components/OceanHero'
 import {
   LINKS,
   SPONSORSHIP_DISCLAIMER,
@@ -16,17 +17,16 @@ export function Fund() {
   return (
     <div {...stylex.props(sharedStyles.page)}>
       <div {...stylex.props(sharedStyles.container)}>
-        <header {...stylex.props(fundStyles.hero, sharedStyles.revealHero)}>
-          <p {...stylex.props(fundStyles.heroKicker)}>02 / Development fund</p>
-          <div {...stylex.props(fundStyles.heroContent)}>
-            <h1 {...stylex.props(fundStyles.heroHeadline)}>Fund the maintenance, not a support tier.</h1>
-            <p {...stylex.props(fundStyles.heroPitch)}>
-              The Playblast Development Fund is the planned route for optional sponsorship of general maintenance and development. It is not open yet.
-            </p>
-            <div {...stylex.props(sharedStyles.ctaGroup)}>
-              <ExternalLink href={LINKS.sponsorsDoc} {...stylex.props(sharedStyles.btn, sharedStyles.btnPrimary)}>Read the funding policy <span aria-hidden="true">↗</span></ExternalLink>
-              <ExternalLink href={LINKS.issues} {...stylex.props(sharedStyles.btn)}>Follow public issues <span aria-hidden="true">↗</span></ExternalLink>
-            </div>
+        <header {...stylex.props(sharedStyles.fullBleedHero, sharedStyles.revealHero)}>
+          <OceanHero />
+          <p {...stylex.props(sharedStyles.heroKicker)}>02 / Development fund</p>
+          <h1 {...stylex.props(sharedStyles.heroBandChild, sharedStyles.heroHeadline)}>Fund the maintenance, not a support tier.</h1>
+          <p {...stylex.props(sharedStyles.heroBandChild, sharedStyles.pageIntro)}>
+            The Playblast Development Fund is the planned route for optional sponsorship of general maintenance and development. It is not open yet.
+          </p>
+          <div {...stylex.props(sharedStyles.heroBandChild, sharedStyles.ctaGroup)}>
+            <ExternalLink href={LINKS.sponsorsDoc} {...stylex.props(sharedStyles.btn, sharedStyles.btnPrimary)}>Read the funding policy <span aria-hidden="true">↗</span></ExternalLink>
+            <ExternalLink href={LINKS.issues} {...stylex.props(sharedStyles.btn)}>Follow public issues <span aria-hidden="true">↗</span></ExternalLink>
           </div>
         </header>
 

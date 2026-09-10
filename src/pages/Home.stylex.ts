@@ -5,8 +5,11 @@ const mq720 = '@media (max-width: 720px)'
 const mq400 = '@media (max-width: 400px)'
 
 export const homeStyles = stylex.create({
+  home: {},
   hero: {
+    position: 'relative',
     minHeight: 'min(50rem, calc(100vh - 4.75rem))',
+    overflow: 'hidden',
     borderBottomWidth: '1px',
     borderBottomStyle: 'solid',
     borderBottomColor: tokens.rule,
@@ -18,30 +21,13 @@ export const homeStyles = stylex.create({
     },
   },
   heroGrid: {
+    position: 'relative',
+    zIndex: 1,
     display: 'grid',
     minHeight: 'inherit',
-    gridTemplateColumns: '4.75rem minmax(0, 1fr)',
+    gridTemplateColumns: 'minmax(0, 1fr)',
     [mq720]: {
       gridTemplateColumns: '1fr',
-    },
-  },
-  heroRail: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '1.5rem',
-    paddingBlock: tokens.space6,
-    borderRightWidth: '1px',
-    borderRightStyle: 'solid',
-    borderRightColor: tokens.rule,
-    color: tokens.paperSubtle,
-    fontFamily: tokens.fontMono,
-    letterSpacing: '0.06em',
-    textTransform: 'uppercase',
-    fontSize: '0.62rem',
-    writingMode: 'vertical-rl',
-    transform: 'rotate(180deg)',
-    [mq720]: {
-      display: 'none',
     },
   },
   heroContent: {

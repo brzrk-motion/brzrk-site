@@ -1,16 +1,15 @@
 import { Link } from 'react-router-dom'
 import * as stylex from '@stylexjs/stylex'
+import { OceanHero } from '../components/OceanHero'
 import { sharedStyles } from '../styles/shared.stylex'
 import { homeStyles } from './Home.stylex'
 
 export function Home() {
   return (
-    <div>
+    <div {...stylex.props(homeStyles.home)}>
       <section {...stylex.props(homeStyles.hero, sharedStyles.revealHero)} aria-labelledby="home-title">
+        <OceanHero />
         <div {...stylex.props(sharedStyles.container, homeStyles.heroGrid)}>
-          <div {...stylex.props(homeStyles.heroRail)} aria-label="Company profile">
-            <span>BRZRK / 2026</span><span>Independent</span><span>Product systems</span>
-          </div>
           <div {...stylex.props(homeStyles.heroContent)}>
             <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>00</span> Company index</p>
             <h1 id="home-title" {...stylex.props(homeStyles.heroTitle)}>
@@ -53,7 +52,8 @@ export function Home() {
                 decoding="async"
               />
               <figcaption {...stylex.props(sharedStyles.evidenceFrameFigcaption)}>
-                <span {...stylex.props(sharedStyles.evidenceFrameFigcaptionSpan)}>Fig. 01</span> Timestamped review tied to the cut.
+                <span {...stylex.props(sharedStyles.evidenceFrameFigcaptionSpan)}>Fig. 01</span>
+                <span {...stylex.props(sharedStyles.evidenceFrameFigcaptionSpan)}>Timestamped review tied to the cut.</span>
               </figcaption>
             </figure>
           </div>

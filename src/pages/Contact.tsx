@@ -1,4 +1,5 @@
 import * as stylex from '@stylexjs/stylex'
+import { OceanHero } from '../components/OceanHero'
 import { sharedStyles } from '../styles/shared.stylex'
 import { contactStyles } from './Contact.stylex'
 
@@ -8,12 +9,13 @@ export function Contact() {
   return (
     <div {...stylex.props(sharedStyles.page)}>
       <div {...stylex.props(sharedStyles.container)}>
-        <header {...stylex.props(sharedStyles.pageHeader, sharedStyles.revealHero)}>
-          <div>
+        <header {...stylex.props(sharedStyles.fullBleedHero, sharedStyles.revealHero)}>
+          <OceanHero />
+          <div {...stylex.props(sharedStyles.heroBandChild)}>
             <p {...stylex.props(sharedStyles.pageKicker)}>04 / Contact</p>
             <h1>Start with context.</h1>
           </div>
-          <p {...stylex.props(sharedStyles.pageIntro)}>Reach out about Playblast for your studio, product feedback, or other brzrk work. No SaaS pitch and no implied support package.</p>
+          <p {...stylex.props(sharedStyles.heroBandChild, sharedStyles.pageIntro)}>Reach out about Playblast for your studio, product feedback, or other brzrk work. No SaaS pitch and no implied support package.</p>
         </header>
 
         <section {...stylex.props(sharedStyles.section)} aria-labelledby="contact-form-heading">

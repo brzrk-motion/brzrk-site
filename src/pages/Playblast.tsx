@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import * as stylex from '@stylexjs/stylex'
+import { OceanHero } from '../components/OceanHero'
 import { LINKS, LOOP_STEPS, SCREENSHOTS, YOU_DONT_GET, YOU_GET } from '../playblast/constants'
 import { ScreenshotCarousel } from '../playblast/ScreenshotCarousel'
 import { sharedStyles } from '../styles/shared.stylex'
@@ -13,30 +14,40 @@ export function Playblast() {
   return (
     <div {...stylex.props(sharedStyles.page)}>
       <div {...stylex.props(sharedStyles.container)}>
-        <header {...stylex.props(playblastStyles.hero, sharedStyles.revealHero)}>
-          <p {...stylex.props(playblastStyles.heroKicker)}>01 / Playblast</p>
-          <div {...stylex.props(playblastStyles.heroContent)}>
-            <h1 {...stylex.props(playblastStyles.heroHeadline)}>Private review.<br />Your infrastructure.</h1>
-            <p {...stylex.props(playblastStyles.heroSubhead)}>
-              A self-hosted video-proofing tool for small studios: versions, timestamped comments, frame annotations, compare, approvals, and review history.
-            </p>
-            <div {...stylex.props(sharedStyles.ctaGroup)}>
-              <ExternalLink href={LINKS.github} {...stylex.props(sharedStyles.btn, sharedStyles.btnPrimary)}>
-                Explore on GitHub <span aria-hidden="true">↗</span>
-              </ExternalLink>
-              <ExternalLink href={LINKS.installGuide} {...stylex.props(sharedStyles.btn)}>
-                Read install docs <span aria-hidden="true">↗</span>
-              </ExternalLink>
-            </div>
-            <aside {...stylex.props(sharedStyles.honestyBlock)}>
-              <div {...stylex.props(sharedStyles.honestyBlockLabel)}>MVP release candidate</div>
-              <p>Core proofing exists. Independent clean-install and adoption checks remain in progress. You run your own instance; brzrk does not provide hosting, installation, or a support SLA.</p>
-            </aside>
+        <header {...stylex.props(sharedStyles.fullBleedHero, sharedStyles.revealHero)}>
+          <OceanHero />
+          <p {...stylex.props(sharedStyles.heroKicker)}>01 / Playblast</p>
+          <h1 {...stylex.props(sharedStyles.heroBandChild, sharedStyles.heroHeadline)}>Private review.<br />Your infrastructure.</h1>
+          <p {...stylex.props(sharedStyles.heroBandChild, sharedStyles.pageIntro)}>
+            A self-hosted video-proofing tool for small studios: versions, timestamped comments, frame annotations, compare, approvals, and review history.
+          </p>
+          <div {...stylex.props(sharedStyles.heroBandChild, sharedStyles.ctaGroup)}>
+            <ExternalLink href={LINKS.github} {...stylex.props(sharedStyles.btn, sharedStyles.btnPrimary)}>
+              Explore on GitHub <span aria-hidden="true">↗</span>
+            </ExternalLink>
+            <ExternalLink href={LINKS.installGuide} {...stylex.props(sharedStyles.btn)}>
+              Read install docs <span aria-hidden="true">↗</span>
+            </ExternalLink>
           </div>
+          <aside {...stylex.props(sharedStyles.heroBandChild, sharedStyles.honestyBlock)}>
+            <div {...stylex.props(sharedStyles.honestyBlockLabel)}>MVP release candidate</div>
+            <p>Core proofing exists. Independent clean-install and adoption checks remain in progress. You run your own instance; brzrk does not provide hosting, installation, or a support SLA.</p>
+          </aside>
         </header>
 
+        <section {...stylex.props(sharedStyles.section)} aria-labelledby="screenshots-heading">
+          <div {...stylex.props(playblastStyles.screenshotsHeader)}>
+            <div>
+              <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>01</span> Product evidence</p>
+              <h2 id="screenshots-heading" {...stylex.props(sharedStyles.sectionTitle)}>The interface, not a mockup.</h2>
+            </div>
+            <p {...stylex.props(playblastStyles.sectionIntro)}>Current screens from the working Playblast review experience. No invented customer footage or feature theatre.</p>
+          </div>
+          <ScreenshotCarousel screenshots={SCREENSHOTS} />
+        </section>
+
         <section {...stylex.props(sharedStyles.section)} aria-labelledby="problem-heading">
-          <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>01</span> Problem</p>
+          <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>02</span> Problem</p>
           <h2 id="problem-heading" {...stylex.props(sharedStyles.sectionTitle)}>Feedback belongs with the cut.</h2>
           <div {...stylex.props(sharedStyles.sectionBody)}>
             <p>Review breaks down when versions, notes, drawings, and approvals are split across email, chat, file shares, and improvised comparison reels.</p>
@@ -51,7 +62,7 @@ export function Playblast() {
         <section {...stylex.props(sharedStyles.section)} aria-labelledby="loop-heading">
           <div {...stylex.props(playblastStyles.loopHeader)}>
             <div>
-              <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>02</span> Review loop</p>
+              <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>03</span> Review loop</p>
               <h2 id="loop-heading" {...stylex.props(sharedStyles.sectionTitle)}>One traceable sequence.</h2>
             </div>
             <p {...stylex.props(playblastStyles.sectionIntro)}>From a version landing on studio hardware to a recorded approval, the working context stays together.</p>
@@ -67,17 +78,6 @@ export function Playblast() {
               </li>
             ))}
           </ol>
-        </section>
-
-        <section {...stylex.props(sharedStyles.section)} aria-labelledby="screenshots-heading">
-          <div {...stylex.props(playblastStyles.screenshotsHeader)}>
-            <div>
-              <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>03</span> Product evidence</p>
-              <h2 id="screenshots-heading" {...stylex.props(sharedStyles.sectionTitle)}>The interface, not a mockup.</h2>
-            </div>
-            <p {...stylex.props(playblastStyles.sectionIntro)}>Current screens from the working Playblast review experience. No invented customer footage or feature theatre.</p>
-          </div>
-          <ScreenshotCarousel screenshots={SCREENSHOTS} />
         </section>
 
         <section {...stylex.props(sharedStyles.section)} aria-labelledby="boundary-heading">
@@ -107,8 +107,8 @@ export function Playblast() {
             <div {...stylex.props(sharedStyles.sectionBody)}>
               <p>Playblast is intended for Docker deployment on a studio NAS or Linux host. Media stays on the filesystem you control. Each studio operates and backs up its own instance.</p>
               <div {...stylex.props(sharedStyles.ctaGroup)}>
-                <ExternalLink href={LINKS.installGuide} {...stylex.props(sharedStyles.btn)}>Inspect deployment docs <span aria-hidden="true">↗</span></ExternalLink>
-                <ExternalLink href={LINKS.issues} {...stylex.props(sharedStyles.btn, sharedStyles.btnText)}>Public issues <span aria-hidden="true">↗</span></ExternalLink>
+                <ExternalLink href={LINKS.installGuide} {...stylex.props(sharedStyles.btn, playblastStyles.selfhostBtn)}>Inspect deployment docs <span aria-hidden="true">↗</span></ExternalLink>
+                <ExternalLink href={LINKS.issues} {...stylex.props(sharedStyles.btn, sharedStyles.btnText, playblastStyles.selfhostBtn)}>Public issues <span aria-hidden="true">↗</span></ExternalLink>
               </div>
             </div>
           </div>

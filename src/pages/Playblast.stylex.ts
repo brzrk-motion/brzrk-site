@@ -4,50 +4,6 @@ import { tokens } from '../styles/tokens.stylex'
 const mq720 = '@media (max-width: 720px)'
 
 export const playblastStyles = stylex.create({
-  hero: {
-    display: 'grid',
-    gridTemplateColumns: 'minmax(12rem, 0.45fr) minmax(0, 1fr)',
-    gap: tokens.space6,
-    marginBottom: tokens.space7,
-    paddingTop: tokens.space3,
-    borderTopWidth: '1px',
-    borderTopStyle: 'solid',
-    borderTopColor: tokens.ruleStrong,
-    [mq720]: {
-      gridTemplateColumns: '1fr',
-    },
-  },
-  heroKicker: {
-    gridColumn: 1,
-    gridRow: '1 / span 5',
-    paddingTop: '0.65rem',
-    color: tokens.signal,
-    fontFamily: tokens.fontMono,
-    letterSpacing: '0.06em',
-    textTransform: 'uppercase',
-    fontSize: '0.7rem',
-    [mq720]: {
-      gridColumn: 1,
-      gridRow: 'auto',
-    },
-  },
-  heroContent: {
-    gridColumn: 2,
-    [mq720]: {
-      gridColumn: 1,
-      gridRow: 'auto',
-    },
-  },
-  heroHeadline: {
-    marginBottom: tokens.space4,
-    fontSize: 'clamp(2.8rem, 7vw, 6rem)',
-  },
-  heroSubhead: {
-    maxWidth: '42rem',
-    color: tokens.paperMuted,
-    fontSize: 'clamp(1.08rem, 2vw, 1.35rem)',
-    lineHeight: 1.55,
-  },
   sectionIntro: {
     maxWidth: tokens.contentWidth,
     color: tokens.paperMuted,
@@ -184,6 +140,10 @@ export const playblastStyles = stylex.create({
     [mq720]: {
       gridTemplateColumns: '1fr',
     },
+  },
+  selfhostBtn: {
+    alignSelf: 'end',
+    justifySelf: 'start',
   },
   fundingBlock: {
     padding: tokens.space5,

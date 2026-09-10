@@ -14,20 +14,8 @@ export const layoutStyles = stylex.create({
     flexDirection: 'column',
     backgroundColor: tokens.inkDeep,
   },
-  shaderBg: {
-    position: 'absolute',
-    inset: '0 0 auto',
-    zIndex: 0,
-    height: 'min(58rem, 100vh)',
-    overflow: 'hidden',
-    pointerEvents: 'none',
-    opacity: 0.62,
-  },
-  scrim: {
-    position: 'absolute',
-    inset: 0,
-    backgroundColor: 'oklch(0.075 0.004 255 / 0.52)',
-  },
+  layoutHome: {},
+  layoutPage: {},
   main: {
     position: 'relative',
     zIndex: 1,

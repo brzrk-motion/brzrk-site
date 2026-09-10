@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import * as stylex from '@stylexjs/stylex'
-import { HeroShader } from './HeroShader'
 import { layoutStyles, sharedStyles } from './Layout.stylex'
 
 const SITE_URL = 'https://brzrk-motion.github.io/brzrk-site'
@@ -42,18 +41,12 @@ export function Layout() {
   const { pathname } = useLocation()
   const isHome = pathname === '/'
   return (
-    <div {...stylex.props(layoutStyles.layout)}>
+    <div {...stylex.props(layoutStyles.layout, isHome ? layoutStyles.layoutHome : layoutStyles.layoutPage)}>
       <PageMeta pathname={pathname} />
       <a {...stylex.props(layoutStyles.skipLink)} href="#main-content">Skip to content</a>
-      {isHome && (
-        <div {...stylex.props(layoutStyles.shaderBg)} aria-hidden="true">
-          <HeroShader />
-          <div {...stylex.props(layoutStyles.scrim)} />
-        </div>
-      )}
       <header {...stylex.props(layoutStyles.nav)}>
         <div {...stylex.props(sharedStyles.container, layoutStyles.navInner)}>
-          <NavLink to="/" {...stylex.props(layoutStyles.navBrand)} end aria-label="brzrk home">
+          <NavLink to="/" end aria-label="brzrk home" className={stylex.props(layoutStyles.navBrand).className ?? ''}>
             <span {...stylex.props(layoutStyles.navBrandMark)}>b/</span>
             <span>brzrk</span>
           </NavLink>
@@ -92,12 +85,13 @@ export function Layout() {
           </div>
           <nav aria-label="Footer navigation">
             <ul {...stylex.props(layoutStyles.footerLinks)}>
-              <li><a href="https://github.com/brzrk-motion" target="_blank" rel="noopener noreferrer" {...stylex.props(layoutStyles.footerLink)}>GitHub ↗</a></li>
               <li>
-                <NavLink
-                  to="/contact"
-                  className={stylex.props(layoutStyles.footerLink).className ?? ''}
-                >
+                <a href="https://github.com/brzrk-motion" target="_blank" rel="noopener noreferrer" {...stylex.props(layoutStyles.footerLink)}>
+                  GitHub ↗
+                </a>
+              </li>
+              <li>
+                <NavLink to="/contact" className={stylex.props(layoutStyles.footerLink).className ?? ''}>
                   Contact
                 </NavLink>
               </li>

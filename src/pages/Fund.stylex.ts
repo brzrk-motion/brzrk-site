@@ -5,50 +5,6 @@ const mq1050 = '@media (max-width: 1050px)'
 const mq720 = '@media (max-width: 720px)'
 
 export const fundStyles = stylex.create({
-  hero: {
-    display: 'grid',
-    gridTemplateColumns: 'minmax(12rem, 0.45fr) minmax(0, 1fr)',
-    gap: tokens.space6,
-    marginBottom: tokens.space7,
-    paddingTop: tokens.space3,
-    borderTopWidth: '1px',
-    borderTopStyle: 'solid',
-    borderTopColor: tokens.ruleStrong,
-    [mq720]: {
-      gridTemplateColumns: '1fr',
-    },
-  },
-  heroKicker: {
-    gridColumn: 1,
-    gridRow: '1 / span 5',
-    paddingTop: '0.65rem',
-    color: tokens.signal,
-    fontFamily: tokens.fontMono,
-    letterSpacing: '0.06em',
-    textTransform: 'uppercase',
-    fontSize: '0.7rem',
-    [mq720]: {
-      gridColumn: 1,
-      gridRow: 'auto',
-    },
-  },
-  heroContent: {
-    gridColumn: 2,
-    [mq720]: {
-      gridColumn: 1,
-      gridRow: 'auto',
-    },
-  },
-  heroHeadline: {
-    marginBottom: tokens.space4,
-    fontSize: 'clamp(2.8rem, 7vw, 6rem)',
-  },
-  heroPitch: {
-    maxWidth: '42rem',
-    color: tokens.paperMuted,
-    fontSize: 'clamp(1.08rem, 2vw, 1.35rem)',
-    lineHeight: 1.55,
-  },
   sectionIntro: {
     maxWidth: tokens.contentWidth,
     color: tokens.paperMuted,
