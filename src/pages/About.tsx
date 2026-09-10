@@ -9,25 +9,25 @@ export function About() {
         <header {...stylex.props(sharedStyles.fullBleedHero, sharedStyles.revealHero)}>
           <OceanHero />
           <div {...stylex.props(sharedStyles.heroBandChild)}>
-            <p {...stylex.props(sharedStyles.pageKicker)}>03 / Company notes</p>
+            <p {...stylex.props(sharedStyles.pageKicker)}>03 / About</p>
             <h1>Independent by design.</h1>
           </div>
-          <p {...stylex.props(sharedStyles.heroBandChild, sharedStyles.pageIntro)}>brzrk ships software for creative production. Motion craft informs the product — it is not the company category.</p>
+          <p {...stylex.props(sharedStyles.heroBandChild, sharedStyles.pageIntro)}>brzrk is an independent product company. We build software for creative and technical teams, starting with Playblast.</p>
         </header>
 
-        <section {...stylex.props(sharedStyles.section)} aria-labelledby="judgment-heading">
-          <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>01</span> Product judgment</p>
-          <h2 id="judgment-heading" {...stylex.props(sharedStyles.sectionTitle)}>Judgment from the suite</h2>
+        <section {...stylex.props(sharedStyles.section)} aria-labelledby="background-heading">
+          <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>01</span> Background</p>
+          <h2 id="background-heading" {...stylex.props(sharedStyles.sectionTitle)}>Our background</h2>
           <div {...stylex.props(sharedStyles.sectionBody)}>
-            <p>Years in software, motion, and graphic craft shape how frame notes should feel and where review chains break. That is product input — not a services pitch.</p>
+            <p>The founding team brings software, motion, and graphic craft experience. That shapes how review tools should feel in real production.</p>
           </div>
         </section>
 
-        <section {...stylex.props(sharedStyles.section)} aria-labelledby="principles-heading">
-          <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>02</span> Operating position</p>
-          <h2 id="principles-heading" {...stylex.props(sharedStyles.sectionTitle)}>Bounded products</h2>
+        <section {...stylex.props(sharedStyles.section)} aria-labelledby="building-heading">
+          <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>02</span> Direction</p>
+          <h2 id="building-heading" {...stylex.props(sharedStyles.sectionTitle)}>What we are building</h2>
           <div {...stylex.props(sharedStyles.sectionBody)}>
-            <p>Independent, design-literate, technically serious, evidence-led. Public focus: Playblast — whether self-hosted OSS proofing earns real studio use without pretending validation is done.</p>
+            <p>Public focus is Playblast: private video review for studios. More products will follow when they earn a place.</p>
           </div>
         </section>
       </div>

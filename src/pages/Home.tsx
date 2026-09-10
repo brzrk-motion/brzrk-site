@@ -16,10 +16,10 @@ export function Home() {
               Tools for the work <em {...stylex.props(homeStyles.heroTitleEm)}>behind</em> the work.
             </h1>
             <div {...stylex.props(homeStyles.heroLower)}>
-              <p {...stylex.props(homeStyles.heroLede)}>brzrk builds tools studios actually run — starting with private review of versions, frames, and approvals on your own hardware.</p>
+              <p {...stylex.props(homeStyles.heroLede)}>brzrk builds software for creative production. Today that means Playblast: private video review for studios that need versions, comments, and approvals in one place.</p>
               <div {...stylex.props(homeStyles.heroActions)}>
                 <Link to="/playblast" {...stylex.props(sharedStyles.btn, sharedStyles.btnPrimary)}>View Playblast <span aria-hidden="true">↗</span></Link>
-                <Link to="/about" {...stylex.props(sharedStyles.btn, sharedStyles.btnText)}>Company notes <span aria-hidden="true">→</span></Link>
+                <Link to="/about" {...stylex.props(sharedStyles.btn, sharedStyles.btnText)}>About brzrk <span aria-hidden="true">→</span></Link>
               </div>
             </div>
           </div>
@@ -28,20 +28,15 @@ export function Home() {
 
       <section {...stylex.props(homeStyles.homeProduct)} aria-labelledby="product-title">
         <div {...stylex.props(sharedStyles.container)}>
-          <header {...stylex.props(sharedStyles.sectionHeading, sharedStyles.sectionHeadingSplit)}>
-            <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>01</span> Current product</p>
-            <p {...stylex.props(sharedStyles.sectionHeadingNote)}>One product in public view.<br />Status follows evidence, not the pitch.</p>
-          </header>
+          <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>01</span> Product</p>
           <div {...stylex.props(homeStyles.productFeature)}>
             <div>
-              <div {...stylex.props(sharedStyles.statusLine)}><span {...stylex.props(sharedStyles.statusDot)} /> MVP release candidate / self-hosted OSS</div>
               <h2 id="product-title" {...stylex.props(homeStyles.productFeatureTitle)}>Playblast</h2>
-              <p {...stylex.props(homeStyles.productFeatureLede)}>Private video review for small studios that want versions, comments, annotations, compare, and approvals on infrastructure they control.</p>
-              <p {...stylex.props(homeStyles.productFeatureCaveat)}>Core proofing exists. Independent clean-install and adoption checks remain in progress. Not hosted. No support package.</p>
-              <Link to="/playblast" {...stylex.props(sharedStyles.btn)}>See the review loop <span aria-hidden="true">→</span></Link>
+              <p {...stylex.props(homeStyles.productFeatureLede)}>Private video review for small studios. Keep versions, comments, annotations, compare, and approvals together through the review cycle.</p>
+              <Link to="/playblast" {...stylex.props(sharedStyles.btn)}>Explore Playblast <span aria-hidden="true">→</span></Link>
             </div>
             <figure {...stylex.props(sharedStyles.evidenceFrame)}>
-              <div {...stylex.props(sharedStyles.evidenceFrameChrome)}><span>PLAYBLAST / REVIEW</span><span>REAL INTERFACE</span></div>
+              <div {...stylex.props(sharedStyles.evidenceFrameChrome)}><span>PLAYBLAST / REVIEW</span></div>
               <img
                 {...stylex.props(sharedStyles.evidenceFrameImage)}
                 src={`${import.meta.env.BASE_URL}screenshots/review.png`}
@@ -52,43 +47,10 @@ export function Home() {
                 decoding="async"
               />
               <figcaption {...stylex.props(sharedStyles.evidenceFrameFigcaption)}>
-                <span {...stylex.props(sharedStyles.evidenceFrameFigcaptionSpan)}>Fig. 01</span>
-                <span {...stylex.props(sharedStyles.evidenceFrameFigcaptionSpan)}>Timestamped review tied to the cut.</span>
+                <span {...stylex.props(sharedStyles.evidenceFrameFigcaptionSpan)}>Timestamped review on the current version.</span>
               </figcaption>
             </figure>
           </div>
-        </div>
-      </section>
-
-      <section {...stylex.props(homeStyles.principles)} aria-labelledby="principles-title">
-        <div {...stylex.props(sharedStyles.container, homeStyles.principlesGrid)}>
-          <header>
-            <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>02</span> Operating principles</p>
-            <h2 id="principles-title" {...stylex.props(homeStyles.principlesTitle)}>Show the cut. Skip the theater.</h2>
-          </header>
-          <ol {...stylex.props(homeStyles.principleList)}>
-            <li {...stylex.props(homeStyles.principleListItem)}>
-              <span {...stylex.props(homeStyles.principleListNumber)}>01</span>
-              <div>
-                <h3 {...stylex.props(homeStyles.principleListTitle)}>One job</h3>
-                <p {...stylex.props(homeStyles.principleListBody)}>Ship the painful review loop first. CRM and studio-OS breadth wait.</p>
-              </div>
-            </li>
-            <li {...stylex.props(homeStyles.principleListItem)}>
-              <span {...stylex.props(homeStyles.principleListNumber)}>02</span>
-              <div>
-                <h3 {...stylex.props(homeStyles.principleListTitle)}>No SaaS costume</h3>
-                <p {...stylex.props(homeStyles.principleListBody)}>Design for people who already know a timeline — not a landing-page funnel.</p>
-              </div>
-            </li>
-            <li {...stylex.props(homeStyles.principleListItem)}>
-              <span {...stylex.props(homeStyles.principleListNumber)}>03</span>
-              <div>
-                <h3 {...stylex.props(homeStyles.principleListTitle)}>Label it straight</h3>
-                <p {...stylex.props(homeStyles.principleListBody)}>Call RC what it is. Screens from the real app beat invented proof.</p>
-              </div>
-            </li>
-          </ol>
         </div>
       </section>
     </div>
