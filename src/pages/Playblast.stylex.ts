@@ -96,6 +96,21 @@ export const playblastStyles = stylex.create({
       gridTemplateColumns: '1fr',
     },
   },
+  screenshotsHeaderMain: {
+    gridColumn: '2',
+    display: 'grid',
+    gap: tokens.space4,
+    [mq720]: {
+      gridColumn: '1',
+    },
+  },
+  screenshotsTitle: {
+    marginBottom: 0,
+  },
+  screenshotsIntro: {
+    marginTop: 0,
+    maxWidth: '34rem',
+  },
   splitGrid: {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
