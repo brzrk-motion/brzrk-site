@@ -4,6 +4,7 @@ import {
   SPONSORSHIP_TIERS,
 } from '../playblast/constants'
 import { SponsorshipTierBoundary } from '../playblast/SponsorshipTierBoundary'
+import { OceanHero } from '../components/OceanHero'
 
 function ExternalLink({ href, children, className = '' }: { href: string; children: React.ReactNode; className?: string }) {
   return <a href={href} target="_blank" rel="noopener noreferrer" className={className}>{children}</a>
@@ -14,6 +15,7 @@ export function Fund() {
     <div className="page fund-page">
       <div className="container">
         <header className="fund-hero reveal-hero">
+          <OceanHero />
           <p className="fund-hero__kicker">02 / Development fund</p>
           <h1 className="fund-hero__headline">Fund the maintenance, not a support tier.</h1>
           <p className="fund-hero__pitch">

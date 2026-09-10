@@ -1,13 +1,12 @@
 import { Link } from 'react-router-dom'
+import { OceanHero } from '../components/OceanHero'
 
 export function Home() {
   return (
     <div className="home">
       <section className="hero reveal-hero" aria-labelledby="home-title">
+        <OceanHero />
         <div className="container hero__grid">
-          <div className="hero__rail" aria-label="Company profile">
-            <span>BRZRK / 2026</span><span>Independent</span><span>Product systems</span>
-          </div>
           <div className="hero__content">
             <p className="index-label"><span>00</span> Company index</p>
             <h1 id="home-title">Tools for the work <em>behind</em> the work.</h1>

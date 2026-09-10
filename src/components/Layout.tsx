@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
-import { HeroShader } from './HeroShader'
 
 const SITE_URL = 'https://brzrk-motion.github.io/brzrk-site'
 const PAGE_META: Record<string, { title: string; description: string }> = {
@@ -43,7 +42,7 @@ export function Layout() {
     <div className={`layout${isHome ? ' layout--home' : ' layout--page'}`}>
       <PageMeta pathname={pathname} />
       <a className="skip-link" href="#main-content">Skip to content</a>
-      {isHome && <div className="layout__shader-bg" aria-hidden="true"><HeroShader /><div className="layout__scrim" /></div>}
+
       <header className="nav">
         <div className="container nav__inner">
           <NavLink to="/" className="nav__brand" end aria-label="brzrk home"><span className="nav__brand-mark">b/</span><span>brzrk</span></NavLink>

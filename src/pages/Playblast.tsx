@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import { LINKS, LOOP_STEPS, SCREENSHOTS, YOU_DONT_GET, YOU_GET } from '../playblast/constants'
+import { ScreenshotCarousel } from '../playblast/ScreenshotCarousel'
+import { OceanHero } from '../components/OceanHero'
 
 function ExternalLink({ href, children, className = '' }: { href: string; children: React.ReactNode; className?: string }) {
   return <a href={href} target="_blank" rel="noopener noreferrer" className={className}>{children}</a>
@@ -10,6 +12,7 @@ export function Playblast() {
     <div className="page pb-page">
       <div className="container">
         <header className="pb-hero reveal-hero">
+          <OceanHero />
           <p className="pb-hero__kicker">01 / Playblast</p>
           <h1 className="pb-hero__headline">Private review.<br />Your infrastructure.</h1>
           <p className="pb-hero__subhead">
@@ -29,8 +32,16 @@ export function Playblast() {
           </aside>
         </header>
 
+        <section className="section pb-section" aria-labelledby="screenshots-heading">
+          <div className="pb-screenshots-header">
+            <div><p className="index-label"><span>01</span> Product evidence</p><h2 id="screenshots-heading" className="section__title">The interface, not a mockup.</h2></div>
+            <p className="pb-section-intro">Current screens from the working Playblast review experience. No invented customer footage or feature theatre.</p>
+          </div>
+          <ScreenshotCarousel screenshots={SCREENSHOTS} />
+        </section>
+
         <section className="section pb-section" aria-labelledby="problem-heading">
-          <p className="index-label"><span>01</span> Problem</p>
+          <p className="index-label"><span>02</span> Problem</p>
           <h2 id="problem-heading" className="section__title">Feedback belongs with the cut.</h2>
           <div className="section__body">
             <p>Review breaks down when versions, notes, drawings, and approvals are split across email, chat, file shares, and improvised comparison reels.</p>
@@ -44,7 +55,7 @@ export function Playblast() {
 
         <section className="section pb-section" aria-labelledby="loop-heading">
           <div className="pb-loop-header">
-            <div><p className="index-label"><span>02</span> Review loop</p><h2 id="loop-heading" className="section__title">One traceable sequence.</h2></div>
+            <div><p className="index-label"><span>03</span> Review loop</p><h2 id="loop-heading" className="section__title">One traceable sequence.</h2></div>
             <p className="pb-section-intro">From a version landing on studio hardware to a recorded approval, the working context stays together.</p>
           </div>
           <ol className="pb-timeline">
@@ -55,26 +66,6 @@ export function Playblast() {
               </li>
             ))}
           </ol>
-        </section>
-
-        <section className="section pb-section" aria-labelledby="screenshots-heading">
-          <div className="pb-screenshots-header">
-            <div><p className="index-label"><span>03</span> Product evidence</p><h2 id="screenshots-heading" className="section__title">The interface, not a mockup.</h2></div>
-            <p className="pb-section-intro">Current screens from the working Playblast review experience. No invented customer footage or feature theatre.</p>
-          </div>
-          <ul className="pb-screenshot-gallery">
-            {SCREENSHOTS.map((shot) => (
-              <li key={shot.src} className="pb-screenshot-card">
-                <figure>
-                  <div className="evidence-frame__chrome"><span>{shot.code}</span><span>1440 × 900 / CURRENT UI</span></div>
-                  <div className="pb-screenshot-card__frame">
-                    <img src={shot.src} alt={shot.alt} width="1440" height="900" loading="lazy" decoding="async" />
-                  </div>
-                  <figcaption><span>{shot.code}</span><span>{shot.caption}</span></figcaption>
-                </figure>
-              </li>
-            ))}
-          </ul>
         </section>
 
         <section className="section pb-section pb-section--split" aria-labelledby="boundary-heading">

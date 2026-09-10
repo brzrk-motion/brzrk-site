@@ -1,8 +1,11 @@
+import { OceanHero } from '../components/OceanHero'
+
 export function About() {
   return (
     <div className="page">
       <div className="container">
         <header className="page__header reveal-hero">
+          <OceanHero />
           <div><p className="page__kicker">03 / Company notes</p><h1>Independent by design.</h1></div>
           <p className="page__intro">brzrk is a product company informed by creative practice—not a motion-graphics studio with a software side project.</p>
         </header>

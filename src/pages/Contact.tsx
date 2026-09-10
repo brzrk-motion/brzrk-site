@@ -1,3 +1,5 @@
+import { OceanHero } from '../components/OceanHero'
+
 const CONTACT_EMAIL = 'brzrk@brzrk-motion.com'
 
 export function Contact() {
@@ -5,6 +7,7 @@ export function Contact() {
     <div className="page">
       <div className="container">
         <header className="page__header reveal-hero">
+          <OceanHero />
           <div><p className="page__kicker">04 / Contact</p><h1>Start with context.</h1></div>
           <p className="page__intro">Reach out about Playblast for your studio, product feedback, or other brzrk work. No SaaS pitch and no implied support package.</p>
         </header>
