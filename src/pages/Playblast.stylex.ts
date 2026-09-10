@@ -91,24 +91,30 @@ export const playblastStyles = stylex.create({
     display: 'grid',
     gridTemplateColumns: '0.7fr 1.3fr',
     gap: tokens.space6,
+    alignItems: 'start',
     marginBottom: tokens.space5,
     [mq720]: {
       gridTemplateColumns: '1fr',
     },
   },
-  screenshotsHeaderMain: {
-    gridColumn: '2',
-    display: 'grid',
-    gap: tokens.space4,
+  screenshotsHeaderSpacer: {
+    minHeight: 0,
     [mq720]: {
-      gridColumn: '1',
+      display: 'none',
     },
   },
+  screenshotsHeaderMain: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    gap: tokens.space4,
+  },
   screenshotsTitle: {
-    marginBottom: 0,
+    marginBlock: 0,
+    maxWidth: '16ch',
   },
   screenshotsIntro: {
-    marginTop: 0,
+    margin: 0,
     maxWidth: '34rem',
   },
   splitGrid: {

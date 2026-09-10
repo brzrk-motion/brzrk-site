@@ -33,6 +33,7 @@ export function Playblast() {
 
         <section {...stylex.props(playblastStyles.section, playblastStyles.sectionFirst)} aria-labelledby="screenshots-heading">
           <div {...stylex.props(playblastStyles.screenshotsHeader)}>
+            <div {...stylex.props(playblastStyles.screenshotsHeaderSpacer)} aria-hidden="true" />
             <div {...stylex.props(playblastStyles.screenshotsHeaderMain)}>
               <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>01</span> Screens</p>
               <h2 id="screenshots-heading" {...stylex.props(sharedStyles.sectionTitle, playblastStyles.screenshotsTitle)}>See the workflow.</h2>
