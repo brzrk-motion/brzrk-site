@@ -4,9 +4,41 @@ import { tokens } from '../styles/tokens.stylex'
 const mq720 = '@media (max-width: 720px)'
 
 export const playblastStyles = stylex.create({
+  hero: {
+    borderBottomWidth: 0,
+  },
+  section: {
+    margin: 0,
+    paddingBlock: tokens.space7,
+    borderTopWidth: '1px',
+    borderTopStyle: 'solid',
+    borderTopColor: tokens.ruleStrong,
+  },
   sectionIntro: {
     maxWidth: tokens.contentWidth,
     color: tokens.paperMuted,
+  },
+  problemList: {
+    display: 'grid',
+    gap: tokens.space3,
+    marginTop: tokens.space5,
+    marginBottom: 0,
+    marginInline: 0,
+    padding: 0,
+    listStyle: 'none',
+  },
+  problemListItem: {
+    paddingBlock: tokens.space2,
+    paddingInlineStart: '2rem',
+    paddingInlineEnd: 0,
+    color: tokens.paperMuted,
+    position: 'relative',
+    '::before': {
+      content: '"—"',
+      position: 'absolute',
+      left: 0,
+      color: tokens.signal,
+    },
   },
   loopHeader: {
     display: 'grid',
@@ -19,21 +51,15 @@ export const playblastStyles = stylex.create({
   },
   timeline: {
     display: 'grid',
+    gap: tokens.space5,
     margin: 0,
     padding: 0,
     listStyle: 'none',
-    borderTopWidth: '1px',
-    borderTopStyle: 'solid',
-    borderTopColor: tokens.ruleStrong,
   },
   timelineItem: {
     display: 'grid',
     gridTemplateColumns: '5rem minmax(0, 1fr)',
     gap: tokens.space5,
-    paddingBlock: tokens.space4,
-    borderBottomWidth: '1px',
-    borderBottomStyle: 'solid',
-    borderBottomColor: tokens.rule,
     [mq720]: {
       gridTemplateColumns: '2.5rem 1fr',
       gap: tokens.space3,
@@ -102,6 +128,7 @@ export const playblastStyles = stylex.create({
     listStyle: 'none',
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
+    rowGap: tokens.space2,
     columnGap: tokens.space6,
     [mq720]: {
       gridTemplateColumns: '1fr',
@@ -124,13 +151,10 @@ export const playblastStyles = stylex.create({
     listStyle: 'none',
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(16rem, 1fr))',
-    gap: 0,
-    borderTopWidth: '1px',
-    borderTopStyle: 'solid',
-    borderTopColor: tokens.ruleStrong,
+    gap: tokens.space4,
   },
   financesListItem: {
-    paddingBlock: tokens.space4,
+    paddingBlock: tokens.space2,
     paddingInlineEnd: tokens.space5,
     color: tokens.paperMuted,
     '::before': {
@@ -142,9 +166,6 @@ export const playblastStyles = stylex.create({
   },
   checkListItem: {
     paddingBlock: tokens.space3,
-    borderTopWidth: '1px',
-    borderTopStyle: 'solid',
-    borderTopColor: tokens.rule,
     color: tokens.paperMuted,
     '::before': {
       content: '"+"',
@@ -185,11 +206,7 @@ export const playblastStyles = stylex.create({
     justifySelf: 'start',
   },
   fundingBlock: {
-    padding: tokens.space5,
-    borderWidth: '1px',
-    borderStyle: 'solid',
-    borderColor: tokens.ruleStrong,
-    backgroundColor: tokens.graphite,
+    padding: 0,
   },
   fundingCta: {
     display: 'flex',

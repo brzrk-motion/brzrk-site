@@ -14,7 +14,7 @@ export function Playblast() {
   return (
     <div {...stylex.props(sharedStyles.page)}>
       <div {...stylex.props(sharedStyles.container)}>
-        <header {...stylex.props(sharedStyles.fullBleedHero, sharedStyles.revealHero)}>
+        <header {...stylex.props(sharedStyles.fullBleedHero, playblastStyles.hero, sharedStyles.revealHero)}>
           <OceanHero />
           <p {...stylex.props(sharedStyles.heroKicker)}>01 / Playblast</p>
           <h1 {...stylex.props(sharedStyles.heroBandChild, sharedStyles.heroHeadline)}>Review and studio ops in one place.</h1>
@@ -31,7 +31,7 @@ export function Playblast() {
           </div>
         </header>
 
-        <section {...stylex.props(sharedStyles.section)} aria-labelledby="screenshots-heading">
+        <section {...stylex.props(playblastStyles.section)} aria-labelledby="screenshots-heading">
           <div {...stylex.props(playblastStyles.screenshotsHeader)}>
             <div>
               <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>01</span> Screens</p>
@@ -42,20 +42,20 @@ export function Playblast() {
           <ScreenshotCarousel screenshots={SCREENSHOTS} />
         </section>
 
-        <section {...stylex.props(sharedStyles.section)} aria-labelledby="problem-heading">
+        <section {...stylex.props(playblastStyles.section)} aria-labelledby="problem-heading">
           <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>02</span> Problem</p>
           <h2 id="problem-heading" {...stylex.props(sharedStyles.sectionTitle)}>Review and money should share one project.</h2>
           <div {...stylex.props(sharedStyles.sectionBody)}>
             <p>Studios lose time when review lives in one tool and clients, estimates, and invoices live in another. Context frays; handoffs multiply.</p>
-            <ul {...stylex.props(sharedStyles.problemList)}>
-              <li {...stylex.props(sharedStyles.problemListItem)}>Notes lose their frame and version context.</li>
-              <li {...stylex.props(sharedStyles.problemListItem)}>Client and invoice history sits outside the project.</li>
-              <li {...stylex.props(sharedStyles.problemListItem)}>Teams rebuild the same story for review and for billing.</li>
+            <ul {...stylex.props(playblastStyles.problemList)}>
+              <li {...stylex.props(playblastStyles.problemListItem)}>Notes lose their frame and version context.</li>
+              <li {...stylex.props(playblastStyles.problemListItem)}>Client and invoice history sits outside the project.</li>
+              <li {...stylex.props(playblastStyles.problemListItem)}>Teams rebuild the same story for review and for billing.</li>
             </ul>
           </div>
         </section>
 
-        <section {...stylex.props(sharedStyles.section)} aria-labelledby="loop-heading">
+        <section {...stylex.props(playblastStyles.section)} aria-labelledby="loop-heading">
           <div {...stylex.props(playblastStyles.loopHeader)}>
             <div>
               <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>03</span> How it works</p>
@@ -76,7 +76,7 @@ export function Playblast() {
           </ol>
         </section>
 
-        <section {...stylex.props(sharedStyles.section)} aria-labelledby="boundary-heading">
+        <section {...stylex.props(playblastStyles.section)} aria-labelledby="boundary-heading">
           <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>04</span> Features</p>
           <h2 id="boundary-heading" {...stylex.props(sharedStyles.sectionTitle)}>What you get.</h2>
           <ul {...stylex.props(playblastStyles.checkList)}>
@@ -84,7 +84,7 @@ export function Playblast() {
           </ul>
         </section>
 
-        <section {...stylex.props(sharedStyles.section)} aria-labelledby="finances-heading">
+        <section {...stylex.props(playblastStyles.section)} aria-labelledby="finances-heading">
           <div {...stylex.props(playblastStyles.financesHeader)}>
             <div>
               <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>05</span> Clients and finances</p>
@@ -101,7 +101,7 @@ export function Playblast() {
           </ul>
         </section>
 
-        <section {...stylex.props(sharedStyles.section)} aria-labelledby="selfhost-heading">
+        <section {...stylex.props(playblastStyles.section)} aria-labelledby="selfhost-heading">
           <div {...stylex.props(playblastStyles.selfhostBand)}>
             <div>
               <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>06</span> Deployment</p>
@@ -117,7 +117,7 @@ export function Playblast() {
           </div>
         </section>
 
-        <section {...stylex.props(sharedStyles.section)} aria-labelledby="funding-heading">
+        <section {...stylex.props(playblastStyles.section)} aria-labelledby="funding-heading">
           <div {...stylex.props(playblastStyles.fundingBlock)}>
             <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>07</span> Support</p>
             <h2 id="funding-heading" {...stylex.props(sharedStyles.sectionTitle)}>Support development.</h2>
