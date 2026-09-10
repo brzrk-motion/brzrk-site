@@ -44,7 +44,6 @@ export function Playblast() {
       <div {...stylex.props(playblastStyles.pageSections)}>
         <section {...stylex.props(playblastStyles.section, playblastStyles.sectionFirst)} aria-labelledby="screenshots-heading">
           <div {...stylex.props(playblastStyles.sectionHeaderSplit)}>
-            <div {...stylex.props(playblastStyles.sectionHeaderSpacer)} aria-hidden="true" />
             <div {...stylex.props(playblastStyles.sectionBlock, playblastStyles.sectionBlockTight)}>
               <SectionEyebrow index="01" label="Screens" />
               <h2 id="screenshots-heading" {...stylex.props(playblastStyles.sectionTitle)}>See the workflow.</h2>
@@ -81,10 +80,8 @@ export function Playblast() {
             {LOOP_STEPS.map((step, index) => (
               <li key={step.title} {...stylex.props(playblastStyles.timelineItem)}>
                 <span {...stylex.props(playblastStyles.timelineMarker)} aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
-                <div {...stylex.props(playblastStyles.timelineBody)}>
-                  <h3 {...stylex.props(playblastStyles.timelineTitle)}>{step.title}</h3>
-                  <p {...stylex.props(playblastStyles.timelineText)}>{step.body}</p>
-                </div>
+                <h3 {...stylex.props(playblastStyles.timelineTitle)}>{step.title}</h3>
+                <p {...stylex.props(playblastStyles.timelineText)}>{step.body}</p>
               </li>
             ))}
           </ol>

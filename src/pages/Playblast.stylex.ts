@@ -91,12 +91,6 @@ export const playblastStyles = stylex.create({
       gap: tokens.space4,
     },
   },
-  sectionHeaderSpacer: {
-    minHeight: 0,
-    [mq720]: {
-      display: 'none',
-    },
-  },
   sectionTitle: {
     maxWidth: '14ch',
     marginBlock: 0,
@@ -135,41 +129,52 @@ export const playblastStyles = stylex.create({
   },
   timeline: {
     display: 'grid',
-    gap: tokens.space5,
+    gap: 0,
     margin: 0,
     padding: 0,
     listStyle: 'none',
+    borderTopWidth: '1px',
+    borderTopStyle: 'solid',
+    borderTopColor: tokens.ruleStrong,
   },
   timelineItem: {
     display: 'grid',
-    gridTemplateColumns: '5rem minmax(0, 1fr)',
+    gridTemplateColumns: '4rem minmax(12rem, 0.65fr) minmax(0, 1.35fr)',
     gap: tokens.space5,
+    alignItems: 'start',
+    paddingBlock: tokens.space4,
+    borderBottomWidth: '1px',
+    borderBottomStyle: 'solid',
+    borderBottomColor: tokens.rule,
     [mq720]: {
-      gridTemplateColumns: '2.5rem 1fr',
-      gap: tokens.space3,
+      gridTemplateColumns: '2.5rem minmax(0, 1fr)',
+      columnGap: tokens.space3,
+      rowGap: tokens.space2,
     },
   },
   timelineMarker: {
     color: tokens.signal,
     fontFamily: tokens.fontMono,
+    fontWeight: 600,
     fontSize: '0.75rem',
     lineHeight: 1.4,
-  },
-  timelineBody: {
-    display: 'grid',
-    gridTemplateColumns: '0.5fr 1fr',
-    gap: tokens.space5,
     [mq720]: {
-      gridTemplateColumns: '1fr',
-      gap: tokens.space2,
+      gridRow: '1 / span 2',
     },
   },
   timelineTitle: {
     margin: 0,
+    [mq720]: {
+      gridColumn: 2,
+    },
   },
   timelineText: {
     maxWidth: '40rem',
+    margin: 0,
     color: tokens.paperSubtle,
+    [mq720]: {
+      gridColumn: 2,
+    },
   },
   checkList: {
     marginTop: 0,
