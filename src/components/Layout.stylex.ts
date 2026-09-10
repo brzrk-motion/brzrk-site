@@ -3,6 +3,7 @@ import { tokens } from '../styles/tokens.stylex'
 import { sharedStyles } from '../styles/shared.stylex'
 
 const mq1050 = '@media (max-width: 1050px)'
+const mq721To1050 = '@media (min-width: 721px) and (max-width: 1050px)'
 const mq720 = '@media (max-width: 720px)'
 const mq400 = '@media (max-width: 400px)'
 
@@ -128,7 +129,7 @@ export const layoutStyles = stylex.create({
       color: tokens.paper,
       backgroundColor: tokens.graphite,
     },
-    [mq1050]: {
+    [mq721To1050]: {
       minWidth: '5.5rem',
       paddingInline: '0.65rem',
     },

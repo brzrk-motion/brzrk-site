@@ -8,6 +8,12 @@ const eyebrowPaddingTop = '0.65rem'
 const contentRailWidth = 'min(100%, 67rem)'
 
 export const playblastStyles = stylex.create({
+  page: {
+    paddingBottom: 0,
+  },
+  hero: {
+    marginBlockEnd: 0,
+  },
   heroStack: {
     position: 'relative',
     zIndex: 1,
@@ -34,6 +40,8 @@ export const playblastStyles = stylex.create({
     marginTop: 0,
   },
   pageSections: {
+    width: `min(100%, calc(${tokens.maxWidth} + (2 * ${heroPaddingInline})))`,
+    marginInline: 'auto',
     paddingInline: heroPaddingInline,
   },
   section: {
@@ -42,6 +50,9 @@ export const playblastStyles = stylex.create({
     borderTopWidth: '1px',
     borderTopStyle: 'solid',
     borderTopColor: tokens.ruleStrong,
+    [mq720]: {
+      paddingBlock: tokens.space6,
+    },
   },
   sectionFirst: {
     borderTopWidth: 0,
@@ -77,6 +88,7 @@ export const playblastStyles = stylex.create({
     marginBottom: tokens.space5,
     [mq720]: {
       gridTemplateColumns: '1fr',
+      gap: tokens.space4,
     },
   },
   sectionHeaderSpacer: {
@@ -160,7 +172,7 @@ export const playblastStyles = stylex.create({
     color: tokens.paperSubtle,
   },
   checkList: {
-    marginTop: tokens.space4,
+    marginTop: 0,
     marginBottom: 0,
     marginInline: 0,
     padding: 0,
@@ -184,7 +196,7 @@ export const playblastStyles = stylex.create({
     },
   },
   financesList: {
-    marginTop: tokens.space4,
+    marginTop: 0,
     marginBottom: 0,
     marginInline: 0,
     padding: 0,
@@ -208,6 +220,6 @@ export const playblastStyles = stylex.create({
     flexWrap: 'wrap',
     gap: tokens.space3,
     alignItems: 'center',
-    marginTop: tokens.space4,
+    marginTop: 0,
   },
 })

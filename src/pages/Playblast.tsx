@@ -21,8 +21,8 @@ function SectionEyebrow({ index, label }: { index: string; label: string }) {
 
 export function Playblast() {
   return (
-    <div {...stylex.props(sharedStyles.page)}>
-      <header {...stylex.props(sharedStyles.fullBleedHero, sharedStyles.revealHero)}>
+    <div {...stylex.props(sharedStyles.page, playblastStyles.page)}>
+      <header {...stylex.props(sharedStyles.fullBleedHero, sharedStyles.revealHero, playblastStyles.hero)}>
         <OceanHero />
         <div {...stylex.props(playblastStyles.heroStack)}>
           <p {...stylex.props(playblastStyles.heroEyebrow)}>01 / Playblast</p>
