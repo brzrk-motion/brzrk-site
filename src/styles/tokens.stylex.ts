@@ -1,0 +1,28 @@
+import * as stylex from '@stylexjs/stylex'
+
+export const tokens = stylex.defineVars({
+  ink: 'oklch(0.105 0.006 255)',
+  inkDeep: 'oklch(0.075 0.004 255)',
+  graphite: 'oklch(0.145 0.007 255)',
+  steel: 'oklch(0.205 0.009 255)',
+  rule: 'oklch(0.44 0.011 255)',
+  ruleStrong: 'oklch(0.58 0.012 255)',
+  paper: 'oklch(0.955 0.012 85)',
+  paperMuted: 'oklch(0.78 0.012 80)',
+  paperSubtle: 'oklch(0.68 0.012 80)',
+  signal: 'oklch(0.72 0.19 48)',
+  signalHot: 'oklch(0.79 0.17 54)',
+  fontSans: '"IBM Plex Sans", system-ui, -apple-system, sans-serif',
+  fontMono: '"IBM Plex Mono", ui-monospace, monospace',
+  maxWidth: '78rem',
+  contentWidth: '44rem',
+  gutter: 'clamp(1rem, 4vw, 3rem)',
+  space1: '0.5rem',
+  space2: '0.75rem',
+  space3: '1rem',
+  space4: '1.5rem',
+  space5: '2rem',
+  space6: '3rem',
+  space7: '4.5rem',
+  space8: '7rem',
+})

@@ -1,12 +1,15 @@
 import { useEffect, useRef } from 'react'
+import * as stylex from '@stylexjs/stylex'
 import { createRenderer } from '../fft-ocean/renderer'
+import { oceanHeroStyles } from './OceanHero.stylex'
 
 type OceanHeroProps = {
   className?: string
 }
 
-export function OceanHero({ className = '' }: OceanHeroProps) {
+export function OceanHero({ className }: OceanHeroProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const sx = stylex.props(oceanHeroStyles.canvas)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -20,5 +23,12 @@ export function OceanHero({ className = '' }: OceanHeroProps) {
     return () => renderer.dispose()
   }, [])
 
-  return <canvas ref={canvasRef} className={`ocean-hero ${className}`} aria-hidden="true" />
+  return (
+    <canvas
+      ref={canvasRef}
+      style={sx.style}
+      className={[sx.className, className].filter(Boolean).join(' ') || undefined}
+      aria-hidden="true"
+    />
+  )
 }
