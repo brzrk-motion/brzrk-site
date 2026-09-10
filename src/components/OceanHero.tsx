@@ -7,8 +7,9 @@ type OceanHeroProps = {
   className?: string
 }
 
-export function OceanHero({ className = '' }: OceanHeroProps) {
+export function OceanHero({ className }: OceanHeroProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const sx = stylex.props(oceanHeroStyles.canvas)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -25,8 +26,8 @@ export function OceanHero({ className = '' }: OceanHeroProps) {
   return (
     <canvas
       ref={canvasRef}
-      {...stylex.props(oceanHeroStyles.canvas)}
-      className={className || undefined}
+      style={sx.style}
+      className={[sx.className, className].filter(Boolean).join(' ') || undefined}
       aria-hidden="true"
     />
   )
