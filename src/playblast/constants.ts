@@ -22,7 +22,7 @@ export const SPONSORSHIP_TIERS = [
   { name: 'Founding partner', amount: '$1000', period: '/ month', recognition: 'Top placement; optional case-study/quote with written permission' },
 ] as const
 export const LOOP_STEPS = [
-  { title: 'Install on your infrastructure', body: 'Deploy with Docker on NAS or Linux. One studio per instance — media stays on hardware you control.' },
+  { title: 'Operator-owned setup', body: 'You operate Docker on NAS or Linux. One studio per instance; media stays on your disks. Treat this as an RC — validate your own setup from the docs.' },
   { title: 'Set up a project', body: 'Create a project with deliverables for a job, reel, or internal piece.' },
   { title: 'Upload versions', body: 'Add cuts and iterations as they land. Every version lives on your server.' },
   { title: 'Leave frame-aware feedback', body: 'Timestamped comments and frame annotations tie notes to the exact moment in the cut.' },

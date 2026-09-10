@@ -31,7 +31,7 @@ export function Playblast() {
           </div>
           <aside {...stylex.props(sharedStyles.heroBandChild, sharedStyles.honestyBlock)}>
             <div {...stylex.props(sharedStyles.honestyBlockLabel)}>MVP release candidate</div>
-            <p>Core proofing exists. Independent clean-install and adoption checks remain in progress. You run your own instance; brzrk does not provide hosting, installation, or a support SLA.</p>
+            <p>Core proofing exists. Independent clean-install and adoption checks remain in progress. Not commercially validated. You run your own instance; brzrk does not provide hosting, installation, or a support SLA.</p>
           </aside>
         </header>
 

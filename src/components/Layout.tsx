@@ -5,11 +5,11 @@ import { layoutStyles, sharedStyles } from './Layout.stylex'
 
 const SITE_URL = 'https://brzrk-motion.github.io/brzrk-site'
 const PAGE_META: Record<string, { title: string; description: string }> = {
-  '/': { title: 'brzrk — Tools for the work behind the work', description: 'brzrk is an independent product company building focused software for creative and technical workflows.' },
+  '/': { title: 'brzrk — Tools for the work behind the work', description: 'brzrk builds self-hosted tools for studios — flagship: Playblast, private video review on your infrastructure.' },
   '/playblast': { title: 'Playblast — Private review for self-hosted teams | brzrk', description: 'Playblast is a self-hosted MVP release candidate for video proofing, versions, comments, annotations, compare, and approvals.' },
-  '/fund': { title: 'Playblast Development Fund | brzrk', description: 'The pre-launch Playblast Development Fund will support general maintenance and development through optional sponsorship.' },
-  '/about': { title: 'About brzrk — Independent product company', description: 'brzrk is an independent, design-literate product company building focused tools with honest status labels.' },
-  '/contact': { title: 'Contact brzrk', description: 'Contact brzrk about Playblast, product feedback, or other things the independent product company is building.' },
+  '/fund': { title: 'Playblast Development Fund | brzrk', description: 'Optional sponsorship for Playblast maintenance and development. Not open yet. Not a support package.' },
+  '/about': { title: 'About brzrk — Independent product company', description: 'brzrk is an independent product company. Public focus: Playblast, with honest release-candidate status.' },
+  '/contact': { title: 'Contact brzrk', description: 'Email brzrk@brzrk-motion.com about Playblast, feedback, or other brzrk work.' },
 }
 
 function PageMeta({ pathname }: { pathname: string }) {
@@ -81,7 +81,7 @@ export function Layout() {
         <div {...stylex.props(sharedStyles.container, layoutStyles.footerGrid)}>
           <div>
             <p {...stylex.props(layoutStyles.footerBrand)}>brzrk</p>
-            <p {...stylex.props(layoutStyles.footerDescriptor)}>Independent product company.<br />Focused tools. Honest status.</p>
+            <p {...stylex.props(layoutStyles.footerDescriptor)}>Product company. Self-hosted tools.<br />Status labeled as it is.</p>
           </div>
           <nav aria-label="Footer navigation">
             <ul {...stylex.props(layoutStyles.footerLinks)}>
