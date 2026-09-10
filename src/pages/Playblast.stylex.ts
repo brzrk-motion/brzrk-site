@@ -132,9 +132,6 @@ export const playblastStyles = stylex.create({
   financesListItem: {
     paddingBlock: tokens.space4,
     paddingInlineEnd: tokens.space5,
-    borderBottomWidth: '1px',
-    borderBottomStyle: 'solid',
-    borderBottomColor: tokens.rule,
     color: tokens.paperMuted,
     '::before': {
       content: '"+"',
