@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
+import * as stylex from '@stylexjs/stylex'
 import { HeroShader } from './HeroShader'
+import { layoutStyles, sharedStyles } from './Layout.stylex'
 
 const SITE_URL = 'https://brzrk-motion.github.io/brzrk-site'
 const PAGE_META: Record<string, { title: string; description: string }> = {
@@ -40,33 +42,68 @@ export function Layout() {
   const { pathname } = useLocation()
   const isHome = pathname === '/'
   return (
-    <div className={`layout${isHome ? ' layout--home' : ' layout--page'}`}>
+    <div {...stylex.props(layoutStyles.layout)}>
       <PageMeta pathname={pathname} />
-      <a className="skip-link" href="#main-content">Skip to content</a>
-      {isHome && <div className="layout__shader-bg" aria-hidden="true"><HeroShader /><div className="layout__scrim" /></div>}
-      <header className="nav">
-        <div className="container nav__inner">
-          <NavLink to="/" className="nav__brand" end aria-label="brzrk home"><span className="nav__brand-mark">b/</span><span>brzrk</span></NavLink>
-          <nav aria-label="Primary navigation">
-            <ul className="nav__links">
-              {navItems.map(({ to, label, number, end }) => <li key={to}>
-                <NavLink to={to} end={end} className={({ isActive }) => `nav__link${isActive ? ' nav__link--active' : ''}`}>
-                  <span className="nav__number" aria-hidden="true">{number}</span>{label}
-                </NavLink>
-              </li>)}
+      <a {...stylex.props(layoutStyles.skipLink)} href="#main-content">Skip to content</a>
+      {isHome && (
+        <div {...stylex.props(layoutStyles.shaderBg)} aria-hidden="true">
+          <HeroShader />
+          <div {...stylex.props(layoutStyles.scrim)} />
+        </div>
+      )}
+      <header {...stylex.props(layoutStyles.nav)}>
+        <div {...stylex.props(sharedStyles.container, layoutStyles.navInner)}>
+          <NavLink to="/" {...stylex.props(layoutStyles.navBrand)} end aria-label="brzrk home">
+            <span {...stylex.props(layoutStyles.navBrandMark)}>b/</span>
+            <span>brzrk</span>
+          </NavLink>
+          <nav {...stylex.props(layoutStyles.navWrap)} aria-label="Primary navigation">
+            <ul {...stylex.props(layoutStyles.navLinks)}>
+              {navItems.map(({ to, label, number, end }) => (
+                <li key={to} {...stylex.props(layoutStyles.navLinksItem)}>
+                  <NavLink
+                    to={to}
+                    end={end}
+                    className={({ isActive }) =>
+                      stylex.props(layoutStyles.navLink, isActive && layoutStyles.navLinkActive).className ?? ''
+                    }
+                  >
+                    {({ isActive }) => (
+                      <>
+                        <span {...stylex.props(layoutStyles.navNumber, isActive && layoutStyles.navNumberActive)} aria-hidden="true">
+                          {number}
+                        </span>
+                        {label}
+                      </>
+                    )}
+                  </NavLink>
+                </li>
+              ))}
             </ul>
           </nav>
         </div>
       </header>
-      <main className="layout__main" id="main-content"><Outlet /></main>
-      <footer className="footer">
-        <div className="container footer__grid">
-          <div><p className="footer__brand">brzrk</p><p className="footer__descriptor">Independent product company.<br />Focused tools. Honest status.</p></div>
-          <nav aria-label="Footer navigation"><ul className="footer__links">
-            <li><a href="https://github.com/brzrk-motion" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
-            <li><NavLink to="/contact">Contact</NavLink></li>
-          </ul></nav>
-          <p className="footer__meta">© {new Date().getFullYear()} brzrk<br />Built in public / operated independently</p>
+      <main {...stylex.props(layoutStyles.main)} id="main-content"><Outlet /></main>
+      <footer {...stylex.props(layoutStyles.footer)}>
+        <div {...stylex.props(sharedStyles.container, layoutStyles.footerGrid)}>
+          <div>
+            <p {...stylex.props(layoutStyles.footerBrand)}>brzrk</p>
+            <p {...stylex.props(layoutStyles.footerDescriptor)}>Independent product company.<br />Focused tools. Honest status.</p>
+          </div>
+          <nav aria-label="Footer navigation">
+            <ul {...stylex.props(layoutStyles.footerLinks)}>
+              <li><a href="https://github.com/brzrk-motion" target="_blank" rel="noopener noreferrer" {...stylex.props(layoutStyles.footerLink)}>GitHub ↗</a></li>
+              <li>
+                <NavLink
+                  to="/contact"
+                  className={stylex.props(layoutStyles.footerLink).className ?? ''}
+                >
+                  Contact
+                </NavLink>
+              </li>
+            </ul>
+          </nav>
+          <p {...stylex.props(layoutStyles.footerMeta)}>© {new Date().getFullYear()} brzrk<br />Built in public / operated independently</p>
         </div>
       </footer>
     </div>

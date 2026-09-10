@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
+import * as stylex from '@stylexjs/stylex'
 import { clock, effect, frame, frameLoop, init, surface } from 'vgpu'
 import type { FrameLoopHandle, Gpu } from 'vgpu'
 import heroShader from '../shaders/hero-abstract.wgsl'
+import { heroShaderStyles } from './HeroShader.stylex'
 
 type HeroShaderProps = {
   className?: string
@@ -82,7 +84,8 @@ export function HeroShader({ className = '' }: HeroShaderProps) {
   if (useFallback) {
     return (
       <div
-        className={`hero-shader-fallback ${className}`}
+        {...stylex.props(heroShaderStyles.fallback)}
+        className={className || undefined}
         aria-hidden="true"
       />
     )
@@ -91,7 +94,8 @@ export function HeroShader({ className = '' }: HeroShaderProps) {
   return (
     <canvas
       ref={canvasRef}
-      className={`hero-shader-canvas ${className}`}
+      {...stylex.props(heroShaderStyles.canvas)}
+      className={className || undefined}
       aria-hidden="true"
     />
   )

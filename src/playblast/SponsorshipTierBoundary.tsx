@@ -1,12 +1,15 @@
+import * as stylex from '@stylexjs/stylex'
+import { fundStyles } from '../pages/Fund.stylex'
+
 export function SponsorshipTierBoundary({
   disclaimerId,
 }: {
   disclaimerId: string
 }) {
   return (
-    <p className="pb-tier-card__boundary">
+    <p {...stylex.props(fundStyles.tierCardBoundary)}>
       Recognition only —{' '}
-      <a href={`#${disclaimerId}`} className="pb-tier-card__disclaimer-link">
+      <a href={`#${disclaimerId}`}>
         see disclaimer below
       </a>
       .
