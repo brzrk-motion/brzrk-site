@@ -13,20 +13,20 @@ export function Contact() {
           <OceanHero />
           <div {...stylex.props(sharedStyles.heroBandChild)}>
             <p {...stylex.props(sharedStyles.pageKicker)}>04 / Contact</p>
-            <h1>Write what broke.</h1>
+            <h1>Get in touch.</h1>
           </div>
-          <p {...stylex.props(sharedStyles.heroBandChild, sharedStyles.pageIntro)}>Email about Playblast for your studio, a product bug/idea, or other brzrk work. No sales pitch. No support package implied.</p>
+          <p {...stylex.props(sharedStyles.heroBandChild, sharedStyles.pageIntro)}>Email about Playblast for your studio, product feedback, or other brzrk work. No sales pitch. No support package implied.</p>
         </header>
 
         <section {...stylex.props(sharedStyles.section)} aria-labelledby="contact-form-heading">
           <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>01</span> Email draft</p>
-          <h2 id="contact-form-heading" {...stylex.props(sharedStyles.sectionTitle)}>What&apos;s the ask?</h2>
+          <h2 id="contact-form-heading" {...stylex.props(sharedStyles.sectionTitle)}>How can we help?</h2>
           <form
             {...stylex.props(contactStyles.form)}
             onSubmit={(event) => {
               event.preventDefault()
               const data = new FormData(event.currentTarget)
-              const subject = `${data.get('topic') || 'General'} — brzrk site`
+              const subject = `${data.get('topic') || 'General'} | brzrk site`
               const body = [`Name: ${data.get('name') || ''}`, `Email: ${data.get('email') || ''}`, '', String(data.get('message') || '')].join('\n')
               window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
             }}
@@ -59,7 +59,7 @@ export function Contact() {
 
         <section {...stylex.props(sharedStyles.section)} aria-labelledby="technical-heading">
           <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>02</span> Technical issues</p>
-          <h2 id="technical-heading" {...stylex.props(sharedStyles.sectionTitle)}>Keep the issue public.</h2>
+          <h2 id="technical-heading" {...stylex.props(sharedStyles.sectionTitle)}>Prefer public issues.</h2>
           <div {...stylex.props(sharedStyles.sectionBody)}>
             <p>For reproducible Playblast problems, use the <a href="https://github.com/brzrk-motion/Playblast/issues" target="_blank" rel="noopener noreferrer">GitHub issue tracker</a>. brzrk does not offer a paid support package at this stage.</p>
           </div>

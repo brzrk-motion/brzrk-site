@@ -8,9 +8,9 @@ export function SponsorshipTierBoundary({
 }) {
   return (
     <p {...stylex.props(fundStyles.tierCardBoundary)}>
-      Recognition only —{' '}
+      Recognition only.{' '}
       <a href={`#${disclaimerId}`}>
-        see disclaimer below
+        See the disclaimer below
       </a>
       .
     </p>

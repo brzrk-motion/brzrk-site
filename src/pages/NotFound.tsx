@@ -11,10 +11,10 @@ export function NotFound() {
           <OceanHero />
           <div {...stylex.props(sharedStyles.heroBandChild)}>
             <p {...stylex.props(sharedStyles.pageKicker)}>404 / Missing</p>
-            <h1>Wrong reel.</h1>
+            <h1>Page not found.</h1>
           </div>
           <div {...stylex.props(sharedStyles.heroBandChild)}>
-            <p {...stylex.props(sharedStyles.pageIntro)}>Dead link, mistype, or a page that never shipped.</p>
+            <p {...stylex.props(sharedStyles.pageIntro)}>The link may be outdated, or the address may be incorrect.</p>
             <div {...stylex.props(sharedStyles.ctaGroup)}>
               <Link to="/" {...stylex.props(sharedStyles.btn, sharedStyles.btnPrimary)}>Return to the index <span aria-hidden="true">→</span></Link>
             </div>

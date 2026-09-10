@@ -20,7 +20,7 @@ export function Fund() {
         <header {...stylex.props(sharedStyles.fullBleedHero, sharedStyles.revealHero)}>
           <OceanHero />
           <p {...stylex.props(sharedStyles.heroKicker)}>02 / Development fund</p>
-          <h1 {...stylex.props(sharedStyles.heroBandChild, sharedStyles.heroHeadline)}>Fund the maintenance, not a support tier.</h1>
+          <h1 {...stylex.props(sharedStyles.heroBandChild, sharedStyles.heroHeadline)}>Fund maintenance, not a support contract.</h1>
           <p {...stylex.props(sharedStyles.heroBandChild, sharedStyles.pageIntro)}>
             The Playblast Development Fund is the planned route for optional sponsorship of general maintenance and development. It is not open yet.
           </p>
@@ -36,7 +36,7 @@ export function Fund() {
             <div>
               <h2 id="fund-status-heading" {...stylex.props(sharedStyles.sectionTitle)}>Funding is not open yet.</h2>
               <p {...stylex.props(fundStyles.sectionIntro)}>
-                There is no checkout, no fabricated activity, and no implied contributor base. The policy and recognition levels are public now so the boundary is clear before payments come online.
+                There is no checkout, no fabricated activity, and no implied contributor base. Policy and recognition levels are public now so the boundary is clear before payments open.
               </p>
             </div>
           </div>
@@ -48,7 +48,7 @@ export function Fund() {
           <div {...stylex.props(fundStyles.policy)}>
             <article {...stylex.props(fundStyles.policyArticle)}>
               <h3 {...stylex.props(fundStyles.policyTitle)}>Funds the commons</h3>
-              <p {...stylex.props(fundStyles.policyText)}>Contributions support maintenance and development of the public Playblast project.</p>
+              <p {...stylex.props(fundStyles.policyText)}>Contributions fund maintenance and development of the public Playblast project.</p>
             </article>
             <article {...stylex.props(fundStyles.policyArticle)}>
               <h3 {...stylex.props(fundStyles.policyTitle)}>Recognition only</h3>
@@ -85,9 +85,9 @@ export function Fund() {
 
         <section {...stylex.props(sharedStyles.section)} aria-labelledby="open-heading">
           <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>03</span> Before opening</p>
-          <h2 id="open-heading" {...stylex.props(sharedStyles.sectionTitle)}>Evidence first.</h2>
+          <h2 id="open-heading" {...stylex.props(sharedStyles.sectionTitle)}>Process first.</h2>
           <div {...stylex.props(sharedStyles.sectionBody)}>
-            <p>The fund will only become actionable when the payment route, reporting cadence, and public record are ready. Until then, the repository and funding policy are the source of truth.</p>
+            <p>The fund opens only when payment, reporting, and the public record are ready. Until then, the repository and funding policy are the source of truth.</p>
           </div>
           <div {...stylex.props(sharedStyles.ctaGroup)}>
             <ExternalLink href={LINKS.github} {...stylex.props(sharedStyles.btn)}>View Playblast on GitHub <span aria-hidden="true">↗</span></ExternalLink>
