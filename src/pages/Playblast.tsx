@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import * as stylex from '@stylexjs/stylex'
 import { LINKS, LOOP_STEPS, SCREENSHOTS, YOU_DONT_GET, YOU_GET } from '../playblast/constants'
+import { ScreenshotCarousel } from '../playblast/ScreenshotCarousel'
 import { sharedStyles } from '../styles/shared.stylex'
 import { playblastStyles } from './Playblast.stylex'
 
@@ -76,31 +77,7 @@ export function Playblast() {
             </div>
             <p {...stylex.props(playblastStyles.sectionIntro)}>Current screens from the working Playblast review experience. No invented customer footage or feature theatre.</p>
           </div>
-          <ul {...stylex.props(playblastStyles.screenshotGallery)}>
-            {SCREENSHOTS.map((shot) => (
-              <li key={shot.src} {...stylex.props(playblastStyles.screenshotCard)}>
-                <figure>
-                  <div {...stylex.props(sharedStyles.evidenceFrameChrome)}>
-                    <span>{shot.code}</span><span>1440 × 900 / CURRENT UI</span>
-                  </div>
-                  <div {...stylex.props(playblastStyles.screenshotCardFrame)}>
-                    <img
-                      {...stylex.props(playblastStyles.screenshotCardImage)}
-                      src={shot.src}
-                      alt={shot.alt}
-                      width="1440"
-                      height="900"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                  <figcaption {...stylex.props(playblastStyles.screenshotCardFigcaption)}>
-                    <span>{shot.code}</span><span>{shot.caption}</span>
-                  </figcaption>
-                </figure>
-              </li>
-            ))}
-          </ul>
+          <ScreenshotCarousel screenshots={SCREENSHOTS} />
         </section>
 
         <section {...stylex.props(sharedStyles.section)} aria-labelledby="boundary-heading">

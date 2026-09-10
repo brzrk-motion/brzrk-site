@@ -2,7 +2,6 @@ import * as stylex from '@stylexjs/stylex'
 import { tokens } from '../styles/tokens.stylex'
 
 const mq720 = '@media (max-width: 720px)'
-const mq400 = '@media (max-width: 400px)'
 
 export const playblastStyles = stylex.create({
   hero: {
@@ -113,43 +112,6 @@ export const playblastStyles = stylex.create({
     marginBottom: tokens.space5,
     [mq720]: {
       gridTemplateColumns: '1fr',
-    },
-  },
-  screenshotGallery: {
-    display: 'grid',
-    gap: tokens.space6,
-    margin: 0,
-    padding: 0,
-    listStyle: 'none',
-  },
-  screenshotCard: {
-    margin: 0,
-  },
-  screenshotCardFrame: {
-    borderWidth: '1px',
-    borderStyle: 'solid',
-    borderColor: tokens.ruleStrong,
-    backgroundColor: tokens.graphite,
-    overflow: 'hidden',
-  },
-  screenshotCardImage: {
-    width: '100%',
-  },
-  screenshotCardFigcaption: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    gap: tokens.space3,
-    padding: tokens.space3,
-    borderWidth: '1px',
-    borderStyle: 'solid',
-    borderColor: tokens.rule,
-    borderTopWidth: 0,
-    color: tokens.paperMuted,
-    fontFamily: tokens.fontMono,
-    fontSize: '0.72rem',
-    lineHeight: 1.5,
-    [mq400]: {
-      flexDirection: 'column',
     },
   },
   splitGrid: {
