@@ -13,7 +13,6 @@ export const SCREENSHOTS = [
   { src: `${BASE}screenshots/annotate.png`, alt: 'Playblast review player with frame annotation markup on a video frame', caption: 'Frame annotations make visual notes explicit', code: 'ANNOTATE / 03' },
 ] as const
 
-export const SPONSORSHIP_DISCLAIMER = 'Sponsorship funds general maintenance and development of Playblast. It does not purchase private support, response times, roadmap control, hosting, installation, or priority security treatment. You run your own instance.'
 export const SPONSORSHIP_TIERS = [
   { name: 'Friend', amount: '$10', period: '/ month', recognition: 'Name on sponsors list' },
   { name: 'Studio', amount: '$50', period: '/ month', recognition: 'Name + link' },
@@ -22,12 +21,11 @@ export const SPONSORSHIP_TIERS = [
   { name: 'Founding partner', amount: '$1000', period: '/ month', recognition: 'Top placement. Optional case study or quote with written permission.' },
 ] as const
 export const LOOP_STEPS = [
-  { title: 'Operator-owned setup', body: 'You operate Docker on a NAS or Linux host. One studio per instance. Media stays on your disks. This is a release candidate. Validate your own setup from the docs.' },
+  { title: 'Set up', body: 'Run Playblast with Docker on a NAS or Linux host. One studio per instance. Media stays on your disks.' },
   { title: 'Set up a project', body: 'Create a project with deliverables for a client job or internal piece.' },
   { title: 'Upload versions', body: 'Add iterations as they land. Every version lives on your server.' },
   { title: 'Leave frame-aware feedback', body: 'Timestamped comments and frame annotations tie notes to the exact moment in the version.' },
   { title: 'Compare side by side', body: 'Line up versions to see what changed, without exporting comparison reels by hand.' },
   { title: 'Approve and track history', body: 'Move deliverables through approval states. Review history shows what was signed off and when.' },
 ] as const
-export const YOU_GET = ['Projects, deliverables, and versions', 'Timestamped comments and frame annotations', 'Side-by-side version comparison', 'Approval states and review history', 'Admin, Creative, and Proofing roles', 'Documentation and public issues as the support boundary'] as const
-export const YOU_DONT_GET = ['Hosted SaaS. brzrk does not run your instance.', 'Founder install or white-glove onboarding', 'Support SLA or managed operations from brzrk', 'CRM, invoicing, or studio ops suite', 'Guest or client share links (deferred)', 'Every professional codec, mobile app, or advanced timecode feature as a launch claim'] as const
+export const YOU_GET = ['Projects, deliverables, and versions', 'Timestamped comments and frame annotations', 'Side-by-side version comparison', 'Approval states and review history', 'Admin, Creative, and Proofing roles', 'Documentation and public issue tracker'] as const

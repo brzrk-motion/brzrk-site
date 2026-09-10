@@ -15,7 +15,7 @@ export function Contact() {
             <p {...stylex.props(sharedStyles.pageKicker)}>04 / Contact</p>
             <h1>Get in touch.</h1>
           </div>
-          <p {...stylex.props(sharedStyles.heroBandChild, sharedStyles.pageIntro)}>Email about Playblast for your studio, product feedback, or other brzrk work. No sales pitch. No support package implied.</p>
+          <p {...stylex.props(sharedStyles.heroBandChild, sharedStyles.pageIntro)}>Questions about Playblast, product feedback, or other brzrk work.</p>
         </header>
 
         <section {...stylex.props(sharedStyles.section)} aria-labelledby="contact-form-heading">
@@ -59,9 +59,9 @@ export function Contact() {
 
         <section {...stylex.props(sharedStyles.section)} aria-labelledby="technical-heading">
           <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>02</span> Technical issues</p>
-          <h2 id="technical-heading" {...stylex.props(sharedStyles.sectionTitle)}>Prefer public issues.</h2>
+          <h2 id="technical-heading" {...stylex.props(sharedStyles.sectionTitle)}>Bug reports</h2>
           <div {...stylex.props(sharedStyles.sectionBody)}>
-            <p>For reproducible Playblast problems, use the <a href="https://github.com/brzrk-motion/Playblast/issues" target="_blank" rel="noopener noreferrer">GitHub issue tracker</a>. brzrk does not offer a paid support package at this stage.</p>
+            <p>For reproducible Playblast issues, please use the <a href="https://github.com/brzrk-motion/Playblast/issues" target="_blank" rel="noopener noreferrer">GitHub issue tracker</a>.</p>
           </div>
         </section>
       </div>
