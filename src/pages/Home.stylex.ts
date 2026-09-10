@@ -9,7 +9,8 @@ export const homeStyles = stylex.create({
   hero: {
     position: 'relative',
     minHeight: 'min(50rem, calc(100vh - 4.75rem))',
-    overflow: 'hidden',
+    overflowX: 'clip',
+    overflowY: 'hidden',
     borderBottomWidth: '1px',
     borderBottomStyle: 'solid',
     borderBottomColor: tokens.rule,
@@ -51,17 +52,10 @@ export const homeStyles = stylex.create({
     color: tokens.signal,
     fontWeight: 'inherit',
   },
-  heroLower: {
-    display: 'grid',
-    gridTemplateColumns: 'minmax(16rem, 34rem) auto',
-    alignItems: 'end',
-    gap: tokens.space6,
-    [mq720]: {
-      gridTemplateColumns: '1fr',
-      gap: tokens.space5,
-    },
-  },
   heroLede: {
+    maxWidth: '42rem',
+    marginTop: 0,
+    marginBottom: tokens.space5,
     color: tokens.paperMuted,
     fontSize: 'clamp(1.08rem, 2vw, 1.35rem)',
     lineHeight: 1.5,
@@ -70,6 +64,7 @@ export const homeStyles = stylex.create({
     display: 'flex',
     flexWrap: 'wrap',
     gap: tokens.space3,
+    marginTop: 0,
     [mq400]: {
       alignItems: 'stretch',
       flexDirection: 'column',

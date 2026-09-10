@@ -4,15 +4,15 @@ import { tokens } from '../styles/tokens.stylex'
 const mq720 = '@media (max-width: 720px)'
 
 export const playblastStyles = stylex.create({
-  hero: {
-    borderBottomWidth: 0,
-  },
   section: {
     margin: 0,
     paddingBlock: tokens.space7,
     borderTopWidth: '1px',
     borderTopStyle: 'solid',
     borderTopColor: tokens.ruleStrong,
+  },
+  sectionFirst: {
+    borderTopWidth: 0,
   },
   sectionIntro: {
     maxWidth: tokens.contentWidth,

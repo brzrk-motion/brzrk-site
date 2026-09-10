@@ -15,12 +15,10 @@ export function Home() {
             <h1 id="home-title" {...stylex.props(homeStyles.heroTitle)}>
               Tools for the work <em {...stylex.props(homeStyles.heroTitleEm)}>behind</em> the work.
             </h1>
-            <div {...stylex.props(homeStyles.heroLower)}>
-              <p {...stylex.props(homeStyles.heroLede)}>brzrk builds software for creative production. Today that means Playblast: private video review, clients, and invoices for studios that want review and studio ops in one place.</p>
-              <div {...stylex.props(homeStyles.heroActions)}>
-                <Link to="/playblast" {...stylex.props(sharedStyles.btn, sharedStyles.btnPrimary)}>View Playblast <span aria-hidden="true">↗</span></Link>
-                <Link to="/about" {...stylex.props(sharedStyles.btn, sharedStyles.btnText)}>About brzrk <span aria-hidden="true">→</span></Link>
-              </div>
+            <p {...stylex.props(homeStyles.heroLede)}>brzrk builds software for creative production. Today that means Playblast: private video review, clients, and invoices for studios that want review and studio ops in one place.</p>
+            <div {...stylex.props(homeStyles.heroActions)}>
+              <Link to="/playblast" {...stylex.props(sharedStyles.btn, sharedStyles.btnPrimary)}>View Playblast <span aria-hidden="true">↗</span></Link>
+              <Link to="/about" {...stylex.props(sharedStyles.btn, sharedStyles.btnText)}>About brzrk <span aria-hidden="true">→</span></Link>
             </div>
           </div>
         </div>

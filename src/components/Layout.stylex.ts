@@ -20,6 +20,7 @@ export const layoutStyles = stylex.create({
     position: 'relative',
     zIndex: 1,
     flex: 1,
+    overflowX: 'clip',
   },
   skipLink: {
     position: 'fixed',

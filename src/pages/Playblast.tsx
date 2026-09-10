@@ -14,7 +14,7 @@ export function Playblast() {
   return (
     <div {...stylex.props(sharedStyles.page)}>
       <div {...stylex.props(sharedStyles.container)}>
-        <header {...stylex.props(sharedStyles.fullBleedHero, playblastStyles.hero, sharedStyles.revealHero)}>
+        <header {...stylex.props(sharedStyles.fullBleedHero, sharedStyles.revealHero)}>
           <OceanHero />
           <p {...stylex.props(sharedStyles.heroKicker)}>01 / Playblast</p>
           <h1 {...stylex.props(sharedStyles.heroBandChild, sharedStyles.heroHeadline)}>Review and studio ops in one place.</h1>
@@ -31,7 +31,7 @@ export function Playblast() {
           </div>
         </header>
 
-        <section {...stylex.props(playblastStyles.section)} aria-labelledby="screenshots-heading">
+        <section {...stylex.props(playblastStyles.section, playblastStyles.sectionFirst)} aria-labelledby="screenshots-heading">
           <div {...stylex.props(playblastStyles.screenshotsHeader)}>
             <div>
               <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>01</span> Screens</p>

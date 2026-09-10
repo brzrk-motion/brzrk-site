@@ -8,7 +8,9 @@ const mqReducedMotion = '@media (prefers-reduced-motion: reduce)'
 export const carouselStyles = stylex.create({
   carousel: {
     width: '100%',
+    minWidth: 0,
     margin: 0,
+    overflowX: 'clip',
     ':focus-visible': {
       outlineOffset: '6px',
     },
@@ -25,6 +27,7 @@ export const carouselStyles = stylex.create({
   },
   slides: {
     minWidth: 0,
+    overflow: 'hidden',
   },
   slide: {
     margin: 0,
@@ -97,10 +100,12 @@ export const carouselStyles = stylex.create({
   },
   footer: {
     display: 'grid',
-    gridTemplateColumns: '1fr auto auto',
+    gridTemplateColumns: 'minmax(0, 1fr) auto auto',
     gap: tokens.space4,
     alignItems: 'center',
+    minWidth: 0,
     paddingTop: tokens.space3,
+    overflowX: 'clip',
     [mq720]: {
       gridTemplateColumns: '1fr',
       gap: tokens.space2,
@@ -108,6 +113,7 @@ export const carouselStyles = stylex.create({
   },
   status: {
     margin: 0,
+    minWidth: 0,
     color: tokens.paperSubtle,
     fontFamily: tokens.fontMono,
     fontSize: '0.7rem',
