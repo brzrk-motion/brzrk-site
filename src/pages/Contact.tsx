@@ -13,14 +13,14 @@ export function Contact() {
           <OceanHero />
           <div {...stylex.props(sharedStyles.heroBandChild)}>
             <p {...stylex.props(sharedStyles.pageKicker)}>04 / Contact</p>
-            <h1>Start with context.</h1>
+            <h1>Write what broke.</h1>
           </div>
-          <p {...stylex.props(sharedStyles.heroBandChild, sharedStyles.pageIntro)}>Reach out about Playblast for your studio, product feedback, or other brzrk work. No SaaS pitch and no implied support package.</p>
+          <p {...stylex.props(sharedStyles.heroBandChild, sharedStyles.pageIntro)}>Email about Playblast for your studio, a product bug/idea, or other brzrk work. No sales pitch. No support package implied.</p>
         </header>
 
         <section {...stylex.props(sharedStyles.section)} aria-labelledby="contact-form-heading">
           <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>01</span> Email draft</p>
-          <h2 id="contact-form-heading" {...stylex.props(sharedStyles.sectionTitle)}>What are you working through?</h2>
+          <h2 id="contact-form-heading" {...stylex.props(sharedStyles.sectionTitle)}>What&apos;s the ask?</h2>
           <form
             {...stylex.props(contactStyles.form)}
             onSubmit={(event) => {
