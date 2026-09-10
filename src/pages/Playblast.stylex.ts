@@ -116,19 +116,31 @@ export const playblastStyles = stylex.create({
       gridTemplateColumns: '1fr',
     },
   },
-  financesMedia: {
+  financesList: {
+    marginTop: tokens.space4,
+    marginBottom: 0,
+    marginInline: 0,
+    padding: 0,
+    listStyle: 'none',
     display: 'grid',
-    gridTemplateColumns: 'minmax(0, 1.15fr) minmax(0, 0.85fr)',
-    gap: tokens.space5,
-    alignItems: 'start',
-    [mq720]: {
-      gridTemplateColumns: '1fr',
-    },
+    gridTemplateColumns: 'repeat(auto-fit, minmax(16rem, 1fr))',
+    gap: 0,
+    borderTopWidth: '1px',
+    borderTopStyle: 'solid',
+    borderTopColor: tokens.ruleStrong,
   },
-  financesMediaSecondary: {
-    marginTop: tokens.space7,
-    [mq720]: {
-      marginTop: 0,
+  financesListItem: {
+    paddingBlock: tokens.space4,
+    paddingInlineEnd: tokens.space5,
+    borderBottomWidth: '1px',
+    borderBottomStyle: 'solid',
+    borderBottomColor: tokens.rule,
+    color: tokens.paperMuted,
+    '::before': {
+      content: '"+"',
+      marginRight: '0.75rem',
+      color: tokens.signal,
+      fontFamily: tokens.fontMono,
     },
   },
   checkListItem: {

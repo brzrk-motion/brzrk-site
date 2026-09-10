@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import * as stylex from '@stylexjs/stylex'
 import { OceanHero } from '../components/OceanHero'
-import { CLIENT_FINANCE_SHOTS, LINKS, LOOP_STEPS, SCREENSHOTS, YOU_GET } from '../playblast/constants'
+import { CLIENT_FINANCE_FEATURES, LINKS, LOOP_STEPS, SCREENSHOTS, YOU_GET } from '../playblast/constants'
 import { ScreenshotCarousel } from '../playblast/ScreenshotCarousel'
 import { sharedStyles } from '../styles/shared.stylex'
 import { playblastStyles } from './Playblast.stylex'
@@ -37,7 +37,7 @@ export function Playblast() {
               <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>01</span> Screens</p>
               <h2 id="screenshots-heading" {...stylex.props(sharedStyles.sectionTitle)}>See the workflow.</h2>
             </div>
-            <p {...stylex.props(playblastStyles.sectionIntro)}>Walk through review, compare, and annotation.</p>
+            <p {...stylex.props(playblastStyles.sectionIntro)}>Clients, invoices, review, and compare in one walkthrough.</p>
           </div>
           <ScreenshotCarousel screenshots={SCREENSHOTS} />
         </section>
@@ -94,34 +94,11 @@ export function Playblast() {
               Track leads and clients, retainers, and lifetime value. Build estimates, log services, and send invoices without leaving the project.
             </p>
           </div>
-          <div {...stylex.props(playblastStyles.financesMedia)}>
-            {CLIENT_FINANCE_SHOTS.map((shot, index) => (
-              <figure
-                key={shot.src}
-                {...stylex.props(
-                  sharedStyles.evidenceFrame,
-                  index === 1 && playblastStyles.financesMediaSecondary,
-                )}
-              >
-                <div {...stylex.props(sharedStyles.evidenceFrameChrome)}>
-                  <span>{shot.code}</span>
-                  <span>1440 × 900</span>
-                </div>
-                <img
-                  {...stylex.props(sharedStyles.evidenceFrameImage)}
-                  src={shot.src}
-                  alt={shot.alt}
-                  width="1440"
-                  height="900"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <figcaption {...stylex.props(sharedStyles.evidenceFrameFigcaption)}>
-                  <span {...stylex.props(sharedStyles.evidenceFrameFigcaptionSpan)}>{shot.caption}</span>
-                </figcaption>
-              </figure>
+          <ul {...stylex.props(playblastStyles.financesList)}>
+            {CLIENT_FINANCE_FEATURES.map((item) => (
+              <li key={item} {...stylex.props(playblastStyles.financesListItem)}>{item}</li>
             ))}
-          </div>
+          </ul>
         </section>
 
         <section {...stylex.props(sharedStyles.section)} aria-labelledby="selfhost-heading">
