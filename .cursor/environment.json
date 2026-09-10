@@ -1,0 +1,14 @@
+{
+  "name": "brzrk site",
+  "install": "npm ci",
+  "terminals": [
+    {
+      "name": "dev",
+      "command": "npm run dev -- --host 0.0.0.0 --port 5173",
+      "description": "Vite dev server for the brzrk marketing site, reachable at http://localhost:5173."
+    }
+  ],
+  "ports": [
+    { "name": "vite dev server", "port": 5173 }
+  ]
+}
