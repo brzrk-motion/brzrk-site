@@ -3,7 +3,39 @@ import { tokens } from '../styles/tokens.stylex'
 
 const mq720 = '@media (max-width: 720px)'
 
+const heroPaddingInline = 'clamp(1.5rem, 5vw, 5rem)'
+const eyebrowPaddingTop = '0.65rem'
+const contentRailWidth = 'min(100%, 67rem)'
+
 export const playblastStyles = stylex.create({
+  heroStack: {
+    position: 'relative',
+    zIndex: 1,
+    width: contentRailWidth,
+    marginInlineStart: 0,
+    marginInlineEnd: 'auto',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: tokens.space4,
+  },
+  heroEyebrow: {
+    paddingTop: eyebrowPaddingTop,
+    margin: 0,
+    color: tokens.signal,
+    fontFamily: tokens.fontMono,
+    letterSpacing: '0.06em',
+    textTransform: 'uppercase',
+    fontSize: '0.7rem',
+  },
+  heroHeadline: {
+    marginBlock: 0,
+  },
+  heroCta: {
+    marginTop: 0,
+  },
+  pageSections: {
+    paddingInline: heroPaddingInline,
+  },
   section: {
     margin: 0,
     paddingBlock: tokens.space7,
@@ -14,14 +46,63 @@ export const playblastStyles = stylex.create({
   sectionFirst: {
     borderTopWidth: 0,
   },
+  sectionEyebrow: {
+    paddingTop: eyebrowPaddingTop,
+    margin: 0,
+    fontFamily: tokens.fontMono,
+    letterSpacing: '0.06em',
+    textTransform: 'uppercase',
+    color: tokens.paperSubtle,
+    fontSize: '0.7rem',
+  },
+  sectionEyebrowIndex: {
+    marginRight: '0.75rem',
+    color: tokens.signal,
+  },
+  sectionBlock: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    gap: tokens.space4,
+    marginBottom: tokens.space5,
+  },
+  sectionBlockTight: {
+    marginBottom: 0,
+  },
+  sectionHeaderSplit: {
+    display: 'grid',
+    gridTemplateColumns: '0.7fr 1.3fr',
+    gap: tokens.space6,
+    alignItems: 'start',
+    marginBottom: tokens.space5,
+    [mq720]: {
+      gridTemplateColumns: '1fr',
+    },
+  },
+  sectionHeaderSpacer: {
+    minHeight: 0,
+    [mq720]: {
+      display: 'none',
+    },
+  },
+  sectionTitle: {
+    maxWidth: '14ch',
+    marginBlock: 0,
+    textWrap: 'balance',
+  },
   sectionIntro: {
+    maxWidth: tokens.contentWidth,
+    margin: 0,
+    color: tokens.paperMuted,
+  },
+  sectionBody: {
     maxWidth: tokens.contentWidth,
     color: tokens.paperMuted,
   },
   problemList: {
     display: 'grid',
     gap: tokens.space3,
-    marginTop: tokens.space5,
+    marginTop: tokens.space4,
     marginBottom: 0,
     marginInline: 0,
     padding: 0,
@@ -38,15 +119,6 @@ export const playblastStyles = stylex.create({
       position: 'absolute',
       left: 0,
       color: tokens.signal,
-    },
-  },
-  loopHeader: {
-    display: 'grid',
-    gridTemplateColumns: '0.7fr 1.3fr',
-    gap: tokens.space6,
-    marginBottom: tokens.space5,
-    [mq720]: {
-      gridTemplateColumns: '1fr',
     },
   },
   timeline: {
@@ -87,60 +159,6 @@ export const playblastStyles = stylex.create({
     maxWidth: '40rem',
     color: tokens.paperSubtle,
   },
-  screenshotsHeader: {
-    display: 'grid',
-    gridTemplateColumns: '0.7fr 1.3fr',
-    gap: tokens.space6,
-    alignItems: 'start',
-    marginBottom: tokens.space5,
-    [mq720]: {
-      gridTemplateColumns: '1fr',
-    },
-  },
-  screenshotsHeaderSpacer: {
-    minHeight: 0,
-    [mq720]: {
-      display: 'none',
-    },
-  },
-  screenshotsHeaderMain: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    gap: tokens.space4,
-  },
-  screenshotsTitle: {
-    marginBlock: 0,
-    maxWidth: '16ch',
-  },
-  screenshotsIntro: {
-    margin: 0,
-    maxWidth: '34rem',
-  },
-  splitGrid: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    borderWidth: '1px',
-    borderStyle: 'solid',
-    borderColor: tokens.ruleStrong,
-    [mq720]: {
-      gridTemplateColumns: '1fr',
-    },
-  },
-  splitPanel: {
-    padding: tokens.space5,
-  },
-  splitPanelRight: {
-    borderLeftWidth: '1px',
-    borderLeftStyle: 'solid',
-    borderLeftColor: tokens.ruleStrong,
-    [mq720]: {
-      borderTopWidth: '1px',
-      borderTopStyle: 'solid',
-      borderTopColor: tokens.ruleStrong,
-      borderLeftWidth: 0,
-    },
-  },
   checkList: {
     marginTop: tokens.space4,
     marginBottom: 0,
@@ -149,19 +167,20 @@ export const playblastStyles = stylex.create({
     listStyle: 'none',
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
-    rowGap: tokens.space2,
+    rowGap: tokens.space3,
     columnGap: tokens.space6,
     [mq720]: {
       gridTemplateColumns: '1fr',
     },
   },
-  financesHeader: {
-    display: 'grid',
-    gridTemplateColumns: '0.7fr 1.3fr',
-    gap: tokens.space6,
-    marginBottom: tokens.space5,
-    [mq720]: {
-      gridTemplateColumns: '1fr',
+  checkListItem: {
+    paddingBlock: tokens.space2,
+    color: tokens.paperMuted,
+    '::before': {
+      content: '"+"',
+      marginRight: '0.75rem',
+      color: tokens.signal,
+      fontFamily: tokens.fontMono,
     },
   },
   financesList: {
@@ -176,7 +195,6 @@ export const playblastStyles = stylex.create({
   },
   financesListItem: {
     paddingBlock: tokens.space2,
-    paddingInlineEnd: tokens.space5,
     color: tokens.paperMuted,
     '::before': {
       content: '"+"',
@@ -184,50 +202,6 @@ export const playblastStyles = stylex.create({
       color: tokens.signal,
       fontFamily: tokens.fontMono,
     },
-  },
-  checkListItem: {
-    paddingBlock: tokens.space3,
-    color: tokens.paperMuted,
-    '::before': {
-      content: '"+"',
-      marginRight: '0.75rem',
-      color: tokens.signal,
-      fontFamily: tokens.fontMono,
-    },
-  },
-  crossList: {
-    marginTop: tokens.space4,
-    marginBottom: 0,
-    marginInline: 0,
-    padding: 0,
-    listStyle: 'none',
-  },
-  crossListItem: {
-    paddingBlock: tokens.space3,
-    borderTopWidth: '1px',
-    borderTopStyle: 'solid',
-    borderTopColor: tokens.rule,
-    color: tokens.paperMuted,
-    '::before': {
-      content: '"—"',
-      marginRight: '0.75rem',
-      color: tokens.paperSubtle,
-    },
-  },
-  selfhostBand: {
-    display: 'grid',
-    gridTemplateColumns: '0.7fr 1.3fr',
-    gap: tokens.space6,
-    [mq720]: {
-      gridTemplateColumns: '1fr',
-    },
-  },
-  selfhostBtn: {
-    alignSelf: 'end',
-    justifySelf: 'start',
-  },
-  fundingBlock: {
-    padding: 0,
   },
   fundingCta: {
     display: 'flex',
