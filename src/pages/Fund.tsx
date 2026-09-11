@@ -1,4 +1,8 @@
+import { useEffect, useRef } from 'react'
 import * as stylex from '@stylexjs/stylex'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { OceanHero } from '../components/OceanHero'
 import { LINKS, SPONSORSHIP_TIERS } from '../playblast/constants'
 import { sharedStyles } from '../styles/shared.stylex'
 import { fundStyles } from './Fund.stylex'
@@ -15,10 +19,67 @@ const FUNDING_FLOW = [
 
 const BOUNDARIES = ['Paid support', 'An SLA', 'Hosted Playblast', 'Installation', 'Roadmap control', 'Priority treatment']
 
+gsap.registerPlugin(ScrollTrigger)
+
 export function Fund() {
+  const flowRef = useRef<HTMLOListElement>(null)
+  const hardStopRef = useRef<HTMLDivElement>(null)
+  const tiersRef = useRef<HTMLUListElement>(null)
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    const context = gsap.context(() => {
+      const animateItems = (container: HTMLElement | null, distance: number, stagger: number) => {
+        if (!container) return
+
+        gsap.fromTo(Array.from(container.children),
+          { opacity: 0, x: -distance },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.7,
+            delay: 0.08,
+            stagger,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: container,
+              start: 'top 84%',
+              once: true,
+            },
+          },
+        )
+      }
+
+      animateItems(flowRef.current, 0, 0.12)
+      animateItems(tiersRef.current, 40, 0.1)
+
+      if (hardStopRef.current) {
+        gsap.fromTo(hardStopRef.current,
+          { opacity: 0, x: -40 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.65,
+            delay: 0.08,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: hardStopRef.current,
+              start: 'top 88%',
+              once: true,
+            },
+          },
+        )
+      }
+    })
+
+    return () => context.revert()
+  }, [])
+
   return (
-    <div {...stylex.props(fundStyles.page)}>
+      <div {...stylex.props(fundStyles.page)}>
       <header {...stylex.props(fundStyles.hero)}>
+        <OceanHero />
         <div {...stylex.props(sharedStyles.container, fundStyles.heroGrid)}>
           <div {...stylex.props(fundStyles.heroCopy)}>
             <h1 {...stylex.props(fundStyles.heroTitle)}>The product comes first. The fund follows.</h1>
@@ -55,7 +116,7 @@ export function Fund() {
             <h2 id="circuit-heading" {...stylex.props(fundStyles.sectionTitle)}>Support follows a clear path.</h2>
             <p {...stylex.props(fundStyles.sectionIntro)}>Optional sponsorship supports maintenance and development, then returns public recognition. Product direction stays independent.</p>
           </div>
-          <ol {...stylex.props(fundStyles.flow)} aria-label="Planned sponsorship flow">
+          <ol ref={flowRef} {...stylex.props(fundStyles.flow)} aria-label="Planned sponsorship flow">
             {FUNDING_FLOW.map((step, index) => (
               <li key={step.title} {...stylex.props(fundStyles.flowStep)}>
                 <span {...stylex.props(fundStyles.flowConnector, index === 2 && fundStyles.flowConnectorLast)} aria-hidden="true">
@@ -67,7 +128,7 @@ export function Fund() {
               </li>
             ))}
           </ol>
-          <div {...stylex.props(fundStyles.hardStop)}>
+          <div ref={hardStopRef} {...stylex.props(fundStyles.hardStop)}>
             <span {...stylex.props(fundStyles.hardStopWire)} aria-hidden="true" />
             <span {...stylex.props(fundStyles.hardStopMark)} aria-hidden="true" />
             <p><strong {...stylex.props(fundStyles.hardStopTitle)}>Influence / disconnected.</strong> Sponsorship never becomes purchased influence.</p>
@@ -81,7 +142,7 @@ export function Fund() {
             <h2 id="tiers-heading" {...stylex.props(fundStyles.sectionTitle)}>Recognition, planned in public.</h2>
             <p {...stylex.props(fundStyles.sectionIntro)}>These levels are planned for launch. Amounts and recognition are listed here without an inactive checkout.</p>
           </div>
-          <ul {...stylex.props(fundStyles.tierLedger)}>
+          <ul ref={tiersRef} {...stylex.props(fundStyles.tierLedger)}>
             {SPONSORSHIP_TIERS.map((tier) => (
               <li key={tier.name} {...stylex.props(fundStyles.tierRow)}>
                 <h3 {...stylex.props(fundStyles.tierName)}>{tier.name}</h3>

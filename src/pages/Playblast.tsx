@@ -1,5 +1,9 @@
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import * as stylex from '@stylexjs/stylex'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { OceanHero } from '../components/OceanHero'
 import { CLIENT_FINANCE_FEATURES, LINKS, LOOP_STEPS, SCREENSHOTS, YOU_GET } from '../playblast/constants'
 import { ScreenshotCarousel } from '../playblast/ScreenshotCarousel'
 import { sharedStyles } from '../styles/shared.stylex'
@@ -9,10 +13,52 @@ function ExternalLink({ href, children, ...anchorProps }: { href: string; childr
   return <a href={href} target="_blank" rel="noopener noreferrer" {...anchorProps}>{children}</a>
 }
 
+gsap.registerPlugin(ScrollTrigger)
+
 export function Playblast() {
+  const timelineRef = useRef<HTMLOListElement>(null)
+  const problemListRef = useRef<HTMLUListElement>(null)
+  const featureListRef = useRef<HTMLUListElement>(null)
+  const financeListRef = useRef<HTMLUListElement>(null)
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    const context = gsap.context(() => {
+      const animateItems = (container: HTMLElement | null, distance: number, stagger: number) => {
+        if (!container) return
+
+        gsap.fromTo(Array.from(container.children),
+          { opacity: 0, x: -distance },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.7,
+            delay: 0.08,
+            stagger,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: container,
+              start: 'top 84%',
+              once: true,
+            },
+          },
+        )
+      }
+
+      animateItems(timelineRef.current, 72, 0.12)
+      animateItems(problemListRef.current, 40, 0.1)
+      animateItems(featureListRef.current, 40, 0.1)
+      animateItems(financeListRef.current, 40, 0.1)
+    })
+
+    return () => context.revert()
+  }, [])
+
   return (
-    <div {...stylex.props(playblastStyles.page)}>
+      <div {...stylex.props(playblastStyles.page)}>
       <header {...stylex.props(playblastStyles.hero)}>
+        <OceanHero />
         <div {...stylex.props(sharedStyles.container, playblastStyles.heroGrid)}>
           <div {...stylex.props(playblastStyles.heroCopy)}>
             <h1 {...stylex.props(playblastStyles.heroHeadline)}>Review and studio ops in one place.</h1>
@@ -66,7 +112,7 @@ export function Playblast() {
           </div>
           <div {...stylex.props(playblastStyles.sectionBody)}>
             <p>Studios lose time when review lives in one tool and clients, estimates, and invoices live in another. Context frays; handoffs multiply.</p>
-            <ul {...stylex.props(playblastStyles.problemList)}>
+            <ul ref={problemListRef} {...stylex.props(playblastStyles.problemList)}>
               <li {...stylex.props(playblastStyles.problemListItem)}>Notes lose their frame and version context.</li>
               <li {...stylex.props(playblastStyles.problemListItem)}>Client and invoice history sits outside the project.</li>
               <li {...stylex.props(playblastStyles.problemListItem)}>Teams rebuild the same story for review and for billing.</li>
@@ -81,7 +127,7 @@ export function Playblast() {
             </div>
             <p {...stylex.props(playblastStyles.sectionIntro)}>From upload to approval, feedback stays with the media. Clients and invoices can attach to the same projects.</p>
           </div>
-          <ol {...stylex.props(playblastStyles.timeline)}>
+          <ol ref={timelineRef} {...stylex.props(playblastStyles.timeline)}>
             {LOOP_STEPS.map((step, index) => (
               <li key={step.title} {...stylex.props(playblastStyles.timelineItem)}>
                 <span {...stylex.props(playblastStyles.timelineMarker)} aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
@@ -96,7 +142,7 @@ export function Playblast() {
           <div {...stylex.props(playblastStyles.sectionBlock)}>
             <h2 id="boundary-heading" {...stylex.props(playblastStyles.sectionTitle)}>What you get.</h2>
           </div>
-          <ul {...stylex.props(playblastStyles.checkList)}>
+          <ul ref={featureListRef} {...stylex.props(playblastStyles.checkList)}>
             {YOU_GET.map((item) => <li key={item} {...stylex.props(playblastStyles.checkListItem)}>{item}</li>)}
           </ul>
         </section>
@@ -110,7 +156,7 @@ export function Playblast() {
               Track leads and clients, retainers, and lifetime value. Build estimates, log services, and send invoices without leaving the project.
             </p>
           </div>
-          <ul {...stylex.props(playblastStyles.financesList)}>
+          <ul ref={financeListRef} {...stylex.props(playblastStyles.financesList)}>
             {CLIENT_FINANCE_FEATURES.map((item) => (
               <li key={item} {...stylex.props(playblastStyles.financesListItem)}>{item}</li>
             ))}
