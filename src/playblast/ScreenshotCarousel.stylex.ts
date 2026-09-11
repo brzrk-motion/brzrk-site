@@ -8,15 +8,18 @@ const mqReducedMotion = '@media (prefers-reduced-motion: reduce)'
 export const carouselStyles = stylex.create({
   carousel: {
     width: '100%',
+    maxWidth: '100%',
     minWidth: 0,
     margin: 0,
-    overflowX: 'clip',
+    overflow: 'hidden',
     ':focus-visible': {
       outlineOffset: '6px',
     },
   },
   viewport: {
     position: 'relative',
+    width: '100%',
+    minWidth: 0,
     overflow: 'hidden',
     backgroundColor: tokens.graphite,
     borderWidth: '1px',
@@ -26,6 +29,7 @@ export const carouselStyles = stylex.create({
     userSelect: 'none',
   },
   slides: {
+    width: '100%',
     minWidth: 0,
     overflow: 'hidden',
   },
@@ -99,7 +103,7 @@ export const carouselStyles = stylex.create({
     alignItems: 'center',
     minWidth: 0,
     paddingTop: tokens.space3,
-    overflowX: 'clip',
+    overflow: 'hidden',
     [mq720]: {
       gridTemplateColumns: '1fr',
       gap: tokens.space2,

@@ -11,7 +11,6 @@ export function Home() {
         <OceanHero />
         <div {...stylex.props(sharedStyles.container, homeStyles.heroGrid)}>
           <div {...stylex.props(homeStyles.heroContent)}>
-            <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>00</span> Company index</p>
             <h1 id="home-title" {...stylex.props(homeStyles.heroTitle)}>
               Tools for the work <em {...stylex.props(homeStyles.heroTitleEm)}>behind</em> the work.
             </h1>
@@ -21,12 +20,29 @@ export function Home() {
               <Link to="/about" {...stylex.props(sharedStyles.btn, sharedStyles.btnText)}>About brzrk <span aria-hidden="true">→</span></Link>
             </div>
           </div>
+          <aside {...stylex.props(homeStyles.heroStatus)} aria-labelledby="home-status-heading">
+            <h2 id="home-status-heading" {...stylex.props(homeStyles.heroStatusTitle)}>brzrk / position</h2>
+            <dl {...stylex.props(homeStyles.heroStatusList)}>
+              <div {...stylex.props(homeStyles.heroStatusRow)}>
+                <dt {...stylex.props(homeStyles.heroStatusTerm)}>Company</dt>
+                <dd {...stylex.props(homeStyles.heroStatusValue)}>Independent product company</dd>
+              </div>
+              <div {...stylex.props(homeStyles.heroStatusRow)}>
+                <dt {...stylex.props(homeStyles.heroStatusTerm)}>Current focus</dt>
+                <dd {...stylex.props(homeStyles.heroStatusValue)}>Playblast</dd>
+              </div>
+              <div {...stylex.props(homeStyles.heroStatusRow)}>
+                <dt {...stylex.props(homeStyles.heroStatusTerm)}>Public stage</dt>
+                <dd {...stylex.props(homeStyles.heroStatusValue, homeStyles.heroStatusValueSignal)}>MVP release candidate</dd>
+              </div>
+            </dl>
+          </aside>
+          <div {...stylex.props(homeStyles.heroSignal)} aria-hidden="true" />
         </div>
       </section>
 
       <section {...stylex.props(homeStyles.homeProduct)} aria-labelledby="product-title">
         <div {...stylex.props(sharedStyles.container)}>
-          <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>01</span> Product</p>
           <div {...stylex.props(homeStyles.productFeature)}>
             <div>
               <h2 id="product-title" {...stylex.props(homeStyles.productFeatureTitle)}>Playblast</h2>

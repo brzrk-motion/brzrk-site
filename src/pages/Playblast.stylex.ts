@@ -1,43 +1,119 @@
 import * as stylex from '@stylexjs/stylex'
 import { tokens } from '../styles/tokens.stylex'
 
+const mq800 = '@media (max-width: 800px)'
 const mq720 = '@media (max-width: 720px)'
+const mqReducedMotion = '@media (prefers-reduced-motion: reduce)'
 
 const heroPaddingInline = 'clamp(1.5rem, 5vw, 5rem)'
-const eyebrowPaddingTop = '0.65rem'
-const contentRailWidth = 'min(100%, 67rem)'
+const carrySignal = stylex.keyframes({
+  from: { transform: 'scaleX(0)' },
+  to: { transform: 'scaleX(1)' },
+})
 
 export const playblastStyles = stylex.create({
   page: {
     paddingBottom: 0,
+    backgroundColor: tokens.ink,
+    overflowX: 'clip',
   },
   hero: {
-    marginBlockEnd: 0,
+    borderBottomWidth: '1px',
+    borderBottomStyle: 'solid',
+    borderBottomColor: tokens.ruleStrong,
+    backgroundColor: tokens.inkDeep,
   },
-  heroStack: {
+  heroGrid: {
     position: 'relative',
-    zIndex: 1,
-    width: contentRailWidth,
-    marginInlineStart: 0,
-    marginInlineEnd: 'auto',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: tokens.space4,
+    display: 'grid',
+    minHeight: '35rem',
+    gridTemplateColumns: 'minmax(0, 1.5fr) minmax(16rem, 0.5fr)',
+    gap: 'clamp(3rem, 9vw, 9rem)',
+    alignItems: 'end',
+    paddingBlock: 'clamp(4rem, 7vw, 6rem)',
+    [mq800]: {
+      minHeight: 0,
+      gridTemplateColumns: '1fr',
+      gap: tokens.space6,
+      paddingBlock: tokens.space7,
+    },
   },
-  heroEyebrow: {
-    paddingTop: eyebrowPaddingTop,
-    margin: 0,
-    color: tokens.signal,
-    fontFamily: tokens.fontMono,
-    letterSpacing: '0.06em',
-    textTransform: 'uppercase',
-    fontSize: '0.7rem',
+  heroCopy: {
+    maxWidth: '58rem',
   },
   heroHeadline: {
-    marginBlock: 0,
+    maxWidth: '10ch',
+    marginBottom: tokens.space4,
+    fontSize: 'clamp(3.2rem, 7vw, 5.9rem)',
+    letterSpacing: '-0.038em',
+  },
+  heroLede: {
+    maxWidth: '43rem',
+    color: tokens.paperMuted,
+    fontSize: 'clamp(1.1rem, 2vw, 1.35rem)',
+    lineHeight: 1.55,
   },
   heroCta: {
-    marginTop: 0,
+    marginTop: tokens.space5,
+  },
+  status: {
+    paddingTop: tokens.space3,
+    borderTopWidth: '1px',
+    borderTopStyle: 'solid',
+    borderTopColor: tokens.signal,
+  },
+  statusTitle: {
+    marginBottom: tokens.space3,
+    fontSize: '1.2rem',
+    letterSpacing: '-0.02em',
+  },
+  statusList: {
+    margin: 0,
+  },
+  statusRow: {
+    display: 'grid',
+    gridTemplateColumns: '1fr auto',
+    gap: tokens.space3,
+    paddingBlock: tokens.space3,
+    borderTopWidth: '1px',
+    borderTopStyle: 'solid',
+    borderTopColor: tokens.rule,
+  },
+  statusTerm: {
+    color: tokens.paperSubtle,
+    fontFamily: tokens.fontMono,
+    fontSize: '0.65rem',
+    letterSpacing: '0.05em',
+    textTransform: 'uppercase',
+  },
+  statusValue: {
+    margin: 0,
+    color: tokens.paper,
+    fontSize: '0.84rem',
+    textAlign: 'right',
+  },
+  statusValueSignal: {
+    color: tokens.signal,
+    fontFamily: tokens.fontMono,
+    fontSize: '0.72rem',
+    letterSpacing: '0.04em',
+    textTransform: 'uppercase',
+  },
+  heroSignal: {
+    position: 'absolute',
+    bottom: '-1px',
+    left: tokens.gutter,
+    width: 'clamp(7rem, 18vw, 14rem)',
+    height: '3px',
+    backgroundColor: tokens.signal,
+    transformOrigin: 'left center',
+    animationName: carrySignal,
+    animationDuration: '700ms',
+    animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+    animationFillMode: 'both',
+    [mqReducedMotion]: {
+      animationName: 'none',
+    },
   },
   pageSections: {
     width: `min(100%, calc(${tokens.maxWidth} + (2 * ${heroPaddingInline})))`,
@@ -56,19 +132,6 @@ export const playblastStyles = stylex.create({
   },
   sectionFirst: {
     borderTopWidth: 0,
-  },
-  sectionEyebrow: {
-    paddingTop: eyebrowPaddingTop,
-    margin: 0,
-    fontFamily: tokens.fontMono,
-    letterSpacing: '0.06em',
-    textTransform: 'uppercase',
-    color: tokens.paperSubtle,
-    fontSize: '0.7rem',
-  },
-  sectionEyebrowIndex: {
-    marginRight: '0.75rem',
-    color: tokens.signal,
   },
   sectionBlock: {
     display: 'flex',

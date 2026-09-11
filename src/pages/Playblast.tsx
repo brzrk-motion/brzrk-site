@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import * as stylex from '@stylexjs/stylex'
-import { OceanHero } from '../components/OceanHero'
 import { CLIENT_FINANCE_FEATURES, LINKS, LOOP_STEPS, SCREENSHOTS, YOU_GET } from '../playblast/constants'
 import { ScreenshotCarousel } from '../playblast/ScreenshotCarousel'
 import { sharedStyles } from '../styles/shared.stylex'
@@ -10,34 +9,43 @@ function ExternalLink({ href, children, ...anchorProps }: { href: string; childr
   return <a href={href} target="_blank" rel="noopener noreferrer" {...anchorProps}>{children}</a>
 }
 
-function SectionEyebrow({ index, label }: { index: string; label: string }) {
-  return (
-    <p {...stylex.props(playblastStyles.sectionEyebrow)}>
-      <span {...stylex.props(playblastStyles.sectionEyebrowIndex)}>{index}</span>
-      {label}
-    </p>
-  )
-}
-
 export function Playblast() {
   return (
-    <div {...stylex.props(sharedStyles.page, playblastStyles.page)}>
-      <header {...stylex.props(sharedStyles.fullBleedHero, sharedStyles.revealHero, playblastStyles.hero)}>
-        <OceanHero />
-        <div {...stylex.props(playblastStyles.heroStack)}>
-          <p {...stylex.props(playblastStyles.heroEyebrow)}>01 / Playblast</p>
-          <h1 {...stylex.props(sharedStyles.heroHeadline, playblastStyles.heroHeadline)}>Review and studio ops in one place.</h1>
-          <p {...stylex.props(sharedStyles.pageIntro)}>
-            Playblast is self-hosted software for small studios. Review versions with comments and annotations, manage clients and retainers, and issue invoices from the same projects.
-          </p>
-          <div {...stylex.props(sharedStyles.ctaGroup, playblastStyles.heroCta)}>
-            <ExternalLink href={LINKS.github} {...stylex.props(sharedStyles.btn, sharedStyles.btnPrimary)}>
-              Explore on GitHub <span aria-hidden="true">↗</span>
-            </ExternalLink>
-            <ExternalLink href={LINKS.installGuide} {...stylex.props(sharedStyles.btn)}>
-              Read install docs <span aria-hidden="true">↗</span>
-            </ExternalLink>
+    <div {...stylex.props(playblastStyles.page)}>
+      <header {...stylex.props(playblastStyles.hero)}>
+        <div {...stylex.props(sharedStyles.container, playblastStyles.heroGrid)}>
+          <div {...stylex.props(playblastStyles.heroCopy)}>
+            <h1 {...stylex.props(playblastStyles.heroHeadline)}>Review and studio ops in one place.</h1>
+            <p {...stylex.props(playblastStyles.heroLede)}>
+              Playblast is self-hosted software for small studios. Review versions with comments and annotations, manage clients and retainers, and issue invoices from the same projects.
+            </p>
+            <div {...stylex.props(sharedStyles.ctaGroup, playblastStyles.heroCta)}>
+              <ExternalLink href={LINKS.github} {...stylex.props(sharedStyles.btn, sharedStyles.btnPrimary)}>
+                Explore on GitHub <span aria-hidden="true">↗</span>
+              </ExternalLink>
+              <ExternalLink href={LINKS.installGuide} {...stylex.props(sharedStyles.btn)}>
+                Read install docs <span aria-hidden="true">↗</span>
+              </ExternalLink>
+            </div>
           </div>
+          <aside {...stylex.props(playblastStyles.status)} aria-labelledby="playblast-status-heading">
+            <h2 id="playblast-status-heading" {...stylex.props(playblastStyles.statusTitle)}>Playblast status</h2>
+            <dl {...stylex.props(playblastStyles.statusList)}>
+              <div {...stylex.props(playblastStyles.statusRow)}>
+                <dt {...stylex.props(playblastStyles.statusTerm)}>Stage</dt>
+                <dd {...stylex.props(playblastStyles.statusValue, playblastStyles.statusValueSignal)}>MVP release candidate</dd>
+              </div>
+              <div {...stylex.props(playblastStyles.statusRow)}>
+                <dt {...stylex.props(playblastStyles.statusTerm)}>Deployment</dt>
+                <dd {...stylex.props(playblastStyles.statusValue)}>Self-hosted</dd>
+              </div>
+              <div {...stylex.props(playblastStyles.statusRow)}>
+                <dt {...stylex.props(playblastStyles.statusTerm)}>Current focus</dt>
+                <dd {...stylex.props(playblastStyles.statusValue)}>Review + studio ops</dd>
+              </div>
+            </dl>
+          </aside>
+          <div {...stylex.props(playblastStyles.heroSignal)} aria-hidden="true" />
         </div>
       </header>
 
@@ -45,7 +53,6 @@ export function Playblast() {
         <section {...stylex.props(playblastStyles.section, playblastStyles.sectionFirst)} aria-labelledby="screenshots-heading">
           <div {...stylex.props(playblastStyles.sectionHeaderSplit)}>
             <div {...stylex.props(playblastStyles.sectionBlock, playblastStyles.sectionBlockTight)}>
-              <SectionEyebrow index="01" label="Screens" />
               <h2 id="screenshots-heading" {...stylex.props(playblastStyles.sectionTitle)}>See the workflow.</h2>
               <p {...stylex.props(playblastStyles.sectionIntro)}>Clients, invoices, review, and compare in one walkthrough.</p>
             </div>
@@ -55,7 +62,6 @@ export function Playblast() {
 
         <section {...stylex.props(playblastStyles.section)} aria-labelledby="problem-heading">
           <div {...stylex.props(playblastStyles.sectionBlock)}>
-            <SectionEyebrow index="02" label="Problem" />
             <h2 id="problem-heading" {...stylex.props(playblastStyles.sectionTitle)}>Review and money should share one project.</h2>
           </div>
           <div {...stylex.props(playblastStyles.sectionBody)}>
@@ -71,7 +77,6 @@ export function Playblast() {
         <section {...stylex.props(playblastStyles.section)} aria-labelledby="loop-heading">
           <div {...stylex.props(playblastStyles.sectionHeaderSplit)}>
             <div {...stylex.props(playblastStyles.sectionBlock, playblastStyles.sectionBlockTight)}>
-              <SectionEyebrow index="03" label="How it works" />
               <h2 id="loop-heading" {...stylex.props(playblastStyles.sectionTitle)}>How Playblast works.</h2>
             </div>
             <p {...stylex.props(playblastStyles.sectionIntro)}>From upload to approval, feedback stays with the media. Clients and invoices can attach to the same projects.</p>
@@ -89,7 +94,6 @@ export function Playblast() {
 
         <section {...stylex.props(playblastStyles.section)} aria-labelledby="boundary-heading">
           <div {...stylex.props(playblastStyles.sectionBlock)}>
-            <SectionEyebrow index="04" label="Features" />
             <h2 id="boundary-heading" {...stylex.props(playblastStyles.sectionTitle)}>What you get.</h2>
           </div>
           <ul {...stylex.props(playblastStyles.checkList)}>
@@ -100,7 +104,6 @@ export function Playblast() {
         <section {...stylex.props(playblastStyles.section)} aria-labelledby="finances-heading">
           <div {...stylex.props(playblastStyles.sectionHeaderSplit)}>
             <div {...stylex.props(playblastStyles.sectionBlock, playblastStyles.sectionBlockTight)}>
-              <SectionEyebrow index="05" label="Clients and finances" />
               <h2 id="finances-heading" {...stylex.props(playblastStyles.sectionTitle)}>Clients and finances.</h2>
             </div>
             <p {...stylex.props(playblastStyles.sectionIntro)}>
@@ -117,7 +120,6 @@ export function Playblast() {
         <section {...stylex.props(playblastStyles.section)} aria-labelledby="selfhost-heading">
           <div {...stylex.props(playblastStyles.sectionHeaderSplit)}>
             <div {...stylex.props(playblastStyles.sectionBlock, playblastStyles.sectionBlockTight)}>
-              <SectionEyebrow index="06" label="Deployment" />
               <h2 id="selfhost-heading" {...stylex.props(playblastStyles.sectionTitle)}>Runs on your infrastructure.</h2>
             </div>
             <div {...stylex.props(playblastStyles.sectionBody)}>
@@ -132,7 +134,6 @@ export function Playblast() {
 
         <section {...stylex.props(playblastStyles.section)} aria-labelledby="funding-heading">
           <div {...stylex.props(playblastStyles.sectionBlock)}>
-            <SectionEyebrow index="07" label="Support" />
             <h2 id="funding-heading" {...stylex.props(playblastStyles.sectionTitle)}>Support development.</h2>
             <p {...stylex.props(playblastStyles.sectionIntro)}>Optional sponsorship helps fund ongoing Playblast development.</p>
             <div {...stylex.props(playblastStyles.fundingCta)}>

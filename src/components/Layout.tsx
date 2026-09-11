@@ -47,8 +47,7 @@ export function Layout() {
       <header {...stylex.props(layoutStyles.nav)}>
         <div {...stylex.props(sharedStyles.container, layoutStyles.navInner)}>
           <NavLink to="/" end aria-label="brzrk home" className={stylex.props(layoutStyles.navBrand).className ?? ''}>
-            <span {...stylex.props(layoutStyles.navBrandMark)}>b/</span>
-            <span>brzrk</span>
+            <img {...stylex.props(layoutStyles.brandLogo)} src={`${import.meta.env.BASE_URL}logo.svg`} alt="" />
           </NavLink>
           <nav {...stylex.props(layoutStyles.navWrap)} aria-label="Primary navigation">
             <ul {...stylex.props(layoutStyles.navLinks)}>
@@ -80,7 +79,9 @@ export function Layout() {
       <footer {...stylex.props(layoutStyles.footer)}>
         <div {...stylex.props(sharedStyles.container, layoutStyles.footerGrid)}>
           <div>
-            <p {...stylex.props(layoutStyles.footerBrand)}>brzrk</p>
+            <p {...stylex.props(layoutStyles.footerBrand)}>
+              <img {...stylex.props(layoutStyles.brandLogo)} src={`${import.meta.env.BASE_URL}logo.svg`} alt="brzrk" />
+            </p>
             <p {...stylex.props(layoutStyles.footerDescriptor)}>Independent product company. Building tools for creative production.</p>
           </div>
           <nav aria-label="Footer navigation">

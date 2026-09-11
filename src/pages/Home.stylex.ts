@@ -3,50 +3,49 @@ import { tokens } from '../styles/tokens.stylex'
 
 const mq720 = '@media (max-width: 720px)'
 const mq400 = '@media (max-width: 400px)'
+const mqReducedMotion = '@media (prefers-reduced-motion: reduce)'
+
+const carrySignal = stylex.keyframes({
+  from: { transform: 'scaleX(0)' },
+  to: { transform: 'scaleX(1)' },
+})
 
 export const homeStyles = stylex.create({
   home: {},
   hero: {
     position: 'relative',
-    minHeight: 'min(50rem, calc(100vh - 4.75rem))',
-    overflowX: 'clip',
-    overflowY: 'hidden',
+    minHeight: '35rem',
+    overflow: 'hidden',
     borderBottomWidth: '1px',
     borderBottomStyle: 'solid',
-    borderBottomColor: tokens.rule,
-    [mq720]: {
-      minHeight: '42rem',
-    },
-    [mq400]: {
-      minHeight: '39rem',
-    },
+    borderBottomColor: tokens.ruleStrong,
   },
   heroGrid: {
     position: 'relative',
     zIndex: 1,
     display: 'grid',
     minHeight: 'inherit',
-    gridTemplateColumns: 'minmax(0, 1fr)',
+    gridTemplateColumns: 'minmax(0, 1.5fr) minmax(16rem, 0.5fr)',
+    gap: 'clamp(3rem, 9vw, 9rem)',
+    alignItems: 'end',
+    paddingBlock: 'clamp(4rem, 7vw, 6rem)',
     [mq720]: {
+      minHeight: 0,
       gridTemplateColumns: '1fr',
+      gap: tokens.space6,
+      paddingBlock: tokens.space7,
     },
   },
   heroContent: {
     display: 'flex',
-    maxWidth: '67rem',
+    maxWidth: '58rem',
     flexDirection: 'column',
-    justifyContent: 'center',
-    paddingBlock: tokens.space7,
-    paddingInlineStart: 'clamp(1.5rem, 5vw, 5rem)',
-    paddingInlineEnd: 0,
-    [mq720]: {
-      padding: `${tokens.space7} 0`,
-    },
   },
   heroTitle: {
-    maxWidth: '12ch',
-    marginBlock: `${tokens.space4} ${tokens.space6}`,
-    marginInline: 0,
+    maxWidth: '10ch',
+    marginBottom: tokens.space4,
+    fontSize: 'clamp(3.2rem, 7vw, 5.9rem)',
+    letterSpacing: '-0.038em',
   },
   heroTitleEm: {
     color: tokens.signal,
@@ -55,7 +54,7 @@ export const homeStyles = stylex.create({
   heroLede: {
     maxWidth: '42rem',
     marginTop: 0,
-    marginBottom: tokens.space5,
+    marginBottom: 0,
     color: tokens.paperMuted,
     fontSize: 'clamp(1.08rem, 2vw, 1.35rem)',
     lineHeight: 1.5,
@@ -64,20 +63,80 @@ export const homeStyles = stylex.create({
     display: 'flex',
     flexWrap: 'wrap',
     gap: tokens.space3,
-    marginTop: 0,
+    marginTop: tokens.space5,
     [mq400]: {
       alignItems: 'stretch',
       flexDirection: 'column',
     },
   },
+  heroStatus: {
+    paddingTop: tokens.space3,
+    borderTopWidth: '1px',
+    borderTopStyle: 'solid',
+    borderTopColor: tokens.signal,
+  },
+  heroStatusTitle: {
+    marginBottom: tokens.space3,
+    color: tokens.signal,
+    fontFamily: tokens.fontMono,
+    fontSize: '0.68rem',
+    letterSpacing: '0.07em',
+    textTransform: 'uppercase',
+  },
+  heroStatusList: {
+    margin: 0,
+  },
+  heroStatusRow: {
+    paddingBlock: tokens.space3,
+    borderTopWidth: '1px',
+    borderTopStyle: 'solid',
+    borderTopColor: tokens.rule,
+  },
+  heroStatusTerm: {
+    marginBottom: '0.3rem',
+    color: tokens.paperSubtle,
+    fontFamily: tokens.fontMono,
+    fontSize: '0.65rem',
+    letterSpacing: '0.05em',
+    textTransform: 'uppercase',
+  },
+  heroStatusValue: {
+    margin: 0,
+    color: tokens.paper,
+    fontSize: '0.9rem',
+    lineHeight: 1.45,
+  },
+  heroStatusValueSignal: {
+    color: tokens.signal,
+    fontFamily: tokens.fontMono,
+    fontSize: '0.72rem',
+    letterSpacing: '0.04em',
+    textTransform: 'uppercase',
+  },
+  heroSignal: {
+    position: 'absolute',
+    bottom: '-1px',
+    left: tokens.gutter,
+    width: 'clamp(7rem, 18vw, 14rem)',
+    height: '3px',
+    backgroundColor: tokens.signal,
+    transformOrigin: 'left center',
+    animationName: carrySignal,
+    animationDuration: '700ms',
+    animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+    animationFillMode: 'both',
+    [mqReducedMotion]: {
+      animationName: 'none',
+    },
+  },
   homeProduct: {
-    paddingBlock: tokens.space8,
+    paddingBlock: 'clamp(4.5rem, 8vw, 7rem)',
     backgroundColor: tokens.ink,
-    borderBottomWidth: '1px',
-    borderBottomStyle: 'solid',
-    borderBottomColor: tokens.rule,
+    borderTopWidth: '1px',
+    borderTopStyle: 'solid',
+    borderTopColor: tokens.ruleStrong,
     [mq720]: {
-      paddingBlock: tokens.space7,
+      paddingBlock: tokens.space6,
     },
   },
   productFeature: {
@@ -90,7 +149,7 @@ export const homeStyles = stylex.create({
     },
   },
   productFeatureTitle: {
-    marginBlock: `${tokens.space3} ${tokens.space4}`,
+    marginBottom: tokens.space4,
     marginInline: 0,
   },
   productFeatureLede: {

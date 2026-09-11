@@ -73,9 +73,10 @@ export const layoutStyles = stylex.create({
       minHeight: '44px',
     },
   },
-  navBrandMark: {
-    color: tokens.signal,
-    fontFamily: tokens.fontMono,
+  brandLogo: {
+    display: 'block',
+    width: 'clamp(6.5rem, 12vw, 9rem)',
+    height: 'auto',
   },
   navWrap: {
     [mq720]: {
@@ -187,6 +188,7 @@ export const layoutStyles = stylex.create({
     color: tokens.paper,
     fontSize: '1.1rem',
     fontWeight: 600,
+    lineHeight: 1,
   },
   footerDescriptor: {
     color: tokens.paperSubtle,
