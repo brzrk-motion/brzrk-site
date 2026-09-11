@@ -45,7 +45,7 @@ The fund is explicitly pre-launch and not yet open. Do not show $0 metrics, empt
 
 ## Deployment
 
-GitHub Pages base path is `/brzrk-site/`, configured by Vite and consumed by the router. Live URL: `https://brzrk-motion.github.io/brzrk-site/`.
+GitHub Pages uses the `/brzrk-site/` base path, configured by its deployment workflow and consumed by the router. Root-domain deployments such as Cloudflare Pages use `/`. GitHub Pages live URL: `https://brzrk-motion.github.io/brzrk-site/`.
 
 ## Claims boundary
 

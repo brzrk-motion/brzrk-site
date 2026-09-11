@@ -19,7 +19,7 @@ npm run build    # production build to dist/
 npm run preview  # preview production build
 ```
 
-For local dev, Vite serves at `/`. Production build uses base path `/brzrk-site/` for GitHub Pages.
+For local dev and root-domain deployments such as Cloudflare Pages, Vite serves at `/`. The GitHub Pages workflow sets `/brzrk-site/` for its project-site path.
 
 ## Pages
 
