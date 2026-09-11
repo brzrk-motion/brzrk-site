@@ -16,6 +16,8 @@ export const fundStyles = stylex.create({
     backgroundColor: tokens.ink,
   },
   hero: {
+    position: 'relative',
+    overflow: 'hidden',
     borderBottomWidth: '1px',
     borderBottomStyle: 'solid',
     borderBottomColor: tokens.ruleStrong,
@@ -23,6 +25,7 @@ export const fundStyles = stylex.create({
   },
   heroGrid: {
     position: 'relative',
+    zIndex: 1,
     display: 'grid',
     minHeight: '35rem',
     gridTemplateColumns: 'minmax(0, 1.5fr) minmax(16rem, 0.5fr)',

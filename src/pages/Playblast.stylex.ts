@@ -18,6 +18,8 @@ export const playblastStyles = stylex.create({
     overflowX: 'clip',
   },
   hero: {
+    position: 'relative',
+    overflow: 'hidden',
     borderBottomWidth: '1px',
     borderBottomStyle: 'solid',
     borderBottomColor: tokens.ruleStrong,
@@ -25,6 +27,7 @@ export const playblastStyles = stylex.create({
   },
   heroGrid: {
     position: 'relative',
+    zIndex: 1,
     display: 'grid',
     minHeight: '35rem',
     gridTemplateColumns: 'minmax(0, 1.5fr) minmax(16rem, 0.5fr)',

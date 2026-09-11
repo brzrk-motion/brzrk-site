@@ -9,28 +9,28 @@ export const LINKS = {
 const BASE = import.meta.env.BASE_URL
 export const SCREENSHOTS = [
   {
-    src: `${BASE}screenshots/clients.png`,
-    alt: 'Playblast client management with client list, retainer cycle utilization, and lifetime value on the selected record',
-    caption: 'Clients, retainers, and lifetime value in one record',
-    code: 'CLIENTS / 01',
-  },
-  {
-    src: `${BASE}screenshots/invoices.png`,
-    alt: 'Playblast project invoices list with outstanding balance and payment status per invoice',
-    caption: 'Invoices stay with the project',
-    code: 'INVOICES / 02',
+    src: `${BASE}screenshots/compare.png`,
+    alt: 'Playblast compare view with two versions in synced side-by-side playback',
+    caption: 'Versions align in synced side-by-side playback',
+    code: 'COMPARE / 01',
   },
   {
     src: `${BASE}screenshots/review.png`,
     alt: 'Playblast review player showing a deliverable cut with timestamped comments in the sidebar',
     caption: 'Timestamped comments stay attached to the version',
-    code: 'REVIEW / 03',
+    code: 'REVIEW / 02',
   },
   {
-    src: `${BASE}screenshots/compare.png`,
-    alt: 'Playblast compare view with two versions in synced side-by-side playback',
-    caption: 'Versions align in synced side-by-side playback',
-    code: 'COMPARE / 04',
+    src: `${BASE}screenshots/invoices.png`,
+    alt: 'Playblast project invoices list with outstanding balance and payment status per invoice',
+    caption: 'Invoices stay with the project',
+    code: 'INVOICES / 03',
+  },
+  {
+    src: `${BASE}screenshots/clients.png`,
+    alt: 'Playblast client management with client list, retainer cycle utilization, and lifetime value on the selected record',
+    caption: 'Clients, retainers, and lifetime value in one record',
+    code: 'CLIENTS / 04',
   },
 ] as const
 

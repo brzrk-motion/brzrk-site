@@ -55,7 +55,7 @@ May say:
 - Products are free/open source/self-hosted only where stated.
 - Sponsorship funds maintenance and development; it does not buy support, SLA, hosting, installation, roadmap control, or priority treatment.
 - Founder craft experience informs product judgment; brzrk is not positioned as a motion studio.
-- Contact is `brzrk@brzrk-motion.com`.
+- Contact is `brzrk@brzrkmotion.com`.
 
 Must not say:
 - Ready for studios everywhere, commercially validated, or production-proven.

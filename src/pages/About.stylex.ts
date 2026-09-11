@@ -16,6 +16,8 @@ export const aboutStyles = stylex.create({
     backgroundColor: tokens.ink,
   },
   hero: {
+    position: 'relative',
+    overflow: 'hidden',
     borderBottomWidth: '1px',
     borderBottomStyle: 'solid',
     borderBottomColor: tokens.ruleStrong,
@@ -23,6 +25,7 @@ export const aboutStyles = stylex.create({
   },
   heroInner: {
     position: 'relative',
+    zIndex: 1,
     display: 'grid',
     minHeight: '35rem',
     gridTemplateColumns: 'minmax(0, 1.8fr) minmax(15rem, 0.62fr)',
@@ -125,8 +128,8 @@ export const aboutStyles = stylex.create({
     display: 'grid',
     gridTemplateColumns: 'minmax(0, 1.15fr) minmax(18rem, 0.85fr)',
     gap: 'clamp(2rem, 8vw, 8rem)',
-    alignItems: 'end',
-    marginBottom: tokens.space1,
+    alignItems: 'start',
+    marginBottom: tokens.space5,
     [mq720]: {
       gridTemplateColumns: '1fr',
       gap: tokens.space4,

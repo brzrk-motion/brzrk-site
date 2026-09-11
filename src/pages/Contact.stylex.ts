@@ -16,6 +16,9 @@ export const contactStyles = stylex.create({
     backgroundColor: tokens.ink,
   },
   intro: {
+    position: 'relative',
+    minHeight: 'min(42rem, calc(100vh - 4.75rem))',
+    overflow: 'hidden',
     paddingBlock: 'clamp(3rem, 5vw, 4rem)',
     borderBottomWidth: '1px',
     borderBottomStyle: 'solid',
@@ -23,10 +26,12 @@ export const contactStyles = stylex.create({
     backgroundColor: tokens.inkDeep,
   },
   introGrid: {
+    position: 'relative',
+    zIndex: 1,
     display: 'grid',
     gridTemplateColumns: 'minmax(0, 1.5fr) minmax(17rem, 0.5fr)',
     gap: 'clamp(3rem, 9vw, 9rem)',
-    alignItems: 'end',
+    alignItems: 'center',
     [mq800]: {
       gridTemplateColumns: '1fr',
       gap: tokens.space4,
@@ -37,6 +42,10 @@ export const contactStyles = stylex.create({
     marginBottom: tokens.space4,
     fontSize: 'clamp(3rem, 6vw, 4.8rem)',
     letterSpacing: '-0.038em',
+  },
+  titleLine: {
+    display: 'block',
+    marginBottom: tokens.space4,
   },
   lede: {
     maxWidth: '42rem',
@@ -79,8 +88,8 @@ export const contactStyles = stylex.create({
     display: 'grid',
     gridTemplateColumns: 'minmax(0, 1fr) minmax(18rem, 0.65fr)',
     gap: 'clamp(2rem, 8vw, 8rem)',
-    alignItems: 'end',
-    marginBottom: tokens.space3,
+    alignItems: 'start',
+    marginBottom: tokens.space6,
     [mq800]: {
       gridTemplateColumns: '1fr',
       gap: tokens.space3,
@@ -92,8 +101,14 @@ export const contactStyles = stylex.create({
   },
   composeIntro: {
     maxWidth: '32rem',
+    justifySelf: 'end',
+    textAlign: 'right',
     color: tokens.paperMuted,
     lineHeight: 1.65,
+    [mq800]: {
+      justifySelf: 'start',
+      textAlign: 'left',
+    },
   },
   form: {
     position: 'relative',
@@ -288,9 +303,12 @@ export const contactStyles = stylex.create({
     lineHeight: 1.6,
   },
   submit: {
-    minWidth: '12rem',
+    width: 'fit-content',
+    minWidth: 0,
+    justifyContent: 'center',
+    gap: tokens.space2,
     [mq600]: {
-      width: '100%',
+      width: 'fit-content',
     },
   },
   technical: {
