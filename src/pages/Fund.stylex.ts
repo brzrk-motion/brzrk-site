@@ -1,150 +1,439 @@
 import * as stylex from '@stylexjs/stylex'
 import { tokens } from '../styles/tokens.stylex'
 
-const mq1050 = '@media (max-width: 1050px)'
-const mq720 = '@media (max-width: 720px)'
+const mq800 = '@media (max-width: 800px)'
+const mq520 = '@media (max-width: 520px)'
+const mqReducedMotion = '@media (prefers-reduced-motion: reduce)'
+
+const carrySignal = stylex.keyframes({
+  from: { transform: 'scaleX(0)' },
+  to: { transform: 'scaleX(1)' },
+})
 
 export const fundStyles = stylex.create({
-  sectionIntro: {
-    maxWidth: tokens.contentWidth,
+  page: {
+    overflowX: 'clip',
+    backgroundColor: tokens.ink,
+  },
+  hero: {
+    borderBottomWidth: '1px',
+    borderBottomStyle: 'solid',
+    borderBottomColor: tokens.ruleStrong,
+    backgroundColor: tokens.inkDeep,
+  },
+  heroGrid: {
+    position: 'relative',
+    display: 'grid',
+    minHeight: '35rem',
+    gridTemplateColumns: 'minmax(0, 1.5fr) minmax(16rem, 0.5fr)',
+    gap: 'clamp(3rem, 9vw, 9rem)',
+    alignItems: 'end',
+    paddingBlock: 'clamp(4rem, 7vw, 6rem)',
+    [mq800]: {
+      minHeight: 0,
+      gridTemplateColumns: '1fr',
+      gap: tokens.space6,
+      paddingBlock: tokens.space7,
+    },
+  },
+  heroCopy: {
+    maxWidth: '58rem',
+  },
+  heroTitle: {
+    maxWidth: '10ch',
+    marginBottom: tokens.space4,
+    fontSize: 'clamp(3.2rem, 7vw, 5.9rem)',
+    letterSpacing: '-0.038em',
+  },
+  heroLede: {
+    maxWidth: '43rem',
     color: tokens.paperMuted,
+    fontSize: 'clamp(1.1rem, 2vw, 1.35rem)',
+    lineHeight: 1.55,
+  },
+  heroActions: {
+    marginTop: tokens.space5,
   },
   status: {
-    display: 'grid',
-    gridTemplateColumns: '0.7fr 1.3fr',
-    gap: tokens.space6,
-    [mq720]: {
-      gridTemplateColumns: '1fr',
-    },
+    paddingTop: tokens.space3,
+    borderTopWidth: '1px',
+    borderTopStyle: 'solid',
+    borderTopColor: tokens.signal,
   },
-  statusSignal: {
-    color: tokens.signal,
-    fontFamily: tokens.fontMono,
-    fontSize: '0.72rem',
-    lineHeight: 1.5,
-    textTransform: 'uppercase',
-    letterSpacing: '0.06em',
-  },
-  policy: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    marginTop: tokens.space5,
-    borderWidth: '1px',
-    borderStyle: 'solid',
-    borderColor: tokens.ruleStrong,
-    [mq720]: {
-      gridTemplateColumns: '1fr',
-    },
-  },
-  policyArticle: {
-    padding: tokens.space4,
-    borderRightWidth: '1px',
-    borderRightStyle: 'solid',
-    borderRightColor: tokens.rule,
-    ':last-child': {
-      borderRightWidth: 0,
-    },
-    [mq720]: {
-      borderRightWidth: 0,
-      borderBottomWidth: '1px',
-      borderBottomStyle: 'solid',
-      borderBottomColor: tokens.rule,
-      ':last-child': {
-        borderBottomWidth: 0,
-      },
-    },
-  },
-  policyTitle: {
+  statusTitle: {
     marginBottom: tokens.space3,
+    fontSize: '1.2rem',
+    letterSpacing: '-0.02em',
   },
-  policyText: {
-    color: tokens.paperSubtle,
-    fontSize: '0.88rem',
+  statusList: {
+    margin: 0,
   },
-  tierGrid: {
+  statusRow: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(5, minmax(0, 1fr))',
-    marginTop: tokens.space5,
-    marginBottom: 0,
-    marginInline: 0,
-    padding: 0,
-    listStyle: 'none',
-    borderWidth: '1px',
-    borderStyle: 'solid',
-    borderColor: tokens.rule,
-    [mq1050]: {
-      gridTemplateColumns: 'repeat(2, 1fr)',
-    },
-    [mq720]: {
-      gridTemplateColumns: '1fr',
-    },
-  },
-  tierCard: {
-    minWidth: 0,
-    padding: tokens.space4,
-    borderRightWidth: '1px',
-    borderRightStyle: 'solid',
-    borderRightColor: tokens.rule,
-    ':last-child': {
-      borderRightWidth: 0,
-    },
-    [mq1050]: {
-      borderBottomWidth: '1px',
-      borderBottomStyle: 'solid',
-      borderBottomColor: tokens.rule,
-      ':nth-child(2n)': {
-        borderRightWidth: 0,
-      },
-      ':last-child': {
-        borderRightWidth: '1px',
-        borderBottomWidth: 0,
-      },
-    },
-    [mq720]: {
-      borderRightWidth: 0,
-      borderBottomWidth: '1px',
-      borderBottomStyle: 'solid',
-      borderBottomColor: tokens.rule,
-      ':nth-child(2n)': {
-        borderRightWidth: 0,
-      },
-      ':last-child': {
-        borderRightWidth: 0,
-        borderBottomWidth: 0,
-      },
-    },
-  },
-  tierCardTitle: {
-    marginBottom: tokens.space3,
-    fontSize: '1rem',
-  },
-  tierCardPrice: {
-    marginBottom: tokens.space3,
-  },
-  tierCardAmount: {
-    color: tokens.paper,
-    fontSize: '1.4rem',
-  },
-  tierCardPeriod: {
-    color: tokens.paperSubtle,
-    fontSize: '0.72rem',
-  },
-  tierCardRecognition: {
-    color: tokens.paperSubtle,
-    fontSize: '0.78rem',
-  },
-  tierCardBoundary: {
-    color: tokens.paperSubtle,
-    fontSize: '0.78rem',
-    marginTop: tokens.space3,
-  },
-  fundingDisclaimer: {
-    color: tokens.paperSubtle,
-    fontSize: '0.78rem',
-    marginTop: tokens.space4,
-    paddingTop: tokens.space4,
+    gridTemplateColumns: '1fr auto',
+    gap: tokens.space3,
+    paddingBlock: tokens.space3,
     borderTopWidth: '1px',
     borderTopStyle: 'solid',
     borderTopColor: tokens.rule,
+  },
+  statusTerm: {
+    color: tokens.paperSubtle,
+    fontFamily: tokens.fontMono,
+    fontSize: '0.65rem',
+    letterSpacing: '0.05em',
+    textTransform: 'uppercase',
+  },
+  statusValue: {
+    margin: 0,
+    color: tokens.paper,
+    fontSize: '0.84rem',
+    textAlign: 'right',
+  },
+  statusValueSignal: {
+    color: tokens.signal,
+    fontFamily: tokens.fontMono,
+    fontSize: '0.72rem',
+    letterSpacing: '0.04em',
+    textTransform: 'uppercase',
+  },
+  heroSignal: {
+    position: 'absolute',
+    bottom: '-1px',
+    left: tokens.gutter,
+    width: 'clamp(7rem, 18vw, 14rem)',
+    height: '3px',
+    backgroundColor: tokens.signal,
+    transformOrigin: 'left center',
+    animationName: carrySignal,
+    animationDuration: '700ms',
+    animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+    animationFillMode: 'both',
+    [mqReducedMotion]: {
+      animationName: 'none',
+    },
+  },
+  circuit: {
+    paddingBlock: 'clamp(4.5rem, 8vw, 7rem)',
+  },
+  sectionHeading: {
+    display: 'grid',
+    gridTemplateColumns: 'minmax(0, 1fr) minmax(18rem, 0.65fr)',
+    gap: 'clamp(2rem, 8vw, 8rem)',
+    alignItems: 'end',
+    marginBottom: tokens.space6,
+    [mq800]: {
+      gridTemplateColumns: '1fr',
+      gap: tokens.space3,
+      marginBottom: tokens.space5,
+    },
+  },
+  sectionTitle: {
+    maxWidth: '13ch',
+    margin: 0,
+    fontSize: 'clamp(2.5rem, 5vw, 4.6rem)',
+  },
+  sectionIntro: {
+    maxWidth: '34rem',
+    color: tokens.paperMuted,
+    lineHeight: 1.65,
+  },
+  flow: {
+    position: 'relative',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    margin: 0,
+    padding: 0,
+    listStyle: 'none',
+    borderTopWidth: '1px',
+    borderTopStyle: 'solid',
+    borderTopColor: tokens.signal,
+    borderBottomWidth: '1px',
+    borderBottomStyle: 'solid',
+    borderBottomColor: tokens.ruleStrong,
+    [mq800]: {
+      gridTemplateColumns: '1fr',
+    },
+  },
+  flowStep: {
+    position: 'relative',
+    minHeight: '13rem',
+    paddingBlock: `${tokens.space7} ${tokens.space5}`,
+    paddingInline: tokens.space5,
+    borderRightWidth: '1px',
+    borderRightStyle: 'solid',
+    borderRightColor: tokens.rule,
+    ':last-child': {
+      borderRightWidth: 0,
+    },
+    [mq800]: {
+      minHeight: 0,
+      paddingBlock: tokens.space5,
+      paddingInlineStart: tokens.space7,
+      paddingInlineEnd: tokens.space4,
+      borderRightWidth: 0,
+      borderBottomWidth: '1px',
+      borderBottomStyle: 'solid',
+      borderBottomColor: tokens.rule,
+      ':last-child': {
+        borderBottomWidth: 0,
+      },
+    },
+  },
+  flowConnector: {
+    position: 'absolute',
+    top: tokens.space5,
+    left: 0,
+    right: 0,
+    height: '1px',
+    backgroundColor: tokens.signal,
+    transformOrigin: 'left center',
+    animationName: carrySignal,
+    animationDuration: '700ms',
+    animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+    animationFillMode: 'both',
+    [mq800]: {
+      top: 0,
+      bottom: 0,
+      left: tokens.space5,
+      right: 'auto',
+      width: '1px',
+      height: 'auto',
+      animationName: 'none',
+    },
+    [mqReducedMotion]: {
+      animationName: 'none',
+    },
+  },
+  flowConnectorLast: {
+    right: 'auto',
+    width: tokens.space5,
+    [mq800]: {
+      bottom: 'auto',
+      width: '1px',
+      height: tokens.space5,
+    },
+  },
+  flowNode: {
+    position: 'absolute',
+    top: '-0.35rem',
+    right: '-0.35rem',
+    width: '0.7rem',
+    height: '0.7rem',
+    borderWidth: '2px',
+    borderStyle: 'solid',
+    borderColor: tokens.signal,
+    backgroundColor: tokens.ink,
+    [mq800]: {
+      top: 'auto',
+      right: '-0.35rem',
+      bottom: '-0.35rem',
+    },
+  },
+  flowNumber: {
+    display: 'block',
+    marginBottom: tokens.space4,
+    color: tokens.signal,
+    fontFamily: tokens.fontMono,
+    fontSize: '0.68rem',
+  },
+  flowTitle: {
+    maxWidth: '14ch',
+    marginBottom: tokens.space3,
+    fontSize: '1.35rem',
+    lineHeight: 1.15,
+  },
+  flowBody: {
+    maxWidth: '30rem',
+    color: tokens.paperSubtle,
+    fontSize: '0.9rem',
+    lineHeight: 1.6,
+  },
+  hardStop: {
+    display: 'grid',
+    gridTemplateColumns: '5rem 1rem 1fr',
+    gap: tokens.space3,
+    alignItems: 'center',
+    maxWidth: '48rem',
+    marginTop: tokens.space4,
+    marginLeft: 'auto',
+    paddingTop: tokens.space4,
+    color: tokens.paperMuted,
+    fontSize: '0.92rem',
+    [mq520]: {
+      gridTemplateColumns: '2rem 1rem 1fr',
+    },
+  },
+  hardStopWire: {
+    width: '100%',
+    height: '1px',
+    backgroundColor: tokens.signal,
+  },
+  hardStopMark: {
+    width: '0.75rem',
+    height: '0.75rem',
+    borderWidth: '2px',
+    borderStyle: 'solid',
+    borderColor: tokens.signal,
+  },
+  hardStopTitle: {
+    marginRight: tokens.space1,
+    color: tokens.paper,
+  },
+  tiers: {
+    paddingBlock: 'clamp(4.5rem, 8vw, 7rem)',
+    borderTopWidth: '1px',
+    borderTopStyle: 'solid',
+    borderTopColor: tokens.ruleStrong,
+    backgroundColor: tokens.graphite,
+  },
+  tierLedger: {
+    margin: 0,
+    padding: 0,
+    listStyle: 'none',
+    borderTopWidth: '1px',
+    borderTopStyle: 'solid',
+    borderTopColor: tokens.ruleStrong,
+  },
+  tierRow: {
+    display: 'grid',
+    gridTemplateColumns: 'minmax(10rem, 0.65fr) minmax(10rem, 0.55fr) minmax(0, 1.4fr)',
+    gap: tokens.space4,
+    alignItems: 'center',
+    minHeight: '6.5rem',
+    paddingBlock: tokens.space4,
+    borderBottomWidth: '1px',
+    borderBottomStyle: 'solid',
+    borderBottomColor: tokens.rule,
+    [mq800]: {
+      gridTemplateColumns: '1fr 1fr',
+    },
+    [mq520]: {
+      gridTemplateColumns: '1fr',
+      gap: tokens.space2,
+    },
+  },
+  tierName: {
+    margin: 0,
+    fontSize: '1.2rem',
+  },
+  tierPrice: {
+    color: tokens.paperSubtle,
+    fontFamily: tokens.fontMono,
+    fontSize: '0.72rem',
+    [mq800]: {
+      textAlign: 'right',
+    },
+    [mq520]: {
+      textAlign: 'left',
+    },
+  },
+  tierAmount: {
+    color: tokens.signal,
+    fontFamily: tokens.fontSans,
+    fontSize: '1.4rem',
+    fontWeight: 600,
+  },
+  tierRecognition: {
+    color: tokens.paperMuted,
+    [mq800]: {
+      gridColumn: '1 / -1',
+    },
+  },
+  fundingDisclaimer: {
+    marginTop: tokens.space4,
+    color: tokens.paperSubtle,
+    fontSize: '0.8rem',
+  },
+  fundingLink: {
+    display: 'inline-flex',
+    minHeight: '44px',
+    alignItems: 'center',
+  },
+  boundary: {
+    paddingBlock: 'clamp(4.5rem, 8vw, 7rem)',
+    borderTopWidth: '1px',
+    borderTopStyle: 'solid',
+    borderTopColor: tokens.ruleStrong,
+  },
+  boundaryGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'minmax(0, 0.8fr) minmax(18rem, 1.2fr)',
+    gap: 'clamp(3rem, 10vw, 10rem)',
+    [mq800]: {
+      gridTemplateColumns: '1fr',
+      gap: tokens.space5,
+    },
+  },
+  boundaryTitle: {
+    maxWidth: '12ch',
+    marginBottom: tokens.space4,
+  },
+  boundaryIntro: {
+    maxWidth: '30rem',
+    color: tokens.paperMuted,
+  },
+  boundaryList: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    margin: 0,
+    padding: 0,
+    listStyle: 'none',
+    borderTopWidth: '1px',
+    borderTopStyle: 'solid',
+    borderTopColor: tokens.ruleStrong,
+    [mq520]: {
+      gridTemplateColumns: '1fr',
+    },
+  },
+  boundaryItem: {
+    minHeight: '4rem',
+    paddingBlock: tokens.space3,
+    paddingInline: tokens.space3,
+    borderBottomWidth: '1px',
+    borderBottomStyle: 'solid',
+    borderBottomColor: tokens.rule,
+    color: tokens.paper,
+    fontWeight: 600,
+    ':nth-child(odd)': {
+      borderRightWidth: '1px',
+      borderRightStyle: 'solid',
+      borderRightColor: tokens.rule,
+    },
+    [mq520]: {
+      paddingInline: 0,
+      ':nth-child(odd)': {
+        borderRightWidth: 0,
+      },
+    },
+  },
+  close: {
+    paddingBlock: 'clamp(4.5rem, 8vw, 7rem)',
+    borderTopWidth: '1px',
+    borderTopStyle: 'solid',
+    borderTopColor: tokens.ruleStrong,
+    backgroundColor: tokens.inkDeep,
+  },
+  closeGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'minmax(0, 1.15fr) minmax(18rem, 0.85fr)',
+    gap: 'clamp(3rem, 10vw, 10rem)',
+    alignItems: 'end',
+    [mq800]: {
+      gridTemplateColumns: '1fr',
+      gap: tokens.space4,
+    },
+  },
+  closeTitle: {
+    maxWidth: '12ch',
+    margin: 0,
+    fontSize: 'clamp(2.5rem, 5vw, 4.8rem)',
+  },
+  closeBody: {
+    maxWidth: '35rem',
+    color: tokens.paperMuted,
+  },
+  closeActions: {
+    marginTop: tokens.space5,
   },
 })

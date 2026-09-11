@@ -1,28 +1,55 @@
+import { useState } from 'react'
 import * as stylex from '@stylexjs/stylex'
-import { OceanHero } from '../components/OceanHero'
 import { sharedStyles } from '../styles/shared.stylex'
 import { contactStyles } from './Contact.stylex'
 
 const CONTACT_EMAIL = 'brzrk@brzrk-motion.com'
+const TOPICS = [
+  {
+    value: 'Playblast studio interest',
+    label: 'Evaluating Playblast',
+    detail: 'Questions about the workflow, self-hosting, or fit for a small studio.',
+  },
+  {
+    value: 'Product feedback',
+    label: 'Product feedback',
+    detail: 'Share what worked, what did not, or what needs clearer consideration.',
+  },
+  {
+    value: 'General',
+    label: 'General enquiry',
+    detail: 'For other brzrk work that does not belong in the issue tracker.',
+  },
+]
 
 export function Contact() {
-  return (
-    <div {...stylex.props(sharedStyles.page)}>
-      <div {...stylex.props(sharedStyles.container)}>
-        <header {...stylex.props(sharedStyles.fullBleedHero, sharedStyles.revealHero)}>
-          <OceanHero />
-          <div {...stylex.props(sharedStyles.heroBandChild)}>
-            <p {...stylex.props(sharedStyles.pageKicker)}>04 / Contact</p>
-            <h1>Get in touch.</h1>
-          </div>
-          <p {...stylex.props(sharedStyles.heroBandChild, sharedStyles.pageIntro)}>Questions about Playblast, product feedback, or other brzrk work.</p>
-        </header>
+  const [topic, setTopic] = useState(TOPICS[0].value)
 
-        <section {...stylex.props(sharedStyles.section)} aria-labelledby="contact-form-heading">
-          <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>01</span> Email draft</p>
-          <h2 id="contact-form-heading" {...stylex.props(sharedStyles.sectionTitle)}>How can we help?</h2>
+  return (
+    <div {...stylex.props(contactStyles.page)}>
+      <header {...stylex.props(contactStyles.intro)}>
+        <div {...stylex.props(sharedStyles.container, contactStyles.introGrid)}>
+          <div>
+            <h1 {...stylex.props(contactStyles.title)}>Send the context. Keep the handoff simple.</h1>
+            <p {...stylex.props(contactStyles.lede)}>Questions about Playblast, product feedback, or other brzrk work can start here.</p>
+          </div>
+          <aside {...stylex.props(contactStyles.direct)} aria-labelledby="direct-heading">
+            <h2 id="direct-heading" {...stylex.props(contactStyles.directTitle)}>Prefer plain email?</h2>
+            <a href={`mailto:${CONTACT_EMAIL}`} {...stylex.props(contactStyles.emailLink)}>{CONTACT_EMAIL}</a>
+            <p {...stylex.props(contactStyles.directNote)}>The form below prepares a draft to this address. Nothing is submitted through the site.</p>
+          </aside>
+        </div>
+      </header>
+
+      <section {...stylex.props(contactStyles.compose)} aria-labelledby="contact-form-heading">
+        <div {...stylex.props(sharedStyles.container)}>
+          <div {...stylex.props(contactStyles.composeHeading)}>
+            <h2 id="contact-form-heading" {...stylex.props(contactStyles.composeTitle)}>Draft the message.</h2>
+            <p {...stylex.props(contactStyles.composeIntro)}>Choose the closest route, add the useful context, then continue in your default email app.</p>
+          </div>
           <form
             {...stylex.props(contactStyles.form)}
+            aria-describedby="contact-privacy-note"
             onSubmit={(event) => {
               event.preventDefault()
               const data = new FormData(event.currentTarget)
@@ -31,40 +58,61 @@ export function Contact() {
               window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
             }}
           >
-            <div {...stylex.props(contactStyles.field)}>
-              <label {...stylex.props(contactStyles.label)} htmlFor="contact-name">Name <span {...stylex.props(contactStyles.required)}>(required)</span></label>
-              <input id="contact-name" name="name" type="text" required autoComplete="name" {...stylex.props(contactStyles.input)} />
+            <div {...stylex.props(contactStyles.formSignal)} aria-hidden="true" />
+            <fieldset {...stylex.props(contactStyles.routes)}>
+              <legend {...stylex.props(contactStyles.legend)}>Choose a route <span {...stylex.props(contactStyles.required)}>(required)</span></legend>
+              <div {...stylex.props(contactStyles.routeGrid)}>
+                {TOPICS.map((item, index) => (
+                  <label key={item.value} {...stylex.props(contactStyles.route, topic === item.value && contactStyles.routeActive)}>
+                    <span {...stylex.props(contactStyles.routeTopline)}>
+                      <input
+                        name="topic"
+                        type="radio"
+                        value={item.value}
+                        required
+                        checked={topic === item.value}
+                        onChange={() => setTopic(item.value)}
+                        {...stylex.props(contactStyles.radio)}
+                      />
+                      <span {...stylex.props(contactStyles.routeNumber)}>{String(index + 1).padStart(2, '0')}</span>
+                    </span>
+                    <span {...stylex.props(contactStyles.routeTitle)}>{item.label}</span>
+                    <span {...stylex.props(contactStyles.routeDetail)}>{item.detail}</span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+            <div {...stylex.props(contactStyles.identityGrid)}>
+              <div {...stylex.props(contactStyles.field)}>
+                <label {...stylex.props(contactStyles.label)} htmlFor="contact-name">Name <span {...stylex.props(contactStyles.required)}>(required)</span></label>
+                <input id="contact-name" name="name" type="text" required autoComplete="name" {...stylex.props(contactStyles.input)} />
+              </div>
+              <div {...stylex.props(contactStyles.field)}>
+                <label {...stylex.props(contactStyles.label)} htmlFor="contact-email">Email <span {...stylex.props(contactStyles.required)}>(required)</span></label>
+                <input id="contact-email" name="email" type="email" required autoComplete="email" {...stylex.props(contactStyles.input)} />
+              </div>
             </div>
-            <div {...stylex.props(contactStyles.field)}>
-              <label {...stylex.props(contactStyles.label)} htmlFor="contact-email">Email <span {...stylex.props(contactStyles.required)}>(required)</span></label>
-              <input id="contact-email" name="email" type="email" required autoComplete="email" {...stylex.props(contactStyles.input)} />
+            <div {...stylex.props(contactStyles.field, contactStyles.messageField)}>
+              <label {...stylex.props(contactStyles.label)} htmlFor="contact-message">Useful context <span {...stylex.props(contactStyles.required)}>(required)</span></label>
+              <textarea id="contact-message" name="message" rows={7} required placeholder="What are you evaluating, trying, or reporting?" {...stylex.props(contactStyles.input, contactStyles.textarea)} />
             </div>
-            <div {...stylex.props(contactStyles.field)}>
-              <label {...stylex.props(contactStyles.label)} htmlFor="contact-topic">Topic <span {...stylex.props(contactStyles.required)}>(required)</span></label>
-              <select id="contact-topic" name="topic" required defaultValue="" {...stylex.props(contactStyles.input)}>
-                <option value="" disabled>Select a reason</option>
-                <option value="Playblast studio interest">Playblast studio interest</option>
-                <option value="Product feedback">Product feedback</option>
-                <option value="General">General</option>
-              </select>
+            <div {...stylex.props(contactStyles.formFooter)}>
+              <p id="contact-privacy-note" {...stylex.props(contactStyles.privacyNote)}>This opens a draft in your default email app. No form data is sent to a brzrk server.</p>
+              <button type="submit" {...stylex.props(sharedStyles.btn, sharedStyles.btnPrimary, contactStyles.submit)}>Open email draft</button>
             </div>
-            <div {...stylex.props(contactStyles.field)}>
-              <label {...stylex.props(contactStyles.label)} htmlFor="contact-message">Message <span {...stylex.props(contactStyles.required)}>(required)</span></label>
-              <textarea id="contact-message" name="message" rows={6} required {...stylex.props(contactStyles.input, contactStyles.textarea)} />
-            </div>
-            <button type="submit" {...stylex.props(sharedStyles.btn, sharedStyles.btnPrimary, contactStyles.submit)}>Open email draft <span aria-hidden="true">↗</span></button>
           </form>
-          <p {...stylex.props(sharedStyles.externalNote)}>Submitting opens a draft in your default email app. No form data is sent to a brzrk server.</p>
-        </section>
+        </div>
+      </section>
 
-        <section {...stylex.props(sharedStyles.section)} aria-labelledby="technical-heading">
-          <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>02</span> Technical issues</p>
-          <h2 id="technical-heading" {...stylex.props(sharedStyles.sectionTitle)}>Bug reports</h2>
-          <div {...stylex.props(sharedStyles.sectionBody)}>
-            <p>For reproducible Playblast issues, please use the <a href="https://github.com/brzrk-motion/Playblast/issues" target="_blank" rel="noopener noreferrer">GitHub issue tracker</a>.</p>
+      <section {...stylex.props(contactStyles.technical)} aria-labelledby="technical-heading">
+        <div {...stylex.props(sharedStyles.container, contactStyles.technicalGrid)}>
+          <h2 id="technical-heading" {...stylex.props(contactStyles.technicalTitle)}>Found a reproducible bug?</h2>
+          <div {...stylex.props(contactStyles.technicalBody)}>
+            <p>Use the public Playblast issue tracker so technical details can stay with the report.</p>
+            <a href="https://github.com/brzrk-motion/Playblast/issues" target="_blank" rel="noopener noreferrer" {...stylex.props(sharedStyles.btn, contactStyles.technicalLink)}>Open the issue tracker</a>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </div>
   )
 }

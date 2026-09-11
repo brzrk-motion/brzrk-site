@@ -23,8 +23,12 @@ export function ScreenshotCarousel({ screenshots }: ScreenshotCarouselProps) {
     setActiveIndex((index + total) % total)
   }
 
-  const showPrevious = () => showSlide(activeIndex - 1)
-  const showNext = () => showSlide(activeIndex + 1)
+  const moveSlide = (direction: -1 | 1) => {
+    setActiveIndex((currentIndex) => (currentIndex + direction + total) % total)
+  }
+
+  const showPrevious = () => moveSlide(-1)
+  const showNext = () => moveSlide(1)
 
   useEffect(() => {
     if (activeIndex >= total) setActiveIndex(0)
@@ -84,12 +88,13 @@ export function ScreenshotCarousel({ screenshots }: ScreenshotCarouselProps) {
         onPointerUp={handlePointerUp}
         onPointerCancel={handlePointerCancel}
         onPointerLeave={handlePointerCancel}
+        onLostPointerCapture={() => { pointerStart.current = null }}
       >
-        <div {...stylex.props(sharedStyles.evidenceFrameChrome, carouselStyles.chrome)}>
+        <div {...stylex.props(sharedStyles.evidenceFrameChrome)}>
           <span>{activeShot.code}</span>
           <span>1440 × 900 / CURRENT UI</span>
         </div>
-        <div {...stylex.props(carouselStyles.slides)}>
+        <div id="playblast-slides" {...stylex.props(carouselStyles.slides)}>
           {screenshots.map((shot, index) => (
             <figure
               key={shot.src}
@@ -113,8 +118,7 @@ export function ScreenshotCarousel({ screenshots }: ScreenshotCarouselProps) {
                 />
               </div>
               <figcaption {...stylex.props(carouselStyles.figcaption)}>
-                <span {...stylex.props(carouselStyles.figcaptionCode)}>{shot.code}</span>
-                <span>{shot.caption}</span>
+                {shot.caption}
               </figcaption>
             </figure>
           ))}
@@ -124,25 +128,30 @@ export function ScreenshotCarousel({ screenshots }: ScreenshotCarouselProps) {
           {...stylex.props(carouselStyles.control, carouselStyles.controlPrevious)}
           onPointerDown={(event) => event.stopPropagation()}
           onClick={showPrevious}
-          aria-controls={`playblast-slide-${activeIndex + 1}`}
+          aria-controls="playblast-slides"
           aria-label="Previous product screen"
         >
-          ←
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden="true">
+            <path d="M15 18 9 12l6-6" />
+          </svg>
         </button>
         <button
           type="button"
           {...stylex.props(carouselStyles.control, carouselStyles.controlNext)}
           onPointerDown={(event) => event.stopPropagation()}
           onClick={showNext}
-          aria-controls={`playblast-slide-${activeIndex + 1}`}
+          aria-controls="playblast-slides"
           aria-label="Next product screen"
         >
-          →
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden="true">
+            <path d="m9 18 6-6-6-6" />
+          </svg>
         </button>
       </div>
       <div {...stylex.props(carouselStyles.footer)}>
         <p {...stylex.props(carouselStyles.status)} aria-live="polite">
-          Screen {activeIndex + 1} of {total}: {activeShot.caption}
+          Screen {String(activeIndex + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+          <span className="sr-only">: {activeShot.caption}</span>
         </p>
         <div {...stylex.props(carouselStyles.dots)} role="group" aria-label="Choose a product screen">
           {screenshots.map((shot, index) => (
@@ -157,7 +166,7 @@ export function ScreenshotCarousel({ screenshots }: ScreenshotCarouselProps) {
             />
           ))}
         </div>
-        <p {...stylex.props(carouselStyles.hint)}>Use ← → or swipe</p>
+        <p {...stylex.props(carouselStyles.hint)}>Use arrow keys or swipe</p>
       </div>
     </div>
   )

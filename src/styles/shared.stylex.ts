@@ -175,6 +175,7 @@ export const sharedStyles = stylex.create({
   page: {
     paddingBlock: `${tokens.space7} ${tokens.space8}`,
     backgroundColor: tokens.ink,
+    overflowX: 'clip',
     [mq720]: {
       paddingBlock: tokens.space7,
     },
@@ -204,7 +205,8 @@ export const sharedStyles = stylex.create({
     position: 'relative',
     zIndex: 1,
     width: 'min(100%, 67rem)',
-    marginInline: 'auto',
+    marginInlineStart: 0,
+    marginInlineEnd: 'auto',
   },
   pageHeader: {},
   pageKicker: {
@@ -218,7 +220,8 @@ export const sharedStyles = stylex.create({
     position: 'relative',
     zIndex: 1,
     width: 'min(100%, 67rem)',
-    marginInline: 'auto',
+    marginInlineStart: 0,
+    marginInlineEnd: 'auto',
     paddingTop: '0.65rem',
     color: tokens.signal,
     fontFamily: tokens.fontMono,
@@ -232,6 +235,7 @@ export const sharedStyles = stylex.create({
   },
   pageIntro: {
     maxWidth: '42rem',
+    marginInline: 0,
     color: tokens.paperMuted,
     fontSize: 'clamp(1.08rem, 2vw, 1.35rem)',
     lineHeight: 1.55,

@@ -8,29 +8,30 @@ const mqReducedMotion = '@media (prefers-reduced-motion: reduce)'
 export const carouselStyles = stylex.create({
   carousel: {
     width: '100%',
+    maxWidth: '100%',
+    minWidth: 0,
     margin: 0,
+    overflow: 'hidden',
     ':focus-visible': {
       outlineOffset: '6px',
     },
   },
   viewport: {
     position: 'relative',
+    width: '100%',
+    minWidth: 0,
     overflow: 'hidden',
+    backgroundColor: tokens.graphite,
     borderWidth: '1px',
     borderStyle: 'solid',
     borderColor: tokens.ruleStrong,
-    backgroundColor: tokens.graphite,
     touchAction: 'pan-y',
     userSelect: 'none',
   },
-  chrome: {
-    borderWidth: 0,
-    borderBottomWidth: '1px',
-    borderBottomStyle: 'solid',
-    borderBottomColor: tokens.rule,
-  },
   slides: {
+    width: '100%',
     minWidth: 0,
+    overflow: 'hidden',
   },
   slide: {
     margin: 0,
@@ -47,9 +48,6 @@ export const carouselStyles = stylex.create({
     height: 'auto',
   },
   figcaption: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    gap: tokens.space3,
     padding: tokens.space3,
     borderTopWidth: '1px',
     borderTopStyle: 'solid',
@@ -58,12 +56,6 @@ export const carouselStyles = stylex.create({
     fontFamily: tokens.fontMono,
     fontSize: '0.72rem',
     lineHeight: 1.5,
-    [mq400]: {
-      flexDirection: 'column',
-    },
-  },
-  figcaptionCode: {
-    color: tokens.signal,
   },
   control: {
     position: 'absolute',
@@ -74,22 +66,19 @@ export const carouselStyles = stylex.create({
     height: '3rem',
     placeItems: 'center',
     padding: 0,
-    borderWidth: '1px',
-    borderStyle: 'solid',
-    borderColor: tokens.ruleStrong,
+    borderWidth: 0,
     borderRadius: 0,
     color: tokens.paper,
-    backgroundColor: 'oklch(0.075 0.004 255 / 0.88)',
+    backgroundColor: tokens.inkDeep,
     fontFamily: tokens.fontMono,
     fontSize: '1.25rem',
     lineHeight: 1,
     cursor: 'pointer',
     transform: 'translateY(-50%)',
-    transitionProperty: 'color, border-color, background',
+    transitionProperty: 'color, background-color',
     transitionDuration: '140ms',
     transitionTimingFunction: 'ease',
     ':hover': {
-      borderColor: tokens.signal,
       color: tokens.inkDeep,
       backgroundColor: tokens.signal,
     },
@@ -109,10 +98,12 @@ export const carouselStyles = stylex.create({
   },
   footer: {
     display: 'grid',
-    gridTemplateColumns: '1fr auto auto',
+    gridTemplateColumns: 'minmax(0, 1fr) auto auto',
     gap: tokens.space4,
     alignItems: 'center',
+    minWidth: 0,
     paddingTop: tokens.space3,
+    overflow: 'hidden',
     [mq720]: {
       gridTemplateColumns: '1fr',
       gap: tokens.space2,
@@ -120,6 +111,7 @@ export const carouselStyles = stylex.create({
   },
   status: {
     margin: 0,
+    minWidth: 0,
     color: tokens.paperSubtle,
     fontFamily: tokens.fontMono,
     fontSize: '0.7rem',
@@ -154,13 +146,10 @@ export const carouselStyles = stylex.create({
       content: '""',
       position: 'absolute',
       inset: '19px 5px',
-      borderWidth: '1px',
-      borderStyle: 'solid',
-      borderColor: tokens.ruleStrong,
-      backgroundColor: 'transparent',
+      borderRadius: '999px',
+      backgroundColor: tokens.rule,
     },
     ':hover::after': {
-      borderColor: tokens.signal,
       backgroundColor: tokens.signal,
     },
     ':focus-visible': {
@@ -172,7 +161,6 @@ export const carouselStyles = stylex.create({
   },
   dotActive: {
     '::after': {
-      borderColor: tokens.signal,
       backgroundColor: tokens.signal,
     },
   },

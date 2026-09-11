@@ -1,5 +1,4 @@
 import * as stylex from '@stylexjs/stylex'
-import { OceanHero } from '../components/OceanHero'
 import { LINKS, SPONSORSHIP_TIERS } from '../playblast/constants'
 import { sharedStyles } from '../styles/shared.stylex'
 import { fundStyles } from './Fund.stylex'
@@ -8,55 +7,119 @@ function ExternalLink({ href, children, ...anchorProps }: { href: string; childr
   return <a href={href} target="_blank" rel="noopener noreferrer" {...anchorProps}>{children}</a>
 }
 
+const FUNDING_FLOW = [
+  { title: 'Optional sponsorship', body: 'A proposed way for people and studios to contribute when the fund opens.' },
+  { title: 'Maintenance and development', body: 'Contributions fund the ongoing work of maintaining and developing Playblast.' },
+  { title: 'Public recognition', body: 'Sponsors receive recognition according to the planned level they choose.' },
+]
+
+const BOUNDARIES = ['Paid support', 'An SLA', 'Hosted Playblast', 'Installation', 'Roadmap control', 'Priority treatment']
+
 export function Fund() {
   return (
-    <div {...stylex.props(sharedStyles.page)}>
-      <div {...stylex.props(sharedStyles.container)}>
-        <header {...stylex.props(sharedStyles.fullBleedHero, sharedStyles.revealHero)}>
-          <OceanHero />
-          <p {...stylex.props(sharedStyles.heroKicker)}>02 / Development fund</p>
-          <h1 {...stylex.props(sharedStyles.heroBandChild, sharedStyles.heroHeadline)}>Fund Playblast development.</h1>
-          <p {...stylex.props(sharedStyles.heroBandChild, sharedStyles.pageIntro)}>
-            Optional sponsorship that sustains Playblast maintenance and development.
-          </p>
-          <div {...stylex.props(sharedStyles.heroBandChild, sharedStyles.ctaGroup)}>
-            <ExternalLink href={LINKS.sponsorsDoc} {...stylex.props(sharedStyles.btn, sharedStyles.btnPrimary)}>Read SPONSORS.md <span aria-hidden="true">↗</span></ExternalLink>
-            <ExternalLink href={LINKS.github} {...stylex.props(sharedStyles.btn)}>Explore Playblast on GitHub <span aria-hidden="true">↗</span></ExternalLink>
+    <div {...stylex.props(fundStyles.page)}>
+      <header {...stylex.props(fundStyles.hero)}>
+        <div {...stylex.props(sharedStyles.container, fundStyles.heroGrid)}>
+          <div {...stylex.props(fundStyles.heroCopy)}>
+            <h1 {...stylex.props(fundStyles.heroTitle)}>The product comes first. The fund follows.</h1>
+            <p {...stylex.props(fundStyles.heroLede)}>The Playblast Development Fund is a planned, optional sponsorship program for maintenance and development. It is not open yet.</p>
+            <div {...stylex.props(sharedStyles.ctaGroup, fundStyles.heroActions)}>
+              <ExternalLink href={LINKS.github} {...stylex.props(sharedStyles.btn, sharedStyles.btnPrimary)}>Explore Playblast</ExternalLink>
+              <ExternalLink href={LINKS.sponsorsDoc} {...stylex.props(sharedStyles.btn)}>Read the full terms</ExternalLink>
+            </div>
           </div>
-        </header>
+          <aside {...stylex.props(fundStyles.status)} aria-labelledby="fund-status-heading">
+            <h2 id="fund-status-heading" {...stylex.props(fundStyles.statusTitle)}>Fund status</h2>
+            <dl {...stylex.props(fundStyles.statusList)}>
+              <div {...stylex.props(fundStyles.statusRow)}>
+                <dt {...stylex.props(fundStyles.statusTerm)}>Stage</dt>
+                <dd {...stylex.props(fundStyles.statusValue, fundStyles.statusValueSignal)}>Pre-launch</dd>
+              </div>
+              <div {...stylex.props(fundStyles.statusRow)}>
+                <dt {...stylex.props(fundStyles.statusTerm)}>Checkout</dt>
+                <dd {...stylex.props(fundStyles.statusValue)}>Not open</dd>
+              </div>
+              <div {...stylex.props(fundStyles.statusRow)}>
+                <dt {...stylex.props(fundStyles.statusTerm)}>Current focus</dt>
+                <dd {...stylex.props(fundStyles.statusValue)}>Playblast</dd>
+              </div>
+            </dl>
+          </aside>
+          <div {...stylex.props(fundStyles.heroSignal)} aria-hidden="true" />
+        </div>
+      </header>
 
-        <section {...stylex.props(sharedStyles.section)} aria-labelledby="fund-overview-heading">
-          <p {...stylex.props(fundStyles.sectionIntro)}>Sponsorship checkout opens soon.</p>
-          <h2 id="fund-overview-heading" {...stylex.props(sharedStyles.sectionTitle)}>How it works</h2>
-          <div {...stylex.props(sharedStyles.sectionBody)}>
-            <p>Sponsorship is optional. Sponsors receive public recognition. Full terms live in SPONSORS.md.</p>
+      <section {...stylex.props(fundStyles.circuit)} aria-labelledby="circuit-heading">
+        <div {...stylex.props(sharedStyles.container)}>
+          <div {...stylex.props(fundStyles.sectionHeading)}>
+            <h2 id="circuit-heading" {...stylex.props(fundStyles.sectionTitle)}>Support follows a clear path.</h2>
+            <p {...stylex.props(fundStyles.sectionIntro)}>Optional sponsorship supports maintenance and development, then returns public recognition. Product direction stays independent.</p>
           </div>
-        </section>
+          <ol {...stylex.props(fundStyles.flow)} aria-label="Planned sponsorship flow">
+            {FUNDING_FLOW.map((step, index) => (
+              <li key={step.title} {...stylex.props(fundStyles.flowStep)}>
+                <span {...stylex.props(fundStyles.flowConnector, index === 2 && fundStyles.flowConnectorLast)} aria-hidden="true">
+                  <span {...stylex.props(fundStyles.flowNode)} />
+                </span>
+                <span {...stylex.props(fundStyles.flowNumber)} aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+                <h3 {...stylex.props(fundStyles.flowTitle)}>{step.title}</h3>
+                <p {...stylex.props(fundStyles.flowBody)}>{step.body}</p>
+              </li>
+            ))}
+          </ol>
+          <div {...stylex.props(fundStyles.hardStop)}>
+            <span {...stylex.props(fundStyles.hardStopWire)} aria-hidden="true" />
+            <span {...stylex.props(fundStyles.hardStopMark)} aria-hidden="true" />
+            <p><strong {...stylex.props(fundStyles.hardStopTitle)}>Influence / disconnected.</strong> Sponsorship never becomes purchased influence.</p>
+          </div>
+        </div>
+      </section>
 
-        <section {...stylex.props(sharedStyles.section)} aria-labelledby="tiers-heading">
-          <p {...stylex.props(sharedStyles.indexLabel)}><span {...stylex.props(sharedStyles.indexLabelSpan)}>01</span> Planned recognition</p>
-          <h2 id="tiers-heading" {...stylex.props(sharedStyles.sectionTitle)}>Sponsorship tiers.</h2>
-          <p {...stylex.props(fundStyles.sectionIntro)}>Recognition levels for sponsors.</p>
-          <ul {...stylex.props(fundStyles.tierGrid)}>
+      <section {...stylex.props(fundStyles.tiers)} aria-labelledby="tiers-heading">
+        <div {...stylex.props(sharedStyles.container)}>
+          <div {...stylex.props(fundStyles.sectionHeading)}>
+            <h2 id="tiers-heading" {...stylex.props(fundStyles.sectionTitle)}>Recognition, planned in public.</h2>
+            <p {...stylex.props(fundStyles.sectionIntro)}>These levels are planned for launch. Amounts and recognition are listed here without an inactive checkout.</p>
+          </div>
+          <ul {...stylex.props(fundStyles.tierLedger)}>
             {SPONSORSHIP_TIERS.map((tier) => (
-              <li key={tier.name} {...stylex.props(fundStyles.tierCard)}>
-                <div>
-                  <h3 {...stylex.props(fundStyles.tierCardTitle)}>{tier.name}</h3>
-                  <p {...stylex.props(fundStyles.tierCardPrice)}>
-                    <span {...stylex.props(fundStyles.tierCardAmount)}>{tier.amount}</span>{' '}
-                    <span {...stylex.props(fundStyles.tierCardPeriod)}>{tier.period}</span>
-                  </p>
-                </div>
-                <p {...stylex.props(fundStyles.tierCardRecognition)}>{tier.recognition}</p>
+              <li key={tier.name} {...stylex.props(fundStyles.tierRow)}>
+                <h3 {...stylex.props(fundStyles.tierName)}>{tier.name}</h3>
+                <p {...stylex.props(fundStyles.tierPrice)}><span {...stylex.props(fundStyles.tierAmount)}>{tier.amount}</span> {tier.period}</p>
+                <p {...stylex.props(fundStyles.tierRecognition)}>{tier.recognition}</p>
               </li>
             ))}
           </ul>
           <p {...stylex.props(fundStyles.fundingDisclaimer)}>
-            Details in{' '}
-            <ExternalLink href={LINKS.sponsorsDoc}>SPONSORS.md</ExternalLink>.
+            Full recognition details live in <ExternalLink href={LINKS.sponsorsDoc} {...stylex.props(fundStyles.fundingLink)}>SPONSORS.md</ExternalLink>.
           </p>
-        </section>
-      </div>
+        </div>
+      </section>
+
+      <section {...stylex.props(fundStyles.boundary)} aria-labelledby="boundary-heading">
+        <div {...stylex.props(sharedStyles.container, fundStyles.boundaryGrid)}>
+          <div>
+            <h2 id="boundary-heading" {...stylex.props(fundStyles.boundaryTitle)}>Clear boundaries keep the work independent.</h2>
+            <p {...stylex.props(fundStyles.boundaryIntro)}>Sponsorship funds maintenance and development. It does not buy:</p>
+          </div>
+          <ul {...stylex.props(fundStyles.boundaryList)}>
+            {BOUNDARIES.map((item) => <li key={item} {...stylex.props(fundStyles.boundaryItem)}>{item}</li>)}
+          </ul>
+        </div>
+      </section>
+
+      <section {...stylex.props(fundStyles.close)} aria-labelledby="close-heading">
+        <div {...stylex.props(sharedStyles.container, fundStyles.closeGrid)}>
+          <h2 id="close-heading" {...stylex.props(fundStyles.closeTitle)}>Start with Playblast.</h2>
+          <div {...stylex.props(fundStyles.closeBody)}>
+            <p>Playblast is a self-hosted MVP release candidate. The core workflow exists while clean-install and adoption checks continue.</p>
+            <div {...stylex.props(sharedStyles.ctaGroup, fundStyles.closeActions)}>
+              <ExternalLink href={LINKS.github} {...stylex.props(sharedStyles.btn, sharedStyles.btnPrimary)}>Explore Playblast</ExternalLink>
+              <ExternalLink href={LINKS.sponsorsDoc} {...stylex.props(sharedStyles.btn)}>Read SPONSORS.md</ExternalLink>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
