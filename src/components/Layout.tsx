@@ -11,7 +11,7 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   '/playblast': { title: 'Playblast. Review, clients, and invoices for studios | brzrk', description: 'Playblast brings review, clients, invoices, and project estimates together for studios.' },
   '/fund': { title: 'Playblast Development Fund | brzrk', description: 'Optional sponsorship that funds Playblast maintenance and development.' },
   '/about': { title: 'About brzrk. Independent product company', description: 'brzrk builds focused software. Public focus: Playblast.' },
-  '/contact': { title: 'Contact brzrk', description: 'Email brzrk@brzrkmotion.com about Playblast, feedback, or other brzrk work.' },
+  '/contact': { title: 'Contact brzrk', description: 'Email brzrk@brzrk-motion.com about Playblast, feedback, or other brzrk work.' },
 }
 
 function PageMeta({ pathname }: { pathname: string }) {

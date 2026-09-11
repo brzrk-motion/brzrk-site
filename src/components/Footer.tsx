@@ -3,7 +3,7 @@ import * as stylex from '@stylexjs/stylex'
 import { sharedStyles } from '../styles/shared.stylex'
 import { layoutStyles } from './Layout.stylex'
 
-const CONTACT_EMAIL = 'brzrk@brzrkmotion.com'
+const CONTACT_EMAIL = 'brzrk@brzrk-motion.com'
 
 export function Footer() {
   return (
