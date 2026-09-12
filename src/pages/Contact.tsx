@@ -1,8 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import * as stylex from '@stylexjs/stylex'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { OceanHero } from '../components/OceanHero'
+import { LazyOceanHero } from '../components/OceanHero'
+import { useScrollRevealElement } from '../lib/useScrollReveal'
 import { sharedStyles } from '../styles/shared.stylex'
 import { contactStyles } from './Contact.stylex'
 
@@ -25,62 +24,24 @@ const TOPICS = [
   },
 ]
 
-gsap.registerPlugin(ScrollTrigger)
-
 export function Contact() {
   const [topic, setTopic] = useState(TOPICS[0].value)
-  const composeRef = useRef<HTMLElement>(null)
   const composeHeadingRef = useRef<HTMLDivElement>(null)
   const formRef = useRef<HTMLFormElement>(null)
 
-  useEffect(() => {
-    const compose = composeRef.current
-    const composeHeading = composeHeadingRef.current
-    const form = formRef.current
-    if (!compose || !composeHeading || !form || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-
-    const context = gsap.context(() => {
-      gsap.fromTo(composeHeading,
-        { opacity: 0 },
-        {
-          opacity: 1,
-          duration: 0.6,
-          delay: 0.08,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: compose,
-            start: 'top 84%',
-            once: true,
-          },
-        },
-      )
-
-      gsap.fromTo(form,
-        { opacity: 0 },
-        {
-          opacity: 1,
-          duration: 1.2,
-          delay: 0.78,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: compose,
-            start: 'top 84%',
-            once: true,
-          },
-        },
-      )
-    }, compose)
-
-    return () => context.revert()
-  }, [])
+  useScrollRevealElement(composeHeadingRef, { distance: 0, delay: 0.08 })
+  useScrollRevealElement(formRef, { distance: 0, delay: 0.78 })
 
   return (
       <div {...stylex.props(contactStyles.page)}>
       <header {...stylex.props(contactStyles.intro)}>
-        <OceanHero />
+        <LazyOceanHero />
         <div {...stylex.props(sharedStyles.container, contactStyles.introGrid)}>
           <div>
-            <h1 {...stylex.props(contactStyles.title)}><span {...stylex.props(contactStyles.titleLine)}>Send the context.</span>Keep the handoff simple.</h1>
+            <h1 {...stylex.props(contactStyles.title)}>
+              <span {...stylex.props(contactStyles.titleLine)}>Send the context.</span>{' '}
+              Keep the handoff simple.
+            </h1>
             <p {...stylex.props(contactStyles.lede)}>Questions about Playblast, product feedback, or other brzrk work can start here.</p>
           </div>
           <aside {...stylex.props(contactStyles.direct)} aria-labelledby="direct-heading">
@@ -91,7 +52,7 @@ export function Contact() {
         </div>
       </header>
 
-      <section ref={composeRef} {...stylex.props(contactStyles.compose)} aria-labelledby="contact-form-heading">
+      <section {...stylex.props(contactStyles.compose)} aria-labelledby="contact-form-heading">
         <div {...stylex.props(sharedStyles.container)}>
           <div ref={composeHeadingRef} {...stylex.props(contactStyles.composeHeading)}>
             <h2 id="contact-form-heading" {...stylex.props(contactStyles.composeTitle)}>Draft the message.</h2>

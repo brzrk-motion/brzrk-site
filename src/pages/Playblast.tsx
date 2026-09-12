@@ -1,19 +1,13 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import * as stylex from '@stylexjs/stylex'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { OceanHero } from '../components/OceanHero'
+import { ExternalLink } from '../components/ExternalLink'
+import { LazyOceanHero } from '../components/OceanHero'
+import { useScrollRevealChildren } from '../lib/useScrollReveal'
 import { CLIENT_FINANCE_FEATURES, LINKS, LOOP_STEPS, SCREENSHOTS, YOU_GET } from '../playblast/constants'
 import { ScreenshotCarousel } from '../playblast/ScreenshotCarousel'
 import { sharedStyles } from '../styles/shared.stylex'
 import { playblastStyles } from './Playblast.stylex'
-
-function ExternalLink({ href, children, ...anchorProps }: { href: string; children: React.ReactNode }) {
-  return <a href={href} target="_blank" rel="noopener noreferrer" {...anchorProps}>{children}</a>
-}
-
-gsap.registerPlugin(ScrollTrigger)
 
 export function Playblast() {
   const timelineRef = useRef<HTMLOListElement>(null)
@@ -21,44 +15,15 @@ export function Playblast() {
   const featureListRef = useRef<HTMLUListElement>(null)
   const financeListRef = useRef<HTMLUListElement>(null)
 
-  useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-
-    const context = gsap.context(() => {
-      const animateItems = (container: HTMLElement | null, distance: number, stagger: number) => {
-        if (!container) return
-
-        gsap.fromTo(Array.from(container.children),
-          { opacity: 0, x: -distance },
-          {
-            opacity: 1,
-            x: 0,
-            duration: 0.7,
-            delay: 0.08,
-            stagger,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: container,
-              start: 'top 84%',
-              once: true,
-            },
-          },
-        )
-      }
-
-      animateItems(timelineRef.current, 72, 0.12)
-      animateItems(problemListRef.current, 40, 0.1)
-      animateItems(featureListRef.current, 40, 0.1)
-      animateItems(financeListRef.current, 40, 0.1)
-    })
-
-    return () => context.revert()
-  }, [])
+  useScrollRevealChildren(timelineRef, { distance: 72, stagger: 0.12 })
+  useScrollRevealChildren(problemListRef, { distance: 40, stagger: 0.1 })
+  useScrollRevealChildren(featureListRef, { distance: 40, stagger: 0.1 })
+  useScrollRevealChildren(financeListRef, { distance: 40, stagger: 0.1 })
 
   return (
       <div {...stylex.props(playblastStyles.page)}>
       <header {...stylex.props(playblastStyles.hero)}>
-        <OceanHero />
+        <LazyOceanHero />
         <div {...stylex.props(sharedStyles.container, playblastStyles.heroGrid)}>
           <div {...stylex.props(playblastStyles.heroCopy)}>
             <h1 {...stylex.props(playblastStyles.heroHeadline)}>Review and studio ops in one place.</h1>

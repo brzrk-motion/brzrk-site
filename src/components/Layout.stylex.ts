@@ -1,6 +1,5 @@
 import * as stylex from '@stylexjs/stylex'
 import { tokens } from '../styles/tokens.stylex'
-import { sharedStyles } from '../styles/shared.stylex'
 
 const mq1050 = '@media (max-width: 1050px)'
 const mq721To1050 = '@media (min-width: 721px) and (max-width: 1050px)'
@@ -15,8 +14,6 @@ export const layoutStyles = stylex.create({
     flexDirection: 'column',
     backgroundColor: tokens.inkDeep,
   },
-  layoutHome: {},
-  layoutPage: {},
   main: {
     position: 'relative',
     zIndex: 1,
@@ -44,7 +41,7 @@ export const layoutStyles = stylex.create({
     borderBottomWidth: '1px',
     borderBottomStyle: 'solid',
     borderBottomColor: tokens.rule,
-    backgroundColor: 'oklch(0.075 0.004 255 / 0.94)',
+    backgroundColor: tokens.inkDeepTranslucent,
   },
   navInner: {
     display: 'grid',
@@ -63,7 +60,7 @@ export const layoutStyles = stylex.create({
     gap: '0.2rem',
     alignSelf: 'center',
     color: tokens.paper,
-    fontSize: '1rem',
+    fontSize: tokens.fontBody,
     fontWeight: 600,
     letterSpacing: '-0.03em',
     textDecoration: 'none',
@@ -126,7 +123,7 @@ export const layoutStyles = stylex.create({
     gap: '0.55rem',
     paddingInline: '1rem',
     color: tokens.paperMuted,
-    fontSize: '0.82rem',
+    fontSize: tokens.fontNav,
     textDecoration: 'none',
     transitionProperty: 'color, background',
     transitionDuration: '140ms',
@@ -146,10 +143,10 @@ export const layoutStyles = stylex.create({
       minHeight: '44px',
       paddingBlock: '0.35rem',
       paddingInline: '0.2rem',
-      fontSize: '0.69rem',
+      fontSize: tokens.fontNavSm,
     },
     [mq400]: {
-      fontSize: '0.62rem',
+      fontSize: tokens.fontMeta,
       letterSpacing: '-0.01em',
     },
   },
@@ -164,7 +161,7 @@ export const layoutStyles = stylex.create({
   navNumber: {
     color: tokens.paperSubtle,
     fontFamily: tokens.fontMono,
-    fontSize: '0.64rem',
+    fontSize: tokens.fontMeta,
     lineHeight: 1,
     [mq1050]: {
       display: 'none',
@@ -211,7 +208,7 @@ export const layoutStyles = stylex.create({
     marginTop: tokens.space5,
     color: tokens.signalHot,
     fontFamily: tokens.fontMono,
-    fontSize: '0.78rem',
+    fontSize: tokens.fontControl,
   },
   footerNav: {
     alignSelf: 'start',
@@ -220,13 +217,13 @@ export const layoutStyles = stylex.create({
     marginBottom: tokens.space1,
     color: tokens.paperSubtle,
     fontFamily: tokens.fontMono,
-    fontSize: '0.68rem',
+    fontSize: tokens.fontMeta,
     letterSpacing: '0.07em',
     textTransform: 'uppercase',
   },
   footerDescriptor: {
     color: tokens.paperSubtle,
-    fontSize: '1rem',
+    fontSize: tokens.fontBody,
     lineHeight: 1.6,
   },
   footerLinks: {
@@ -239,11 +236,11 @@ export const layoutStyles = stylex.create({
   },
   footerLink: {
     display: 'inline-flex',
-    minHeight: '40px',
+    minHeight: '44px',
     alignItems: 'center',
     color: tokens.signalHot,
     fontFamily: tokens.fontMono,
-    fontSize: '0.78rem',
+    fontSize: tokens.fontControl,
     textDecoration: 'none',
     ':hover': {
       color: tokens.paper,
@@ -277,9 +274,7 @@ export const layoutStyles = stylex.create({
     margin: 0,
     color: tokens.paperSubtle,
     fontFamily: tokens.fontMono,
-    fontSize: '0.7rem',
+    fontSize: tokens.fontLabel,
     lineHeight: 1.65,
   },
 })
-
-export { sharedStyles }

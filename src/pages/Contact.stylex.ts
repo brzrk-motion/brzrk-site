@@ -40,7 +40,7 @@ export const contactStyles = stylex.create({
   title: {
     maxWidth: '17ch',
     marginBottom: tokens.space4,
-    fontSize: 'clamp(3rem, 6vw, 4.8rem)',
+    fontSize: tokens.fontHero,
     letterSpacing: '-0.038em',
   },
   titleLine: {
@@ -50,7 +50,7 @@ export const contactStyles = stylex.create({
   lede: {
     maxWidth: '42rem',
     color: tokens.paperMuted,
-    fontSize: 'clamp(1.08rem, 2vw, 1.35rem)',
+    fontSize: tokens.fontIntro,
     lineHeight: 1.55,
   },
   direct: {
@@ -61,7 +61,7 @@ export const contactStyles = stylex.create({
   },
   directTitle: {
     marginBottom: tokens.space3,
-    fontSize: '1.2rem',
+    fontSize: tokens.fontSection,
     letterSpacing: '-0.02em',
   },
   emailLink: {
@@ -70,12 +70,12 @@ export const contactStyles = stylex.create({
     alignItems: 'center',
     overflowWrap: 'anywhere',
     fontFamily: tokens.fontMono,
-    fontSize: '0.8rem',
+    fontSize: tokens.fontSmall,
   },
   directNote: {
     marginTop: tokens.space2,
     color: tokens.paperSubtle,
-    fontSize: '0.82rem',
+    fontSize: tokens.fontNav,
     lineHeight: 1.6,
   },
   compose: {
@@ -97,7 +97,7 @@ export const contactStyles = stylex.create({
   },
   composeTitle: {
     margin: 0,
-    fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
+    fontSize: tokens.fontSectionTitle,
   },
   composeIntro: {
     maxWidth: '32rem',
@@ -144,7 +144,7 @@ export const contactStyles = stylex.create({
     paddingBlock: tokens.space4,
     paddingInline: tokens.space4,
     color: tokens.paper,
-    fontSize: '1.1rem',
+    fontSize: tokens.fontTitleSm,
     fontWeight: 600,
     [mq800]: {
       paddingBlock: tokens.space3,
@@ -153,7 +153,7 @@ export const contactStyles = stylex.create({
   required: {
     color: tokens.paperSubtle,
     fontFamily: tokens.fontMono,
-    fontSize: '0.65rem',
+    fontSize: tokens.fontMeta,
     fontWeight: 400,
     letterSpacing: '0.03em',
     textTransform: 'uppercase',
@@ -219,19 +219,19 @@ export const contactStyles = stylex.create({
   routeNumber: {
     color: tokens.signal,
     fontFamily: tokens.fontMono,
-    fontSize: '0.66rem',
+    fontSize: tokens.fontMeta,
   },
   routeTitle: {
     marginBottom: tokens.space2,
     color: tokens.paper,
-    fontSize: '1.12rem',
+    fontSize: tokens.fontSubheadLg,
     fontWeight: 600,
     lineHeight: 1.25,
   },
   routeDetail: {
     maxWidth: '28rem',
     color: tokens.paperSubtle,
-    fontSize: '0.84rem',
+    fontSize: tokens.fontLead,
     lineHeight: 1.55,
   },
   identityGrid: {
@@ -252,7 +252,7 @@ export const contactStyles = stylex.create({
   label: {
     color: tokens.paperMuted,
     fontFamily: tokens.fontMono,
-    fontSize: '0.72rem',
+    fontSize: tokens.fontCaption,
     letterSpacing: '0.05em',
     textTransform: 'uppercase',
   },
@@ -271,7 +271,7 @@ export const contactStyles = stylex.create({
     '::placeholder': {
       color: tokens.paperSubtle,
     },
-    ':focus': {
+    ':focus-visible': {
       borderColor: tokens.signalHot,
     },
   },
@@ -299,7 +299,7 @@ export const contactStyles = stylex.create({
   privacyNote: {
     maxWidth: '42rem',
     color: tokens.paperSubtle,
-    fontSize: '0.8rem',
+    fontSize: tokens.fontSmall,
     lineHeight: 1.6,
   },
   submit: {

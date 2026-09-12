@@ -1,15 +1,11 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import * as stylex from '@stylexjs/stylex'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { OceanHero } from '../components/OceanHero'
+import { ExternalLink } from '../components/ExternalLink'
+import { LazyOceanHero } from '../components/OceanHero'
+import { useScrollRevealChildren, useScrollRevealElement } from '../lib/useScrollReveal'
 import { LINKS, SPONSORSHIP_TIERS } from '../playblast/constants'
 import { sharedStyles } from '../styles/shared.stylex'
 import { fundStyles } from './Fund.stylex'
-
-function ExternalLink({ href, children, ...anchorProps }: { href: string; children: React.ReactNode }) {
-  return <a href={href} target="_blank" rel="noopener noreferrer" {...anchorProps}>{children}</a>
-}
 
 const FUNDING_FLOW = [
   { title: 'Optional sponsorship', body: 'A proposed way for people and studios to contribute when the fund opens.' },
@@ -19,67 +15,19 @@ const FUNDING_FLOW = [
 
 const BOUNDARIES = ['Paid support', 'An SLA', 'Hosted Playblast', 'Installation', 'Roadmap control', 'Priority treatment']
 
-gsap.registerPlugin(ScrollTrigger)
-
 export function Fund() {
   const flowRef = useRef<HTMLOListElement>(null)
   const hardStopRef = useRef<HTMLDivElement>(null)
   const tiersRef = useRef<HTMLUListElement>(null)
 
-  useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-
-    const context = gsap.context(() => {
-      const animateItems = (container: HTMLElement | null, distance: number, stagger: number) => {
-        if (!container) return
-
-        gsap.fromTo(Array.from(container.children),
-          { opacity: 0, x: -distance },
-          {
-            opacity: 1,
-            x: 0,
-            duration: 0.7,
-            delay: 0.08,
-            stagger,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: container,
-              start: 'top 84%',
-              once: true,
-            },
-          },
-        )
-      }
-
-      animateItems(flowRef.current, 0, 0.12)
-      animateItems(tiersRef.current, 40, 0.1)
-
-      if (hardStopRef.current) {
-        gsap.fromTo(hardStopRef.current,
-          { opacity: 0, x: -40 },
-          {
-            opacity: 1,
-            x: 0,
-            duration: 0.65,
-            delay: 0.08,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: hardStopRef.current,
-              start: 'top 88%',
-              once: true,
-            },
-          },
-        )
-      }
-    })
-
-    return () => context.revert()
-  }, [])
+  useScrollRevealChildren(flowRef, { distance: 0, stagger: 0.12 })
+  useScrollRevealChildren(tiersRef, { distance: 40, stagger: 0.1 })
+  useScrollRevealElement(hardStopRef, { distance: 40 })
 
   return (
       <div {...stylex.props(fundStyles.page)}>
       <header {...stylex.props(fundStyles.hero)}>
-        <OceanHero />
+        <LazyOceanHero />
         <div {...stylex.props(sharedStyles.container, fundStyles.heroGrid)}>
           <div {...stylex.props(fundStyles.heroCopy)}>
             <h1 {...stylex.props(fundStyles.heroTitle)}>The product comes first. The fund follows.</h1>

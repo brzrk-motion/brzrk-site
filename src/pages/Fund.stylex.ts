@@ -45,13 +45,13 @@ export const fundStyles = stylex.create({
   heroTitle: {
     maxWidth: '10ch',
     marginBottom: tokens.space4,
-    fontSize: 'clamp(3.2rem, 7vw, 5.9rem)',
+    fontSize: tokens.fontHero,
     letterSpacing: '-0.038em',
   },
   heroLede: {
     maxWidth: '43rem',
     color: tokens.paperMuted,
-    fontSize: 'clamp(1.1rem, 2vw, 1.35rem)',
+    fontSize: tokens.fontIntroWide,
     lineHeight: 1.55,
   },
   heroActions: {
@@ -65,7 +65,7 @@ export const fundStyles = stylex.create({
   },
   statusTitle: {
     marginBottom: tokens.space3,
-    fontSize: '1.2rem',
+    fontSize: tokens.fontSection,
     letterSpacing: '-0.02em',
   },
   statusList: {
@@ -83,20 +83,20 @@ export const fundStyles = stylex.create({
   statusTerm: {
     color: tokens.paperSubtle,
     fontFamily: tokens.fontMono,
-    fontSize: '0.65rem',
+    fontSize: tokens.fontMeta,
     letterSpacing: '0.05em',
     textTransform: 'uppercase',
   },
   statusValue: {
     margin: 0,
     color: tokens.paper,
-    fontSize: '0.84rem',
+    fontSize: tokens.fontLead,
     textAlign: 'right',
   },
   statusValueSignal: {
     color: tokens.signal,
     fontFamily: tokens.fontMono,
-    fontSize: '0.72rem',
+    fontSize: tokens.fontCaption,
     letterSpacing: '0.04em',
     textTransform: 'uppercase',
   },
@@ -134,7 +134,7 @@ export const fundStyles = stylex.create({
   sectionTitle: {
     maxWidth: '13ch',
     margin: 0,
-    fontSize: 'clamp(2.5rem, 5vw, 4.6rem)',
+    fontSize: tokens.fontSectionTitleMd,
   },
   sectionIntro: {
     maxWidth: '34rem',
@@ -238,18 +238,18 @@ export const fundStyles = stylex.create({
     marginBottom: tokens.space4,
     color: tokens.signal,
     fontFamily: tokens.fontMono,
-    fontSize: '0.68rem',
+    fontSize: tokens.fontMeta,
   },
   flowTitle: {
     maxWidth: '14ch',
     marginBottom: tokens.space3,
-    fontSize: '1.35rem',
+    fontSize: tokens.fontEmphasisLg,
     lineHeight: 1.15,
   },
   flowBody: {
     maxWidth: '30rem',
     color: tokens.paperSubtle,
-    fontSize: '0.9rem',
+    fontSize: tokens.fontBodyMd,
     lineHeight: 1.6,
   },
   hardStop: {
@@ -262,7 +262,7 @@ export const fundStyles = stylex.create({
     marginLeft: 'auto',
     paddingTop: tokens.space4,
     color: tokens.paperMuted,
-    fontSize: '0.92rem',
+    fontSize: tokens.fontQuoteMd,
     [mq520]: {
       gridTemplateColumns: '2rem 1rem 1fr',
     },
@@ -318,12 +318,12 @@ export const fundStyles = stylex.create({
   },
   tierName: {
     margin: 0,
-    fontSize: '1.2rem',
+    fontSize: tokens.fontSection,
   },
   tierPrice: {
     color: tokens.paperSubtle,
     fontFamily: tokens.fontMono,
-    fontSize: '0.72rem',
+    fontSize: tokens.fontCaption,
     [mq800]: {
       textAlign: 'right',
     },
@@ -334,7 +334,7 @@ export const fundStyles = stylex.create({
   tierAmount: {
     color: tokens.signal,
     fontFamily: tokens.fontSans,
-    fontSize: '1.4rem',
+    fontSize: tokens.fontQuote,
     fontWeight: 600,
   },
   tierRecognition: {
@@ -430,7 +430,7 @@ export const fundStyles = stylex.create({
   closeTitle: {
     maxWidth: '12ch',
     margin: 0,
-    fontSize: 'clamp(2.5rem, 5vw, 4.8rem)',
+    fontSize: tokens.fontSectionTitleLg,
   },
   closeBody: {
     maxWidth: '35rem',

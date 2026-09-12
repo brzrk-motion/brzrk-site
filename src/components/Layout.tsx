@@ -1,11 +1,10 @@
 import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import * as stylex from '@stylexjs/stylex'
+import { getSiteOrigin } from '../lib/siteUrl'
 import { Footer } from './Footer'
 import { Header } from './Header'
 import { layoutStyles } from './Layout.stylex'
-
-const SITE_URL = 'https://brzrk-motion.github.io/brzrk-site'
 const PAGE_META: Record<string, { title: string; description: string }> = {
   '/': { title: 'brzrk. Tools for the work behind the work', description: 'brzrk builds software for creative and technical teams. Flagship product: Playblast, private video review with clients and invoices for studios.' },
   '/playblast': { title: 'Playblast. Review, clients, and invoices for studios | brzrk', description: 'Playblast brings review, clients, invoices, and project estimates together for studios.' },
@@ -24,7 +23,8 @@ function PageMeta({ pathname }: { pathname: string }) {
     for (const [name, content] of [['description', meta.description], ['og:title', meta.title], ['og:description', meta.description]] as const) {
       document.querySelector(`meta[name="${name}"], meta[property="${name}"]`)?.setAttribute('content', content)
     }
-    const url = `${SITE_URL}${pathname === '/' ? '/' : pathname}`
+    const siteUrl = getSiteOrigin()
+    const url = `${siteUrl}${pathname === '/' ? '/' : pathname}`
     document.querySelector('meta[property="og:url"]')?.setAttribute('content', url)
     document.querySelector('link[rel="canonical"]')?.setAttribute('href', url)
   }, [meta, pathname])
@@ -33,9 +33,8 @@ function PageMeta({ pathname }: { pathname: string }) {
 
 export function Layout() {
   const { pathname } = useLocation()
-  const isHome = pathname === '/'
   return (
-    <div {...stylex.props(layoutStyles.layout, isHome ? layoutStyles.layoutHome : layoutStyles.layoutPage)}>
+    <div {...stylex.props(layoutStyles.layout)}>
       <PageMeta pathname={pathname} />
       <a {...stylex.props(layoutStyles.skipLink)} href="#main-content">Skip to content</a>
       <Header />

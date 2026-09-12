@@ -49,7 +49,7 @@ export const aboutStyles = stylex.create({
   heroTitle: {
     maxWidth: '11ch',
     marginBottom: tokens.space5,
-    fontSize: 'clamp(3rem, 7.2vw, 5.9rem)',
+    fontSize: tokens.fontHero,
     letterSpacing: '-0.038em',
   },
   heroTitleSignal: {
@@ -59,14 +59,14 @@ export const aboutStyles = stylex.create({
     maxWidth: '45rem',
     marginBottom: tokens.space4,
     color: tokens.paper,
-    fontSize: 'clamp(1.15rem, 2vw, 1.45rem)',
+    fontSize: tokens.fontIntroAbout,
     lineHeight: 1.5,
   },
   heroThesis: {
     maxWidth: '42rem',
     color: tokens.paperSubtle,
     fontFamily: tokens.fontMono,
-    fontSize: '0.78rem',
+    fontSize: tokens.fontControl,
     lineHeight: 1.7,
   },
   position: {
@@ -78,7 +78,7 @@ export const aboutStyles = stylex.create({
     marginBlock: tokens.space3,
     color: tokens.signal,
     fontFamily: tokens.fontMono,
-    fontSize: '0.68rem',
+    fontSize: tokens.fontMeta,
     letterSpacing: '0.07em',
     textTransform: 'uppercase',
   },
@@ -95,14 +95,14 @@ export const aboutStyles = stylex.create({
     marginBottom: '0.3rem',
     color: tokens.paperSubtle,
     fontFamily: tokens.fontMono,
-    fontSize: '0.65rem',
+    fontSize: tokens.fontMeta,
     letterSpacing: '0.05em',
     textTransform: 'uppercase',
   },
   positionDetail: {
     margin: 0,
     color: tokens.paper,
-    fontSize: '0.9rem',
+    fontSize: tokens.fontBodyMd,
     lineHeight: 1.45,
   },
   heroRule: {
@@ -138,12 +138,12 @@ export const aboutStyles = stylex.create({
   sectionTitle: {
     maxWidth: '13ch',
     margin: 0,
-    fontSize: 'clamp(2.4rem, 5vw, 4.6rem)',
+    fontSize: tokens.fontSectionTitleSm,
   },
   sectionIntro: {
     maxWidth: '34rem',
     color: tokens.paperMuted,
-    fontSize: '1.05rem',
+    fontSize: tokens.fontSubhead,
     lineHeight: 1.65,
   },
   layers: {
@@ -206,13 +206,13 @@ export const aboutStyles = stylex.create({
   layerNumber: {
     color: tokens.signal,
     fontFamily: tokens.fontMono,
-    fontSize: '0.72rem',
+    fontSize: tokens.fontCaption,
     lineHeight: 1.4,
   },
   layerTitle: {
     maxWidth: '13ch',
     margin: 0,
-    fontSize: 'clamp(1.35rem, 2.4vw, 2rem)',
+    fontSize: tokens.fontPullquote,
     lineHeight: 1.15,
   },
   layerBody: {
@@ -247,7 +247,7 @@ export const aboutStyles = stylex.create({
   backgroundCopy: {
     maxWidth: '40rem',
     color: tokens.paperMuted,
-    fontSize: 'clamp(1.05rem, 2vw, 1.3rem)',
+    fontSize: tokens.fontBodyLead,
     lineHeight: 1.65,
   },
   backgroundParagraph: {
@@ -288,13 +288,13 @@ export const aboutStyles = stylex.create({
   commitmentTerm: {
     marginBottom: tokens.space2,
     color: tokens.signal,
-    fontSize: '1.05rem',
+    fontSize: tokens.fontSubhead,
     fontWeight: 600,
   },
   commitmentDetail: {
     margin: 0,
     color: tokens.paperSubtle,
-    fontSize: '0.88rem',
+    fontSize: tokens.fontBodySm,
     lineHeight: 1.6,
   },
   current: {
@@ -321,7 +321,7 @@ export const aboutStyles = stylex.create({
     marginTop: tokens.space4,
     color: tokens.paperSubtle,
     fontFamily: tokens.fontMono,
-    fontSize: '0.68rem',
+    fontSize: tokens.fontMeta,
     letterSpacing: '0.07em',
     textTransform: 'uppercase',
   },
@@ -333,12 +333,12 @@ export const aboutStyles = stylex.create({
   currentTitle: {
     maxWidth: '12ch',
     margin: 0,
-    fontSize: 'clamp(2.5rem, 5vw, 4.8rem)',
+    fontSize: tokens.fontSectionTitleLg,
   },
   currentBody: {
     maxWidth: '35rem',
     color: tokens.paperMuted,
-    fontSize: '1.05rem',
+    fontSize: tokens.fontSubhead,
   },
   actions: {
     marginTop: tokens.space5,

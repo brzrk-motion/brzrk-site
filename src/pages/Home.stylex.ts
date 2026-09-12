@@ -44,7 +44,7 @@ export const homeStyles = stylex.create({
   heroTitle: {
     maxWidth: '10ch',
     marginBottom: tokens.space4,
-    fontSize: 'clamp(3.2rem, 7vw, 5.9rem)',
+    fontSize: tokens.fontHero,
     letterSpacing: '-0.038em',
   },
   heroTitleEm: {
@@ -56,7 +56,7 @@ export const homeStyles = stylex.create({
     marginTop: 0,
     marginBottom: 0,
     color: tokens.paperMuted,
-    fontSize: 'clamp(1.08rem, 2vw, 1.35rem)',
+    fontSize: tokens.fontIntro,
     lineHeight: 1.5,
   },
   heroActions: {
@@ -79,7 +79,7 @@ export const homeStyles = stylex.create({
     marginBottom: tokens.space3,
     color: tokens.signal,
     fontFamily: tokens.fontMono,
-    fontSize: '0.68rem',
+    fontSize: tokens.fontMeta,
     letterSpacing: '0.07em',
     textTransform: 'uppercase',
   },
@@ -96,20 +96,20 @@ export const homeStyles = stylex.create({
     marginBottom: '0.3rem',
     color: tokens.paperSubtle,
     fontFamily: tokens.fontMono,
-    fontSize: '0.65rem',
+    fontSize: tokens.fontMeta,
     letterSpacing: '0.05em',
     textTransform: 'uppercase',
   },
   heroStatusValue: {
     margin: 0,
     color: tokens.paper,
-    fontSize: '0.9rem',
+    fontSize: tokens.fontBodyMd,
     lineHeight: 1.45,
   },
   heroStatusValueSignal: {
     color: tokens.signal,
     fontFamily: tokens.fontMono,
-    fontSize: '0.72rem',
+    fontSize: tokens.fontCaption,
     letterSpacing: '0.04em',
     textTransform: 'uppercase',
   },
@@ -155,13 +155,13 @@ export const homeStyles = stylex.create({
   productFeatureLede: {
     marginBottom: tokens.space4,
     color: tokens.paperMuted,
-    fontSize: 'clamp(1.05rem, 2vw, 1.32rem)',
+    fontSize: tokens.fontBodyLeadSm,
     lineHeight: 1.55,
   },
   productFeatureCaveat: {
     marginBottom: tokens.space5,
     color: tokens.paperSubtle,
-    fontSize: '0.88rem',
+    fontSize: tokens.fontBodySm,
   },
   principles: {
     paddingBlock: tokens.space8,
@@ -204,7 +204,7 @@ export const homeStyles = stylex.create({
   principleListNumber: {
     color: tokens.signal,
     fontFamily: tokens.fontMono,
-    fontSize: '0.72rem',
+    fontSize: tokens.fontCaption,
     lineHeight: 1.4,
   },
   principleListTitle: {
@@ -213,6 +213,6 @@ export const homeStyles = stylex.create({
   principleListBody: {
     maxWidth: '34rem',
     color: tokens.paperSubtle,
-    fontSize: '0.9rem',
+    fontSize: tokens.fontBodyMd,
   },
 })

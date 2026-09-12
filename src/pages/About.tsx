@@ -1,9 +1,8 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import * as stylex from '@stylexjs/stylex'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { OceanHero } from '../components/OceanHero'
+import { LazyOceanHero } from '../components/OceanHero'
+import { useScrollRevealChildren } from '../lib/useScrollReveal'
 import { sharedStyles } from '../styles/shared.stylex'
 import { aboutStyles } from './About.stylex'
 
@@ -32,61 +31,17 @@ const COMMITMENTS = [
   { term: 'Candor', detail: 'Maturity and support boundaries stay visible.' },
 ]
 
-gsap.registerPlugin(ScrollTrigger)
-
 export function About() {
   const layersRef = useRef<HTMLOListElement>(null)
   const commitmentsRef = useRef<HTMLDListElement>(null)
 
-  useEffect(() => {
-    const layers = layersRef.current
-    const commitments = commitmentsRef.current
-    if (!layers || !commitments || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-
-    const context = gsap.context(() => {
-      Array.from(layers.children).forEach((layer) => {
-        gsap.fromTo(layer,
-          { opacity: 0, x: -72 },
-          {
-            opacity: 1,
-            x: 0,
-            duration: 0.7,
-            delay: 0.08,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: layer,
-              start: 'top 84%',
-              once: true,
-            },
-          },
-        )
-      })
-
-      gsap.fromTo(Array.from(commitments.children),
-        { opacity: 0, x: -40 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 0.65,
-          delay: 0.08,
-          stagger: 0.12,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: commitments,
-            start: 'top 84%',
-            once: true,
-          },
-        },
-      )
-    }, layers)
-
-    return () => context.revert()
-  }, [])
+  useScrollRevealChildren(layersRef, { distance: 72, stagger: 0, perItem: true })
+  useScrollRevealChildren(commitmentsRef, { distance: 40, stagger: 0.12 })
 
   return (
     <div {...stylex.props(aboutStyles.page)}>
       <header {...stylex.props(aboutStyles.hero)}>
-        <OceanHero />
+        <LazyOceanHero />
         <div {...stylex.props(sharedStyles.container, aboutStyles.heroInner)}>
           <div {...stylex.props(aboutStyles.heroStatement)}>
             <h1 {...stylex.props(aboutStyles.heroTitle)}>Built from the <span {...stylex.props(aboutStyles.heroTitleSignal)}>work</span>, not around it.</h1>

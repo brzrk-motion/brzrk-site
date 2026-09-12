@@ -3,34 +3,33 @@ export const LINKS = {
   installGuide: 'https://brzrk-motion.github.io/Playblast/deployment/install-linux-nas',
   issues: 'https://github.com/brzrk-motion/Playblast/issues',
   sponsorsDoc: 'https://github.com/brzrk-motion/Playblast/blob/development-mvp/SPONSORS.md',
-  marketingLp: 'https://brzrk-motion.github.io/playblast-lp/',
 } as const
 
 const BASE = import.meta.env.BASE_URL
 export const SCREENSHOTS = [
   {
-    src: `${BASE}screenshots/compare.png`,
-    alt: 'Playblast compare view with two versions in synced side-by-side playback',
-    caption: 'Versions align in synced side-by-side playback',
-    code: 'COMPARE / 01',
-  },
-  {
-    src: `${BASE}screenshots/review.png`,
-    alt: 'Playblast review player showing a deliverable cut with timestamped comments in the sidebar',
-    caption: 'Timestamped comments stay attached to the version',
-    code: 'REVIEW / 02',
+    src: `${BASE}screenshots/clients.png`,
+    alt: 'Playblast client management with client list, retainer cycle utilization, and lifetime value on the selected record',
+    caption: 'Clients, retainers, and lifetime value in one record',
+    code: 'CLIENTS / 01',
   },
   {
     src: `${BASE}screenshots/invoices.png`,
     alt: 'Playblast project invoices list with outstanding balance and payment status per invoice',
     caption: 'Invoices stay with the project',
-    code: 'INVOICES / 03',
+    code: 'INVOICES / 02',
   },
   {
-    src: `${BASE}screenshots/clients.png`,
-    alt: 'Playblast client management with client list, retainer cycle utilization, and lifetime value on the selected record',
-    caption: 'Clients, retainers, and lifetime value in one record',
-    code: 'CLIENTS / 04',
+    src: `${BASE}screenshots/review.png`,
+    alt: 'Playblast review player showing a deliverable cut with timestamped comments in the sidebar',
+    caption: 'Timestamped comments stay attached to the version',
+    code: 'REVIEW / 03',
+  },
+  {
+    src: `${BASE}screenshots/compare.png`,
+    alt: 'Playblast compare view with two versions in synced side-by-side playback',
+    caption: 'Versions align in synced side-by-side playback',
+    code: 'COMPARE / 04',
   },
 ] as const
 

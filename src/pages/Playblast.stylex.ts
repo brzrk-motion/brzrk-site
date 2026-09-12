@@ -47,13 +47,13 @@ export const playblastStyles = stylex.create({
   heroHeadline: {
     maxWidth: '10ch',
     marginBottom: tokens.space4,
-    fontSize: 'clamp(3.2rem, 7vw, 5.9rem)',
+    fontSize: tokens.fontHero,
     letterSpacing: '-0.038em',
   },
   heroLede: {
     maxWidth: '43rem',
     color: tokens.paperMuted,
-    fontSize: 'clamp(1.1rem, 2vw, 1.35rem)',
+    fontSize: tokens.fontIntroWide,
     lineHeight: 1.55,
   },
   heroCta: {
@@ -67,7 +67,7 @@ export const playblastStyles = stylex.create({
   },
   statusTitle: {
     marginBottom: tokens.space3,
-    fontSize: '1.2rem',
+    fontSize: tokens.fontSection,
     letterSpacing: '-0.02em',
   },
   statusList: {
@@ -85,20 +85,20 @@ export const playblastStyles = stylex.create({
   statusTerm: {
     color: tokens.paperSubtle,
     fontFamily: tokens.fontMono,
-    fontSize: '0.65rem',
+    fontSize: tokens.fontMeta,
     letterSpacing: '0.05em',
     textTransform: 'uppercase',
   },
   statusValue: {
     margin: 0,
     color: tokens.paper,
-    fontSize: '0.84rem',
+    fontSize: tokens.fontLead,
     textAlign: 'right',
   },
   statusValueSignal: {
     color: tokens.signal,
     fontFamily: tokens.fontMono,
-    fontSize: '0.72rem',
+    fontSize: tokens.fontCaption,
     letterSpacing: '0.04em',
     textTransform: 'uppercase',
   },
@@ -222,7 +222,7 @@ export const playblastStyles = stylex.create({
     color: tokens.signal,
     fontFamily: tokens.fontMono,
     fontWeight: 600,
-    fontSize: '0.75rem',
+    fontSize: tokens.fontUi,
     lineHeight: 1.4,
     [mq720]: {
       gridRow: '1 / span 2',

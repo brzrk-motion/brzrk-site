@@ -31,7 +31,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: VITE_BASE_PATH=/brzrk-site/ npm run build
+        run: VITE_BASE_PATH=/brzrk-site/ VITE_SITE_URL=https://brzrk-motion.github.io/brzrk-site npm run build
 
       - name: Add static route and SPA fallbacks
         run: |

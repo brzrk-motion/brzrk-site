@@ -54,7 +54,7 @@ export const carouselStyles = stylex.create({
     borderTopColor: tokens.rule,
     color: tokens.paperMuted,
     fontFamily: tokens.fontMono,
-    fontSize: '0.72rem',
+    fontSize: tokens.fontCaption,
     lineHeight: 1.5,
   },
   control: {
@@ -71,7 +71,7 @@ export const carouselStyles = stylex.create({
     color: tokens.paper,
     backgroundColor: tokens.inkDeep,
     fontFamily: tokens.fontMono,
-    fontSize: '1.25rem',
+    fontSize: tokens.fontDisplayMd,
     lineHeight: 1,
     cursor: 'pointer',
     transform: 'translateY(-50%)',
@@ -114,14 +114,14 @@ export const carouselStyles = stylex.create({
     minWidth: 0,
     color: tokens.paperSubtle,
     fontFamily: tokens.fontMono,
-    fontSize: '0.7rem',
+    fontSize: tokens.fontLabel,
     lineHeight: 1.5,
   },
   hint: {
     margin: 0,
     color: tokens.paperSubtle,
     fontFamily: tokens.fontMono,
-    fontSize: '0.7rem',
+    fontSize: tokens.fontLabel,
     lineHeight: 1.5,
     textAlign: 'right',
     [mq720]: {
@@ -146,7 +146,7 @@ export const carouselStyles = stylex.create({
       content: '""',
       position: 'absolute',
       inset: '19px 5px',
-      borderRadius: '999px',
+      borderRadius: 0,
       backgroundColor: tokens.rule,
     },
     ':hover::after': {

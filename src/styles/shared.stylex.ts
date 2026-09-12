@@ -16,15 +16,12 @@ export const sharedStyles = stylex.create({
     marginInline: 'auto',
     paddingInline: tokens.gutter,
   },
-  containerNarrow: {
-    width: `min(100%, calc(${tokens.contentWidth} + (2 * ${tokens.gutter})))`,
-  },
   indexLabel: {
     fontFamily: tokens.fontMono,
     letterSpacing: '0.06em',
     textTransform: 'uppercase',
     color: tokens.paperSubtle,
-    fontSize: '0.7rem',
+    fontSize: tokens.fontLabel,
   },
   indexLabelSpan: {
     marginRight: '0.75rem',
@@ -49,7 +46,7 @@ export const sharedStyles = stylex.create({
     maxWidth: '28rem',
     color: tokens.paperSubtle,
     fontFamily: tokens.fontMono,
-    fontSize: '0.76rem',
+    fontSize: tokens.fontNote,
     lineHeight: 1.6,
   },
   btn: {
@@ -68,7 +65,7 @@ export const sharedStyles = stylex.create({
     backgroundColor: 'transparent',
     fontFamily: tokens.fontMono,
     fontWeight: 600,
-    fontSize: '0.78rem',
+    fontSize: tokens.fontControl,
     lineHeight: 1,
     letterSpacing: '0.02em',
     textDecoration: 'none',
@@ -96,16 +93,6 @@ export const sharedStyles = stylex.create({
     },
   },
   btnText: {
-    paddingInline: '0.15rem',
-    borderColor: 'transparent',
-    color: tokens.signalHot,
-    ':hover': {
-      color: tokens.paper,
-      borderColor: 'transparent',
-      backgroundColor: 'transparent',
-    },
-  },
-  btnGhost: {
     paddingInline: '0.15rem',
     borderColor: 'transparent',
     color: tokens.signalHot,
@@ -167,7 +154,7 @@ export const sharedStyles = stylex.create({
     marginBottom: tokens.space2,
     color: tokens.signal,
     fontFamily: tokens.fontMono,
-    fontSize: '0.7rem',
+    fontSize: tokens.fontLabel,
     lineHeight: 1,
     letterSpacing: '0.08em',
     textTransform: 'uppercase',
@@ -208,13 +195,12 @@ export const sharedStyles = stylex.create({
     marginInlineStart: 0,
     marginInlineEnd: 'auto',
   },
-  pageHeader: {},
   pageKicker: {
     fontFamily: tokens.fontMono,
     letterSpacing: '0.06em',
     textTransform: 'uppercase',
     color: tokens.paperSubtle,
-    fontSize: '0.7rem',
+    fontSize: tokens.fontLabel,
   },
   heroKicker: {
     position: 'relative',
@@ -227,23 +213,23 @@ export const sharedStyles = stylex.create({
     fontFamily: tokens.fontMono,
     letterSpacing: '0.06em',
     textTransform: 'uppercase',
-    fontSize: '0.7rem',
+    fontSize: tokens.fontLabel,
   },
   heroHeadline: {
     marginBottom: tokens.space4,
-    fontSize: 'clamp(2.8rem, 7vw, 6rem)',
+    fontSize: tokens.fontHero,
   },
   pageIntro: {
     maxWidth: '42rem',
     marginInline: 0,
     color: tokens.paperMuted,
-    fontSize: 'clamp(1.08rem, 2vw, 1.35rem)',
+    fontSize: tokens.fontIntro,
     lineHeight: 1.55,
   },
   externalNote: {
     marginTop: tokens.space5,
     color: tokens.paperSubtle,
-    fontSize: '0.82rem',
+    fontSize: tokens.fontLead,
   },
   revealHero: {
     animationName: reveal,
@@ -259,7 +245,7 @@ export const sharedStyles = stylex.create({
     letterSpacing: '0.06em',
     textTransform: 'uppercase',
     color: tokens.paperMuted,
-    fontSize: '0.68rem',
+    fontSize: tokens.fontMeta,
   },
   statusDot: {
     display: 'inline-block',
@@ -288,7 +274,7 @@ export const sharedStyles = stylex.create({
     fontFamily: tokens.fontMono,
     letterSpacing: '0.06em',
     textTransform: 'uppercase',
-    fontSize: '0.62rem',
+    fontSize: tokens.fontMeta,
     [mq400]: {
       alignItems: 'flex-start',
       flexDirection: 'column',
@@ -310,7 +296,7 @@ export const sharedStyles = stylex.create({
     fontFamily: tokens.fontMono,
     letterSpacing: '0.06em',
     textTransform: 'uppercase',
-    fontSize: '0.66rem',
+    fontSize: tokens.fontMeta,
   },
   evidenceFrameFigcaptionSpan: {
     color: tokens.signal,

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import * as stylex from '@stylexjs/stylex'
-import { OceanHero } from '../components/OceanHero'
+import { LazyOceanHero } from '../components/OceanHero'
 import { sharedStyles } from '../styles/shared.stylex'
 import { homeStyles } from './Home.stylex'
 
@@ -8,7 +8,7 @@ export function Home() {
   return (
     <div {...stylex.props(homeStyles.home)}>
       <section {...stylex.props(homeStyles.hero, sharedStyles.revealHero)} aria-labelledby="home-title">
-        <OceanHero />
+        <LazyOceanHero />
         <div {...stylex.props(sharedStyles.container, homeStyles.heroGrid)}>
           <div {...stylex.props(homeStyles.heroContent)}>
             <h1 id="home-title" {...stylex.props(homeStyles.heroTitle)}>

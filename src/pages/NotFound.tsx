@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import * as stylex from '@stylexjs/stylex'
-import { OceanHero } from '../components/OceanHero'
+import { LazyOceanHero } from '../components/OceanHero'
 import { sharedStyles } from '../styles/shared.stylex'
 
 export function NotFound() {
@@ -8,7 +8,7 @@ export function NotFound() {
     <div {...stylex.props(sharedStyles.page)}>
       <div {...stylex.props(sharedStyles.container)}>
         <header {...stylex.props(sharedStyles.fullBleedHero, sharedStyles.revealHero)}>
-          <OceanHero />
+          <LazyOceanHero />
           <div {...stylex.props(sharedStyles.heroBandChild)}>
             <p {...stylex.props(sharedStyles.pageKicker)}>404 / Missing</p>
             <h1>Page not found.</h1>
