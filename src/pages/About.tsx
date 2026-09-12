@@ -1,8 +1,7 @@
-import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import * as stylex from '@stylexjs/stylex'
-import { LazyOceanHero } from '../components/OceanHero'
-import { useScrollRevealChildren } from '../lib/useScrollReveal'
+import { OceanHero } from '../components/OceanHero'
+import { scrollReveal } from '../lib/scrollReveal'
 import { sharedStyles } from '../styles/shared.stylex'
 import { aboutStyles } from './About.stylex'
 
@@ -32,16 +31,10 @@ const COMMITMENTS = [
 ]
 
 export function About() {
-  const layersRef = useRef<HTMLOListElement>(null)
-  const commitmentsRef = useRef<HTMLDListElement>(null)
-
-  useScrollRevealChildren(layersRef, { distance: 72, stagger: 0, perItem: true })
-  useScrollRevealChildren(commitmentsRef, { distance: 40, stagger: 0.12 })
-
   return (
     <div {...stylex.props(aboutStyles.page)}>
       <header {...stylex.props(aboutStyles.hero)}>
-        <LazyOceanHero />
+        <OceanHero />
         <div {...stylex.props(sharedStyles.container, aboutStyles.heroInner)}>
           <div {...stylex.props(aboutStyles.heroStatement)}>
             <h1 {...stylex.props(aboutStyles.heroTitle)}>Built from the <span {...stylex.props(aboutStyles.heroTitleSignal)}>work</span>, not around it.</h1>
@@ -75,7 +68,7 @@ export function About() {
             <h2 id="method-heading" {...stylex.props(aboutStyles.sectionTitle)}>Experience becomes product judgment.</h2>
             <p {...stylex.props(aboutStyles.sectionIntro)}>The company is not organized around a catalogue of ideas. It is a way of turning production knowledge into smaller, sharper software.</p>
           </div>
-          <ol ref={layersRef} {...stylex.props(aboutStyles.layers)}>
+          <ol {...stylex.props(aboutStyles.layers)}>
             {LAYERS.map((layer, index) => (
               <li
                 key={layer.title}
@@ -86,6 +79,7 @@ export function About() {
                   index === 2 && aboutStyles.layerThree,
                   index === 3 && aboutStyles.layerFour,
                 )}
+                {...scrollReveal(72, 0.08)}
               >
                 <span {...stylex.props(aboutStyles.layerNumber)} aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
                 <h3 {...stylex.props(aboutStyles.layerTitle)}>{layer.title}</h3>
@@ -103,9 +97,9 @@ export function About() {
             <p {...stylex.props(aboutStyles.backgroundParagraph)}>The founder brings experience in software, motion, and graphic craft. That mix shapes how tools should feel in real production: direct enough for daily work and considered enough to stay out of the way.</p>
             <p {...stylex.props(aboutStyles.backgroundParagraph)}>brzrk is a product company, not a motion studio. The craft background is here to sharpen product judgment.</p>
           </div>
-          <dl ref={commitmentsRef} {...stylex.props(aboutStyles.commitments)}>
-            {COMMITMENTS.map(({ term, detail }) => (
-              <div key={term} {...stylex.props(aboutStyles.commitment)}>
+          <dl {...stylex.props(aboutStyles.commitments)}>
+            {COMMITMENTS.map(({ term, detail }, index) => (
+              <div key={term} {...stylex.props(aboutStyles.commitment)} {...scrollReveal(40, 0.08 + index * 0.12)}>
                 <dt {...stylex.props(aboutStyles.commitmentTerm)}>{term}</dt>
                 <dd {...stylex.props(aboutStyles.commitmentDetail)}>{detail}</dd>
               </div>

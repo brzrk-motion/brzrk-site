@@ -53,7 +53,7 @@ export const playblastStyles = stylex.create({
   heroLede: {
     maxWidth: '43rem',
     color: tokens.paperMuted,
-    fontSize: tokens.fontIntroWide,
+    fontSize: tokens.fontIntro,
     lineHeight: 1.55,
   },
   heroCta: {

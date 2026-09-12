@@ -1,29 +1,24 @@
-import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import * as stylex from '@stylexjs/stylex'
 import { ExternalLink } from '../components/ExternalLink'
-import { LazyOceanHero } from '../components/OceanHero'
-import { useScrollRevealChildren } from '../lib/useScrollReveal'
+import { OceanHero } from '../components/OceanHero'
+import { scrollReveal } from '../lib/scrollReveal'
 import { CLIENT_FINANCE_FEATURES, LINKS, LOOP_STEPS, SCREENSHOTS, YOU_GET } from '../playblast/constants'
 import { ScreenshotCarousel } from '../playblast/ScreenshotCarousel'
 import { sharedStyles } from '../styles/shared.stylex'
 import { playblastStyles } from './Playblast.stylex'
 
+const PROBLEM_ITEMS = [
+  'Notes lose their frame and version context.',
+  'Client and invoice history sits outside the project.',
+  'Teams rebuild the same story for review and for billing.',
+]
+
 export function Playblast() {
-  const timelineRef = useRef<HTMLOListElement>(null)
-  const problemListRef = useRef<HTMLUListElement>(null)
-  const featureListRef = useRef<HTMLUListElement>(null)
-  const financeListRef = useRef<HTMLUListElement>(null)
-
-  useScrollRevealChildren(timelineRef, { distance: 72, stagger: 0.12 })
-  useScrollRevealChildren(problemListRef, { distance: 40, stagger: 0.1 })
-  useScrollRevealChildren(featureListRef, { distance: 40, stagger: 0.1 })
-  useScrollRevealChildren(financeListRef, { distance: 40, stagger: 0.1 })
-
   return (
       <div {...stylex.props(playblastStyles.page)}>
       <header {...stylex.props(playblastStyles.hero)}>
-        <LazyOceanHero />
+        <OceanHero />
         <div {...stylex.props(sharedStyles.container, playblastStyles.heroGrid)}>
           <div {...stylex.props(playblastStyles.heroCopy)}>
             <h1 {...stylex.props(playblastStyles.heroHeadline)}>Review and studio ops in one place.</h1>
@@ -77,10 +72,10 @@ export function Playblast() {
           </div>
           <div {...stylex.props(playblastStyles.sectionBody)}>
             <p>Studios lose time when review lives in one tool and clients, estimates, and invoices live in another. Context frays; handoffs multiply.</p>
-            <ul ref={problemListRef} {...stylex.props(playblastStyles.problemList)}>
-              <li {...stylex.props(playblastStyles.problemListItem)}>Notes lose their frame and version context.</li>
-              <li {...stylex.props(playblastStyles.problemListItem)}>Client and invoice history sits outside the project.</li>
-              <li {...stylex.props(playblastStyles.problemListItem)}>Teams rebuild the same story for review and for billing.</li>
+            <ul {...stylex.props(playblastStyles.problemList)}>
+              {PROBLEM_ITEMS.map((item, index) => (
+                <li key={item} {...stylex.props(playblastStyles.problemListItem)} {...scrollReveal(40, 0.08 + index * 0.1)}>{item}</li>
+              ))}
             </ul>
           </div>
         </section>
@@ -92,9 +87,9 @@ export function Playblast() {
             </div>
             <p {...stylex.props(playblastStyles.sectionIntro)}>From upload to approval, feedback stays with the media. Clients and invoices can attach to the same projects.</p>
           </div>
-          <ol ref={timelineRef} {...stylex.props(playblastStyles.timeline)}>
+          <ol {...stylex.props(playblastStyles.timeline)}>
             {LOOP_STEPS.map((step, index) => (
-              <li key={step.title} {...stylex.props(playblastStyles.timelineItem)}>
+              <li key={step.title} {...stylex.props(playblastStyles.timelineItem)} {...scrollReveal(72, 0.08 + index * 0.12)}>
                 <span {...stylex.props(playblastStyles.timelineMarker)} aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
                 <h3 {...stylex.props(playblastStyles.timelineTitle)}>{step.title}</h3>
                 <p {...stylex.props(playblastStyles.timelineText)}>{step.body}</p>
@@ -107,8 +102,10 @@ export function Playblast() {
           <div {...stylex.props(playblastStyles.sectionBlock)}>
             <h2 id="boundary-heading" {...stylex.props(playblastStyles.sectionTitle)}>What you get.</h2>
           </div>
-          <ul ref={featureListRef} {...stylex.props(playblastStyles.checkList)}>
-            {YOU_GET.map((item) => <li key={item} {...stylex.props(playblastStyles.checkListItem)}>{item}</li>)}
+          <ul {...stylex.props(playblastStyles.checkList)}>
+            {YOU_GET.map((item, index) => (
+              <li key={item} {...stylex.props(playblastStyles.checkListItem)} {...scrollReveal(40, 0.08 + index * 0.1)}>{item}</li>
+            ))}
           </ul>
         </section>
 
@@ -121,9 +118,9 @@ export function Playblast() {
               Track leads and clients, retainers, and lifetime value. Build estimates, log services, and send invoices without leaving the project.
             </p>
           </div>
-          <ul ref={financeListRef} {...stylex.props(playblastStyles.financesList)}>
-            {CLIENT_FINANCE_FEATURES.map((item) => (
-              <li key={item} {...stylex.props(playblastStyles.financesListItem)}>{item}</li>
+          <ul {...stylex.props(playblastStyles.financesList)}>
+            {CLIENT_FINANCE_FEATURES.map((item, index) => (
+              <li key={item} {...stylex.props(playblastStyles.financesListItem)} {...scrollReveal(40, 0.08 + index * 0.1)}>{item}</li>
             ))}
           </ul>
         </section>

@@ -155,7 +155,7 @@ export const homeStyles = stylex.create({
   productFeatureLede: {
     marginBottom: tokens.space4,
     color: tokens.paperMuted,
-    fontSize: tokens.fontBodyLeadSm,
+    fontSize: tokens.fontBodyLead,
     lineHeight: 1.55,
   },
   productFeatureCaveat: {

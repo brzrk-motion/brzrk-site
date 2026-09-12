@@ -65,7 +65,3 @@ export function OceanHero({ className }: OceanHeroProps) {
     />
   )
 }
-
-export function LazyOceanHero(props: OceanHeroProps) {
-  return <OceanHero {...props} />
-}

@@ -59,7 +59,7 @@ export const aboutStyles = stylex.create({
     maxWidth: '45rem',
     marginBottom: tokens.space4,
     color: tokens.paper,
-    fontSize: tokens.fontIntroAbout,
+    fontSize: tokens.fontIntro,
     lineHeight: 1.5,
   },
   heroThesis: {
@@ -138,7 +138,7 @@ export const aboutStyles = stylex.create({
   sectionTitle: {
     maxWidth: '13ch',
     margin: 0,
-    fontSize: tokens.fontSectionTitleSm,
+    fontSize: tokens.fontSectionTitle,
   },
   sectionIntro: {
     maxWidth: '34rem',
@@ -212,7 +212,7 @@ export const aboutStyles = stylex.create({
   layerTitle: {
     maxWidth: '13ch',
     margin: 0,
-    fontSize: tokens.fontPullquote,
+    fontSize: tokens.fontQuote,
     lineHeight: 1.15,
   },
   layerBody: {
@@ -333,7 +333,7 @@ export const aboutStyles = stylex.create({
   currentTitle: {
     maxWidth: '12ch',
     margin: 0,
-    fontSize: tokens.fontSectionTitleLg,
+    fontSize: tokens.fontSectionTitle,
   },
   currentBody: {
     maxWidth: '35rem',

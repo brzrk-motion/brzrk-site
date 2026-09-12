@@ -16,39 +16,6 @@ export const sharedStyles = stylex.create({
     marginInline: 'auto',
     paddingInline: tokens.gutter,
   },
-  indexLabel: {
-    fontFamily: tokens.fontMono,
-    letterSpacing: '0.06em',
-    textTransform: 'uppercase',
-    color: tokens.paperSubtle,
-    fontSize: tokens.fontLabel,
-  },
-  indexLabelSpan: {
-    marginRight: '0.75rem',
-    color: tokens.signal,
-  },
-  sectionHeading: {
-    marginBottom: tokens.space6,
-    paddingTop: tokens.space3,
-    borderTopWidth: '1px',
-    borderTopStyle: 'solid',
-    borderTopColor: tokens.ruleStrong,
-  },
-  sectionHeadingSplit: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gap: tokens.space5,
-    [mq720]: {
-      gridTemplateColumns: '1fr',
-    },
-  },
-  sectionHeadingNote: {
-    maxWidth: '28rem',
-    color: tokens.paperSubtle,
-    fontFamily: tokens.fontMono,
-    fontSize: tokens.fontNote,
-    lineHeight: 1.6,
-  },
   btn: {
     display: 'inline-flex',
     minHeight: '44px',
@@ -112,53 +79,6 @@ export const sharedStyles = stylex.create({
       flexDirection: 'column',
     },
   },
-  section: {
-    margin: 0,
-    paddingBlock: tokens.space7,
-    borderTopWidth: '1px',
-    borderTopStyle: 'solid',
-    borderTopColor: tokens.ruleStrong,
-  },
-  sectionTitle: {
-    maxWidth: '14ch',
-    marginBottom: tokens.space4,
-  },
-  sectionBody: {
-    maxWidth: tokens.contentWidth,
-    color: tokens.paperMuted,
-  },
-  sectionBodyParagraph: {
-    ':not(:first-child)': {
-      marginTop: tokens.space4,
-    },
-  },
-  sectionBodyList: {
-    paddingLeft: '1.2rem',
-    ':not(:first-child)': {
-      marginTop: tokens.space4,
-    },
-  },
-  honestyBlock: {
-    maxWidth: '48rem',
-    marginTop: tokens.space5,
-    padding: tokens.space4,
-    borderWidth: '1px',
-    borderStyle: 'solid',
-    borderColor: tokens.ruleStrong,
-    borderLeftWidth: '4px',
-    borderLeftColor: tokens.signal,
-    backgroundColor: tokens.graphite,
-    color: tokens.paperMuted,
-  },
-  honestyBlockLabel: {
-    marginBottom: tokens.space2,
-    color: tokens.signal,
-    fontFamily: tokens.fontMono,
-    fontSize: tokens.fontLabel,
-    lineHeight: 1,
-    letterSpacing: '0.08em',
-    textTransform: 'uppercase',
-  },
   page: {
     paddingBlock: `${tokens.space7} ${tokens.space8}`,
     backgroundColor: tokens.ink,
@@ -202,22 +122,12 @@ export const sharedStyles = stylex.create({
     color: tokens.paperSubtle,
     fontSize: tokens.fontLabel,
   },
-  heroKicker: {
-    position: 'relative',
-    zIndex: 1,
-    width: 'min(100%, 67rem)',
-    marginInlineStart: 0,
-    marginInlineEnd: 'auto',
-    paddingTop: '0.65rem',
-    color: tokens.signal,
-    fontFamily: tokens.fontMono,
-    letterSpacing: '0.06em',
-    textTransform: 'uppercase',
-    fontSize: tokens.fontLabel,
-  },
-  heroHeadline: {
+  notFoundTitle: {
     marginBottom: tokens.space4,
     fontSize: tokens.fontHero,
+    fontWeight: 600,
+    lineHeight: 1.02,
+    letterSpacing: '-0.035em',
   },
   pageIntro: {
     maxWidth: '42rem',
@@ -225,11 +135,6 @@ export const sharedStyles = stylex.create({
     color: tokens.paperMuted,
     fontSize: tokens.fontIntro,
     lineHeight: 1.55,
-  },
-  externalNote: {
-    marginTop: tokens.space5,
-    color: tokens.paperSubtle,
-    fontSize: tokens.fontLead,
   },
   revealHero: {
     animationName: reveal,
@@ -239,20 +144,6 @@ export const sharedStyles = stylex.create({
     [mqReducedMotion]: {
       animationName: 'none',
     },
-  },
-  statusLine: {
-    fontFamily: tokens.fontMono,
-    letterSpacing: '0.06em',
-    textTransform: 'uppercase',
-    color: tokens.paperMuted,
-    fontSize: tokens.fontMeta,
-  },
-  statusDot: {
-    display: 'inline-block',
-    width: '0.55rem',
-    height: '0.55rem',
-    marginRight: '0.55rem',
-    backgroundColor: tokens.signal,
   },
   evidenceFrame: {
     margin: 0,
@@ -300,33 +191,5 @@ export const sharedStyles = stylex.create({
   },
   evidenceFrameFigcaptionSpan: {
     color: tokens.signal,
-  },
-  problemList: {
-    display: 'grid',
-    gap: 0,
-    marginTop: tokens.space5,
-    marginBottom: 0,
-    marginInline: 0,
-    padding: 0,
-    listStyle: 'none',
-    borderTopWidth: '1px',
-    borderTopStyle: 'solid',
-    borderTopColor: tokens.rule,
-  },
-  problemListItem: {
-    paddingBlock: tokens.space3,
-    paddingInlineStart: '2rem',
-    paddingInlineEnd: 0,
-    borderBottomWidth: '1px',
-    borderBottomStyle: 'solid',
-    borderBottomColor: tokens.rule,
-    color: tokens.paperMuted,
-    position: 'relative',
-    '::before': {
-      content: '"—"',
-      position: 'absolute',
-      left: 0,
-      color: tokens.signal,
-    },
   },
 })

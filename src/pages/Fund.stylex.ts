@@ -51,7 +51,7 @@ export const fundStyles = stylex.create({
   heroLede: {
     maxWidth: '43rem',
     color: tokens.paperMuted,
-    fontSize: tokens.fontIntroWide,
+    fontSize: tokens.fontIntro,
     lineHeight: 1.55,
   },
   heroActions: {
@@ -134,7 +134,7 @@ export const fundStyles = stylex.create({
   sectionTitle: {
     maxWidth: '13ch',
     margin: 0,
-    fontSize: tokens.fontSectionTitleMd,
+    fontSize: tokens.fontSectionTitle,
   },
   sectionIntro: {
     maxWidth: '34rem',
@@ -243,7 +243,7 @@ export const fundStyles = stylex.create({
   flowTitle: {
     maxWidth: '14ch',
     marginBottom: tokens.space3,
-    fontSize: tokens.fontEmphasisLg,
+    fontSize: tokens.fontEmphasis,
     lineHeight: 1.15,
   },
   flowBody: {
@@ -262,7 +262,7 @@ export const fundStyles = stylex.create({
     marginLeft: 'auto',
     paddingTop: tokens.space4,
     color: tokens.paperMuted,
-    fontSize: tokens.fontQuoteMd,
+    fontSize: tokens.fontBodyMd,
     [mq520]: {
       gridTemplateColumns: '2rem 1rem 1fr',
     },
@@ -430,7 +430,7 @@ export const fundStyles = stylex.create({
   closeTitle: {
     maxWidth: '12ch',
     margin: 0,
-    fontSize: tokens.fontSectionTitleLg,
+    fontSize: tokens.fontSectionTitle,
   },
   closeBody: {
     maxWidth: '35rem',

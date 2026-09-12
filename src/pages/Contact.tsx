@@ -1,7 +1,7 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import * as stylex from '@stylexjs/stylex'
-import { LazyOceanHero } from '../components/OceanHero'
-import { useScrollRevealElement } from '../lib/useScrollReveal'
+import { OceanHero } from '../components/OceanHero'
+import { scrollReveal } from '../lib/scrollReveal'
 import { sharedStyles } from '../styles/shared.stylex'
 import { contactStyles } from './Contact.stylex'
 
@@ -26,16 +26,11 @@ const TOPICS = [
 
 export function Contact() {
   const [topic, setTopic] = useState(TOPICS[0].value)
-  const composeHeadingRef = useRef<HTMLDivElement>(null)
-  const formRef = useRef<HTMLFormElement>(null)
-
-  useScrollRevealElement(composeHeadingRef, { distance: 0, delay: 0.08 })
-  useScrollRevealElement(formRef, { distance: 0, delay: 0.78 })
 
   return (
       <div {...stylex.props(contactStyles.page)}>
       <header {...stylex.props(contactStyles.intro)}>
-        <LazyOceanHero />
+        <OceanHero />
         <div {...stylex.props(sharedStyles.container, contactStyles.introGrid)}>
           <div>
             <h1 {...stylex.props(contactStyles.title)}>
@@ -54,13 +49,13 @@ export function Contact() {
 
       <section {...stylex.props(contactStyles.compose)} aria-labelledby="contact-form-heading">
         <div {...stylex.props(sharedStyles.container)}>
-          <div ref={composeHeadingRef} {...stylex.props(contactStyles.composeHeading)}>
+          <div {...stylex.props(contactStyles.composeHeading)} {...scrollReveal(0, 0.08)}>
             <h2 id="contact-form-heading" {...stylex.props(contactStyles.composeTitle)}>Draft the message.</h2>
             <p {...stylex.props(contactStyles.composeIntro)}>Choose the closest route, add the useful context, then continue in your default email app.</p>
           </div>
           <form
-            ref={formRef}
             {...stylex.props(contactStyles.form)}
+            {...scrollReveal(0, 0.78)}
             aria-describedby="contact-privacy-note"
             onSubmit={(event) => {
               event.preventDefault()

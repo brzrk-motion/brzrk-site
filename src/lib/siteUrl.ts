@@ -4,11 +4,5 @@ export function getSiteOrigin(): string {
   if (configured) return configured
 
   const base = import.meta.env.BASE_URL.replace(/\/$/, '')
-  const path = base && base !== '/' ? base : ''
-
-  if (typeof window !== 'undefined') {
-    return `${window.location.origin}${path}`
-  }
-
-  return path ? `https://brzrk-motion.github.io${path}` : 'https://brzrk-motion.github.io/brzrk-site'
+  return base && base !== '/' ? `https://brzrk-motion.github.io${base}` : 'https://brzrk-motion.github.io/brzrk-site'
 }
