@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import * as stylex from '@stylexjs/stylex'
+import { SOCIAL_LINKS } from '../lib/socialLinks'
 import { sharedStyles } from '../styles/shared.stylex'
 import { layoutStyles } from './Layout.stylex'
 
@@ -15,6 +16,19 @@ export function Footer() {
             <p id="footer-heading" {...stylex.props(layoutStyles.footerDescriptor)}>Independent product company. Building focused tools for creative production.</p>
             <a href={`mailto:${CONTACT_EMAIL}`} {...stylex.props(layoutStyles.footerEmail)}>{CONTACT_EMAIL}</a>
           </section>
+
+          <nav {...stylex.props(layoutStyles.footerNav)} aria-label="Social links">
+            <h2 {...stylex.props(layoutStyles.footerNavTitle)}>Connect</h2>
+            <ul {...stylex.props(layoutStyles.footerLinks)}>
+              {SOCIAL_LINKS.map((link) => (
+                <li key={link.label}>
+                  <a href={link.href} target="_blank" rel="noopener noreferrer" {...stylex.props(layoutStyles.footerLink)}>
+                    {link.label} <span {...stylex.props(layoutStyles.footerLinkHandle)}>{link.handle}</span> <span aria-hidden="true">↗</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
           <nav {...stylex.props(layoutStyles.footerNav)} aria-label="Footer navigation">
             <h2 {...stylex.props(layoutStyles.footerNavTitle)}>Site Map</h2>
