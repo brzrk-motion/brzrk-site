@@ -183,9 +183,12 @@ export const layoutStyles = stylex.create({
   },
   footerMain: {
     display: 'grid',
-    gridTemplateColumns: 'minmax(0, 1fr) minmax(18rem, auto)',
-    gap: 'clamp(2rem, 7vw, 6rem)',
+    gridTemplateColumns: 'minmax(0, 1fr) minmax(12rem, auto) minmax(12rem, auto)',
+    gap: 'clamp(2rem, 5vw, 4rem)',
     alignItems: 'start',
+    [mq1050]: {
+      gridTemplateColumns: 'minmax(0, 1fr) minmax(12rem, auto)',
+    },
     [mq720]: {
       gridTemplateColumns: '1fr',
       gap: tokens.space4,
@@ -238,6 +241,7 @@ export const layoutStyles = stylex.create({
     display: 'inline-flex',
     minHeight: '44px',
     alignItems: 'center',
+    gap: '0.35rem',
     color: tokens.signalHot,
     fontFamily: tokens.fontMono,
     fontSize: tokens.fontControl,
@@ -245,6 +249,10 @@ export const layoutStyles = stylex.create({
     ':hover': {
       color: tokens.paper,
     },
+  },
+  footerLinkHandle: {
+    color: tokens.paperSubtle,
+    fontSize: tokens.fontMeta,
   },
   footerBottom: {
     position: 'relative',
