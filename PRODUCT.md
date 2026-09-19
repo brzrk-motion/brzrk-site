@@ -28,7 +28,7 @@ The work spans versions, feedback, clients, estimates, retainers, and invoices. 
 - Products are described as free, open source, or self-hosted only where explicitly stated.
 - brzrk does not promise hosting, installation, paid support, an SLA, roadmap control, or priority treatment.
 - Internal infrastructure is not an external product.
-- Public contact is `brzrk@brzrkmotion.com`.
+- Public contact is `brzrk@brzrk-motion.com`.
 
 ## Brand Commitments
 

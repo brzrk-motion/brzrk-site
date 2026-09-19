@@ -5,7 +5,7 @@ import { scrollReveal } from '../lib/scrollReveal'
 import { sharedStyles } from '../styles/shared.stylex'
 import { contactStyles } from './Contact.stylex'
 
-const CONTACT_EMAIL = 'brzrk@brzrkmotion.com'
+const CONTACT_EMAIL = 'brzrk@brzrk-motion.com'
 const TOPICS = [
   {
     value: 'Playblast studio interest',
